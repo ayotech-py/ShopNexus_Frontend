@@ -1,0 +1,11 @@
+.orderpage {
+    background-color: #eee;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+@media (max-width: 767.98px) {
+    .border-sm-start-none {
+        border-left: none !important;
+    }
+}

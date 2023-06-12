@@ -1,0 +1,16 @@
+.bg-info img {
+    border-radius: 20px;
+    width: 35px;
+    height: 35px;
+}
+
+.d-flex p {
+    font-size: 15px;
+}
+
+.product {
+    padding-right: 15%;
+    padding-left: 15%;
+    background-color: white;
+    padding-top: 5px;
+}

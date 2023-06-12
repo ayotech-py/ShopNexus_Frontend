@@ -1,0 +1,50 @@
+.product-page {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.product-image {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-image .w-100 {
+    border-radius: 5px;
+    height: 400px;
+}
+
+.product-detail {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-detail .seller-badge {
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.product-detail .seller-badge p {
+    padding-left: .5rem;
+}
+
+.my-btn .my-sub-btn {
+    font-size: 1rem;
+    background-color: rgb(49, 49, 168);
+    color: white;
+}
+
+.my-slide img {
+    height: 100%;
+    border-radius: 25px;
+}
+
+.product-page-container {
+    padding-left: 15%;
+    padding-right: 15%;
+
+}

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+
+.body {
+    background-color: rgb(239, 239, 246);
+}
+
+.header-section h1 {
+    font-family: Arial;
+    font-size: 4rem;
+}
+
+.search {
+    display: flex;
+    width: 400px;
+}
+
+.search-btn {
+    background-color: rgb(49, 49, 168);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 5px;
+    width: 40px;
+}
+
+.search input {
+    width: 100%;
+    font-size: 1rem;
+    padding: .4rem;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: solid 1px rgb(49, 49, 168);
+}
+
+.header-section .cart {
+    font-size: 2.1rem;
+    border: none;
+    color: rgb(49, 49, 168);
+    background-color: white;
+}
+
+.header-section .cart span {
+    font-size: .8rem;
+    background-color: blue;
+    color: white;
+    padding: .3rem;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    border-radius: 50px;
+}
+
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    color: rgb(49, 49, 168);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-name {
+    padding-left: 15%;
+}
+
+.right-nav {
+    padding-right: 15%;
+}

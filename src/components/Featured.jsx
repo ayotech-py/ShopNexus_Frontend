@@ -1,4 +1,15 @@
 import React from "react";
+import { MDBIcon } from "mdb-react-ui-kit";
+import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
+import {
+    MDBContainer,
+    MDBRow,
+    MDBCol,
+    MDBCard,
+    MDBCardBody,
+    MDBCardImage,
+    MDBBtn,
+} from "mdb-react-ui-kit";
 
 const Categories = [
     "Electronics",
@@ -18,18 +29,56 @@ const Categories = [
     "Jewelry & Watches"
 ];
 
-const Features = () => {
+const Features = ({ shopId }) => {
     return (
         <div className="feature-section">
             <div className="categories">
-                <ul className="category-list">
-                    {Categories.map((category) => <li className="cat-list">{category}</li>)}
-                </ul>
-            </div>
+                <MDBCol lg="12" className="mb-4 mb-lg-4">
+                    <div className="category-head">
+                        <p><MDBIcon fas icon="align-justify" /></p>
+                        <h5>Categories</h5>
+                    </div>
+                    <ul className="category-list">
+                        {Categories.map((category) => <a href={`/categories/${category}`}><li className="cat-list">{category}</li></a>)}
+                    </ul>
+                </MDBCol>
+            </div >
             <div className="banner">
-                <img src="https://img.freepik.com/free-psd/black-friday-super-sale-facebook-cover-template_106176-1544.jpg" alt="feature_banner" srcset="" />
+                <MDBCarousel showIndicators showControls fade>
+                    <MDBCarouselItem
+                        className="w-100 d-block"
+                        itemId={1}
+                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+                        alt="..."
+                    >
+                        <h5>First slide label</h5>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </MDBCarouselItem>
+
+                    <MDBCarouselItem
+                        className="w-100 d-block"
+                        itemId={2}
+                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+                        alt="..."
+                    >
+                        <h5>Second slide label</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </MDBCarouselItem>
+
+                    <MDBCarouselItem
+                        className="w-100 d-block"
+                        itemId={3}
+                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                        alt="..."
+                    >
+                        <h5>Third slide label</h5>
+                        <p>
+                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                        </p>
+                    </MDBCarouselItem>
+                </MDBCarousel>
             </div>
-        </div>
+        </div >
     )
 }
 

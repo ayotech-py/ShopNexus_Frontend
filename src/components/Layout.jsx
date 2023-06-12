@@ -1,8 +1,23 @@
 import React from "react";
 
-const Layout = () => {
+import Header from './Header';
+import Footer from './Footer';
+import { Outlet } from 'react-router-dom';
+
+
+const Layout = ({ children }) => {
     return (
-        <div>Layout</div>
+        <div>
+            <header>
+                <Header count={5} />
+            </header>
+            <main>
+                {children}
+            </main>
+            <footer>
+                <Footer />
+            </footer>
+        </div>
     )
 }
 
