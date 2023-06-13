@@ -19,20 +19,44 @@ import React, { useState, useContext } from 'react';
 import { CartContext } from './Cart';
 
 const OrderPage = () => {
-    const { cart } = useContext(CartContext);
-    console.log(cart)
+    const { cart, removeFromCart } = useContext(CartContext);
 
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setCart] = useState(1);
 
-    const handleDecrease = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1);
-        }
+    const handleIncrease = (itemId) => {
+        const updatedCart = cart.map((item) => {
+            if (item.id === itemId) {
+                console.log(true)
+                item['quantity'] = item['quantity'] + 1
+                console.log(item['quantity'])
+            }
+            return item;
+        });
+        setCart(updatedCart);
     };
 
-    const handleIncrease = () => {
-        setQuantity(quantity + 1);
+    const handleDecrease = (itemId) => {
+        const updatedCart = cart.map((item) => {
+            if (item.id === itemId && item.quantity > 1) {
+                item['quantity'] = item['quantity'] - 1
+            }
+            return item;
+        });
+        console.log(cart)
+        setCart(updatedCart);
     };
+
+    const handleDelete = (itemId) => {
+        const updatedCart = cart.map((item) => {
+            if (item.id === itemId) {
+                console.log(item.id)
+                cart.splice(cart.indexOf(item), 1)
+            }
+            return;
+        });
+        setCart(updatedCart);
+        removeFromCart(cart);
+    }
 
     const totalSum = cart.reduce((accumulator, currentItem) => {
         const subtotal = currentItem.price * currentItem.quantity;
@@ -73,10 +97,9 @@ const OrderPage = () => {
                                             <p>{element['category']}</p>
                                             <p>{element['description']}</p>
 
-                                            <MDBTooltip wrapperProps={{ size: "sm" }} wrapperClass="me-1 mb-2"
-                                                title="Remove item">
-                                                <MDBIcon fas icon="trash" />
-                                            </MDBTooltip>
+                                            <MDBBtn>
+                                                <MDBIcon onClick={() => handleDelete(element.id)} fas icon="trash" />
+                                            </MDBBtn>
 
                                             <MDBTooltip wrapperProps={{ size: "sm", color: "danger" }} wrapperClass="me-1 mb-2"
                                                 title="Move to the wish list">
@@ -85,19 +108,19 @@ const OrderPage = () => {
                                         </MDBCol>
                                         <MDBCol lg="4" md="6" className="mb-4 mb-lg-0">
                                             <div className="d-flex mb-4" style={{ maxWidth: "300px" }}>
-                                                <MDBBtn className="px-3 me-2" onClick={handleDecrease}>
+                                                <MDBBtn className="px-3 me-2" onClick={() => handleDecrease(element.id)}>
                                                     <MDBIcon fas icon="minus" />
                                                 </MDBBtn>
 
-                                                <MDBInput defaultValue={1} min={0} type="number" label="Quantity" value={quantity} />
+                                                <MDBInput defaultValue={1} min={0} type="number" label="Quantity" value={element.quantity} />
 
-                                                <MDBBtn className="px-3 ms-2" onClick={handleIncrease}>
+                                                <MDBBtn className="px-3 ms-2" onClick={() => handleIncrease(element.id)}>
                                                     <MDBIcon fas icon="plus" />
                                                 </MDBBtn>
                                             </div>
 
                                             <p className="text-start text-md-center">
-                                                <strong>${element['price'] * quantity}.00</strong>
+                                                <strong>${element['price'] * element['quantity']}.00</strong>
                                             </p>
                                         </MDBCol>
                                         <hr className="my-4" />
@@ -147,11 +170,11 @@ const OrderPage = () => {
                                         <MDBListGroupItem
                                             className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                             Products
-                                            <span>{totalSum}</span>
+                                            <span>${totalSum}</span>
                                         </MDBListGroupItem>
                                         <MDBListGroupItem className="d-flex justify-content-between align-items-center px-0">
                                             Shipping
-                                            <span>Gratis</span>
+                                            <span>$1000</span>
                                         </MDBListGroupItem>
                                         <MDBListGroupItem
                                             className="d-flex justify-content-between align-items-center border-0 px-0 mb-3">
@@ -162,7 +185,7 @@ const OrderPage = () => {
                                                 </strong>
                                             </div>
                                             <span>
-                                                <strong>$53.98</strong>
+                                                <strong>${totalSum + 1000}</strong>
                                             </span>
                                         </MDBListGroupItem>
                                     </MDBListGroup>

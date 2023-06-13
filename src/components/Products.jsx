@@ -14,19 +14,6 @@ import { CartContext } from "./Cart";
 
 const Products = ({ data }) => {
     const { addToCart, cart } = useContext(CartContext);
-    const handleAddToCart = (cartname) => {
-
-        if (cart.includes(cartname)) {
-            console.log('true')
-        } else {
-            addToCart(cartname);
-        }
-
-        // Send product details to the backend API
-        // You can make an API request here using libraries like Axios or Fetch
-        // Example:
-        // axios.post('/api/cart', product);
-    };
 
     return (
         <div class="product">
@@ -42,7 +29,7 @@ const Products = ({ data }) => {
                                         style={{ width: "35px", height: "35px" }}
                                     ><img src={product['seller']['business_logo']} alt="product" /></div>
                                 </div>
-                                <Link to={`/products/${product['name']}`}>
+                                <Link to={`/products/${product['id']}`}>
                                     <MDBCardImage
                                         src={product['image']}
                                         position="top"
@@ -80,7 +67,7 @@ const Products = ({ data }) => {
                                     </div>
 
                                     <div className="d-flex justify-content-center align-items-center pb-2 mb-4 my-btn">
-                                        <MDBBtn className="mb-5" color="primary" onClick={() => handleAddToCart(product)}>Add to Cart</MDBBtn>
+                                        <MDBBtn className="mb-5" color="primary" onClick={() => handleAddToCart(product, cart, addToCart)}>Add to Cart</MDBBtn>
                                     </div>
                                 </MDBCardBody>
                             </MDBCard>
@@ -92,5 +79,20 @@ const Products = ({ data }) => {
         </div >
     )
 }
+
+
+const handleAddToCart = (cartname, cart, addToCart) => {
+    if (cart.includes(cartname)) {
+        console.log('true')
+    } else {
+        cartname['quantity'] = 1
+        addToCart(cartname);
+    }
+
+    // Send product details to the backend API
+    // You can make an API request here using libraries like Axios or Fetch
+    // Example:
+    // axios.post('/api/cart', product);
+};
 
 export default Products

@@ -21,7 +21,7 @@ const ProductPage = ({ data }) => {
     const { name } = useParams();
     var product = {}
     for (let i = 0; i < data.length; i++) {
-        if (data[i]['name'] === name) {
+        if (data[i]['id'] === name) {
             product = data[i]
             break;
         }
@@ -32,11 +32,9 @@ const ProductPage = ({ data }) => {
 
         if (cart.includes(cartname)) {
             console.log('true')
-            console.log(cart)
         } else {
             cartname['quantity'] = quantity
             addToCart(cartname);
-            console.log(cart)
         }
     }
     // Send product details to the backend API
@@ -120,7 +118,7 @@ const ProductPage = ({ data }) => {
                                         <p className="lead mb-0">{product['seller']['business_name']}</p>
                                     </div>
                                     <MDBCol md="12">
-                                        <h5>{product['name']}</h5>
+                                        <h3>{product['name']}</h3>
                                         <div className="d-flex flex-row">
                                             <div className="text-danger mb-1 me-2">
                                                 <MDBIcon fas icon="star" />
@@ -154,25 +152,10 @@ const ProductPage = ({ data }) => {
                                             There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
                                         </p>
                                     </MDBCol>
-                                    <MDBTypography tag="h3">Price: ${product['price']}</MDBTypography>
-                                    <MDBCol lg="4" md="4" className="mb-4 mb-lg-0">
-                                        <div className="d-flex mb-4" style={{ maxWidth: "200px" }}>
-                                            <MDBBtn className="px-3 me-2" onClick={handleDecrease}>
-                                                <MDBIcon fas icon="minus" />
-                                            </MDBBtn>
-                                            <MDBInput defaultValue={1} min={0} type="number" label="Quantity" value={quantity} />
-                                            <MDBBtn className="px-3 ms-2" onClick={handleIncrease}>
-                                                <MDBIcon fas icon="plus" />
-                                            </MDBBtn>
-                                        </div>
-                                    </MDBCol>
-                                    <div className="d-flex justify-content-between mb-5 total">
-                                        <MDBTypography tag="h3" className="text-uppercase">
-                                            Total price
-                                        </MDBTypography>
-                                        <MDBTypography tag="h3">${product['price'] * quantity}.00</MDBTypography>
-                                    </div>
+
                                     <div className='my-btn'>
+                                        <MDBTypography tag="h3">Price: ${product['price']}</MDBTypography>
+
                                         <MDBBtn className="my-sub-btn" color="dark" block size="lg" onClick={() => handleAddToCart(product)}>Add to Cart</MDBBtn>
                                     </div>
                                 </div>
