@@ -29,9 +29,14 @@ const ProductPage = ({ data }) => {
 
     const { addToCart, cart } = useContext(CartContext);
     const handleAddToCart = (cartname) => {
-
-        if (cart.includes(cartname)) {
-            console.log('true')
+        var cart_id = []
+        if (cart.length > 0) {
+            for (let i = 0; i < cart.length; i++) {
+                cart_id.push(cart[i]['id'])
+            }
+        }
+        if (cart_id.includes(cartname['id'])) {
+            console.log('ture')
         } else {
             cartname['quantity'] = quantity
             addToCart(cartname);
