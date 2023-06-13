@@ -97,14 +97,13 @@ const OrderPage = () => {
                                             <p>{element['category']}</p>
                                             <p>{element['description']}</p>
 
-                                            <MDBBtn>
-                                                <MDBIcon onClick={() => handleDelete(element.id)} fas icon="trash" />
+                                            <MDBBtn className="delete-btn" onClick={() => handleDelete(element.id)}>
+                                                <MDBIcon fas icon="trash" />
                                             </MDBBtn>
 
-                                            <MDBTooltip wrapperProps={{ size: "sm", color: "danger" }} wrapperClass="me-1 mb-2"
-                                                title="Move to the wish list">
+                                            <MDBBtn>
                                                 <MDBIcon fas icon="heart" />
-                                            </MDBTooltip>
+                                            </MDBBtn>
                                         </MDBCol>
                                         <MDBCol lg="4" md="6" className="mb-4 mb-lg-0">
                                             <div className="d-flex mb-4" style={{ maxWidth: "300px" }}>
