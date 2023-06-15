@@ -12,22 +12,59 @@ import {
 import { Link } from "react-router-dom";
 import { CartContext } from "./Cart";
 
-const Products = ({ data }) => {
-    const { addToCart, cart } = useContext(CartContext);
+
+const Products = ({ data, user }) => {
+    const { addToCart, cart, updateCart } = useContext(CartContext);
     const [quantity, setQuantity] = useState(1);
+    const customer = window.localStorage.getItem('username')
+    const token = window.localStorage.getItem('accessToken')
+    const username = window.localStorage.getItem('username')
+
 
     const handleAddToCart = (cartname) => {
-        var cart_id = []
-        if (cart.length > 0) {
-            for (let i = 0; i < cart.length; i++) {
-                cart_id.push(cart[i]['id'])
-            }
-        }
-        if (cart_id.includes(cartname['id'])) {
-            console.log('ture')
+        if (user) {
+            const handleUser = async () => {
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/orderitems/', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ' + token,
+                            'user': username,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            product: cartname['id'],
+                            customer: customer
+                        }),
+                    });
+
+                    if (response.status === 200) {
+                        const newCart = [...cart, cartname];
+                        updateCart(newCart);
+                        console.log(newCart)
+                        alert('Item successfully added to cart');
+                    } else {
+                        alert('Item already added to cart')
+                    }
+                } catch (error) {
+                    // Handle fetch error, e.g., display an error message
+                }
+            };
+            handleUser();
         } else {
-            cartname['quantity'] = quantity
-            addToCart(cartname);
+            console.log('ahhh')
+            var cart_id = []
+            if (cart.length > 0) {
+                for (let i = 0; i < cart.length; i++) {
+                    cart_id.push(cart[i]['id'])
+                }
+            }
+            if (cart_id.includes(cartname['id'])) {
+                console.log('ture')
+            } else {
+                cartname['quantity'] = quantity
+                addToCart(cartname);
+            }
         }
     }
 

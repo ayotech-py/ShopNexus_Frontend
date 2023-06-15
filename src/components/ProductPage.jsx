@@ -17,8 +17,10 @@ import {
 
 } from 'mdb-react-ui-kit';
 
-const ProductPage = ({ data }) => {
+const ProductPage = ({ data, user }) => {
     const { name } = useParams();
+    const customer = window.localStorage.getItem('username')
+
     var product = {}
     for (let i = 0; i < data.length; i++) {
         if (data[i]['id'] === name) {
@@ -27,21 +29,54 @@ const ProductPage = ({ data }) => {
         }
     }
 
-    const { addToCart, cart } = useContext(CartContext);
+    const { addToCart, cart, updateCart } = useContext(CartContext);
+    const token = window.localStorage.getItem('accessToken')
+    const username = window.localStorage.getItem('username')
     const handleAddToCart = (cartname) => {
-        var cart_id = []
-        if (cart.length > 0) {
-            for (let i = 0; i < cart.length; i++) {
-                cart_id.push(cart[i]['id'])
+        if (user) {
+            const handleUser = async () => {
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/orderitems/', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ' + token,
+                            'user': username,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            product: cartname['id'],
+                            customer: customer
+                        }),
+                    });
+
+                    if (response.status == 200) {
+                        alert('Item successfully added to cart');
+                    } else {
+                        alert('Item already added to cart')
+                    }
+                } catch (error) {
+                    // Handle fetch error, e.g., display an error message
+                }
+            };
+            handleUser();
+            updateCart(cart);
+        } else {
+            console.log('ahhh')
+            var cart_id = []
+            if (cart.length > 0) {
+                for (let i = 0; i < cart.length; i++) {
+                    cart_id.push(cart[i]['id'])
+                }
+            }
+            if (cart_id.includes(cartname['id'])) {
+                console.log('ture')
+            } else {
+                cartname['quantity'] = quantity
+                addToCart(cartname);
             }
         }
-        if (cart_id.includes(cartname['id'])) {
-            console.log('ture')
-        } else {
-            cartname['quantity'] = quantity
-            addToCart(cartname);
-        }
     }
+
     // Send product details to the backend API
     // You can make an API request here using libraries like Axios or Fetch
     // Example:

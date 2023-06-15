@@ -21,9 +21,11 @@ import {
 } from 'mdb-react-ui-kit';
 
 
-const Header = ({ count }) => {
+const Header = ({ user }) => {
     const [showBasic, setShowBasic] = useState(false);
     const { cart } = useContext(CartContext);
+    console.log(user)
+
     return (
         <div className="header-section">
             <MDBNavbar expand='lg' light bgColor='light'>
@@ -52,22 +54,40 @@ const Header = ({ count }) => {
 
                         <MDBCollapse navbar show={showBasic}>
                             <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
+                                {user ? (
+                                    <MDBNavbarItem>
+                                        <MDBDropdown>
+                                            <div className="contact">
+                                                <MDBIcon fas icon="user-alt" />
+                                                <MDBDropdownToggle tag='a' className='nav-link' role='button'>
+                                                    Hi, {user.name}
+                                                </MDBDropdownToggle>
+                                            </div>
+                                            <MDBDropdownMenu>
+                                                <Link to="/customer/profile"><MDBDropdownItem link>Profile</MDBDropdownItem></Link>
+                                                <Link to="/cart/cart"><MDBDropdownItem link>Orders</MDBDropdownItem></Link>
+                                                <MDBDropdownItem link>Log-out</MDBDropdownItem>
+                                            </MDBDropdownMenu>
+                                        </MDBDropdown>
+                                    </MDBNavbarItem>
+                                ) : (
+                                    <MDBNavbarItem>
+                                        <MDBDropdown>
+                                            <div className="contact">
+                                                <MDBIcon fas icon="user-alt" />
+                                                <MDBDropdownToggle tag='a' className='nav-link' role='button'>
+                                                    Account
+                                                </MDBDropdownToggle>
+                                            </div>
+                                            <MDBDropdownMenu>
+                                                <MDBDropdownItem link>Login as Buyer</MDBDropdownItem>
+                                                <Link to="/auth/login-in"><MDBDropdownItem link>Login as Seller</MDBDropdownItem></Link>
+                                                <Link to="/auth/sign-up"><MDBDropdownItem link>Create an Account</MDBDropdownItem></Link>
+                                            </MDBDropdownMenu>
+                                        </MDBDropdown>
+                                    </MDBNavbarItem>
 
-                                <MDBNavbarItem>
-                                    <MDBDropdown>
-                                        <div className="contact">
-                                            <MDBIcon fas icon="user-alt" />
-                                            <MDBDropdownToggle tag='a' className='nav-link' role='button'>
-                                                Account
-                                            </MDBDropdownToggle>
-                                        </div>
-                                        <MDBDropdownMenu>
-                                            <MDBDropdownItem link>Login as Buyer</MDBDropdownItem>
-                                            <Link to="/auth/login-in"><MDBDropdownItem link>Login as Seller</MDBDropdownItem></Link>
-                                            <Link to="/auth/sign-up"><MDBDropdownItem link>Create an Account</MDBDropdownItem></Link>
-                                        </MDBDropdownMenu>
-                                    </MDBDropdown>
-                                </MDBNavbarItem>
+                                )}
 
                                 <MDBNavbarItem>
                                     <div className="contact">
@@ -78,10 +98,17 @@ const Header = ({ count }) => {
                             </MDBNavbarNav>
                         </MDBCollapse>
                         <Link to='/cart/cart'>
-                            <button type="button" className="cart">
-                                <AiOutlineShoppingCart />
-                                <span>{cart.length}</span>
-                            </button>
+                            {user ? (
+                                <button type="button" className="cart">
+                                    <AiOutlineShoppingCart />
+                                    <span>{user.orderitems.length}</span>
+                                </button>
+                            ) : (
+                                <button type="button" className="cart">
+                                    <AiOutlineShoppingCart />
+                                    <span>{cart.length}</span>
+                                </button>
+                            )}
                         </Link>
                     </div>
                 </MDBContainer>

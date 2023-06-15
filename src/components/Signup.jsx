@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import {
     MDBBtn,
     MDBContainer,
@@ -13,6 +13,50 @@ import {
 } from 'mdb-react-ui-kit';
 
 const Signup = () => {
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (password !== repeatPassword) {
+            alert('Passwords do not match. Please retype the password.');
+            return;
+        }
+        try {
+            const response = await fetch('http://127.0.0.1:8000/customer-register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email, // assuming you have stored the email input in the 'email' state
+                    phone: phone,
+                    address: address,
+                    password: password, // assuming you have stored the password input in the 'password' state
+                }),
+            });
+
+            if (response.ok) {
+                const { success } = await response.json();
+                alert(success);
+                window.location.href = '/auth/login-in';
+                // Do something with the tokens
+            } else {
+                // Handle error response, e.g., display an error message
+                const { error } = await response.json();
+                alert(error)
+                // Handle the error response
+            }
+        } catch (error) {
+            // Handle fetch error, e.g., display an error message
+        }
+    };
+
     return (
         <MDBContainer fluid>
 
@@ -25,22 +69,38 @@ const Signup = () => {
 
                             <div className="d-flex flex-row align-items-center mb-4 ">
                                 <MDBIcon fas icon="user me-3" size='lg' />
-                                <MDBInput label='Your Name' id='form1' type='text' className='w-100' />
+                                <MDBInput label='Your Name' id='form1' type='text' className='w-100' value={name}
+                                    onChange={(e) => setName(e.target.value)} />
                             </div>
 
                             <div className="d-flex flex-row align-items-center mb-4">
                                 <MDBIcon fas icon="envelope me-3" size='lg' />
-                                <MDBInput label='Your Email' id='form2' type='email' />
+                                <MDBInput label='Your Email' id='form2' type='email' value={email}
+                                    onChange={(e) => setEmail(e.target.value)} />
+                            </div>
+
+                            <div className="d-flex flex-row align-items-center mb-4">
+                                <MDBIcon fas icon="phone me-3" size='lg' />
+                                <MDBInput label='Your Phone' id='form2' type='number' value={phone}
+                                    onChange={(e) => setPhone(e.target.value)} />
+                            </div>
+
+                            <div className="d-flex flex-row align-items-center mb-4">
+                                <MDBIcon fas icon="house me-3" size='lg' />
+                                <MDBInput label='Your Address' id='form2' type='text' value={address}
+                                    onChange={(e) => setAddress(e.target.value)} />
                             </div>
 
                             <div className="d-flex flex-row align-items-center mb-4">
                                 <MDBIcon fas icon="lock me-3" size='lg' />
-                                <MDBInput label='Password' id='form3' type='password' />
+                                <MDBInput label='Password' id='form3' type='password' value={password}
+                                    onChange={(e) => setPassword(e.target.value)} />
                             </div>
 
                             <div className="d-flex flex-row align-items-center mb-4">
                                 <MDBIcon fas icon="key me-3" size='lg' />
-                                <MDBInput label='Repeat your password' id='form4' type='password' />
+                                <MDBInput label='Repeat your password' id='form4' type='password' value={repeatPassword}
+                                    onChange={(e) => setRepeatPassword(e.target.value)} />
                             </div>
 
                             <div className='mb-4'>
@@ -48,7 +108,7 @@ const Signup = () => {
                             </div>
 
                             <div className="my-btn">
-                                <MDBBtn className='mb-5' size='lg'>Register</MDBBtn>
+                                <MDBBtn className='mb-5' size='lg' onClick={handleSubmit}>Register</MDBBtn>
                             </div>
 
                         </MDBCol>
@@ -64,5 +124,6 @@ const Signup = () => {
         </MDBContainer>
     );
 }
+
 
 export default Signup;

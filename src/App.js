@@ -17,6 +17,7 @@ import Contact from './pages/contact';
 import Signup from './pages/signup';
 import Login from './components/Login';
 import Order from './pages/order';
+import ProfilePage from './pages/profile';
 
 import CartProvider from './components/Cart';
 
@@ -39,6 +40,10 @@ function App() {
           <Route path='/cart/' element={<Layout />}>
             <Route path="cart" element={<Order />} />
           </Route>
+          <Route path='/customer/' element={<Layout />}>
+            <Route path="profile" element={<ProfilePage />} />
+          </Route>
+
         </Routes>
       </BrowserRouter>
     </CartProvider>

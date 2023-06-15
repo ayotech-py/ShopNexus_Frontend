@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import {
     MDBBtn,
     MDBContainer,
@@ -9,10 +9,46 @@ import {
     MDBCardImage,
     MDBInput,
     MDBIcon,
-    MDBCheckbox
 } from 'mdb-react-ui-kit';
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch('http://127.0.0.1:8000/customer-login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email, // assuming you have stored the email input in the 'email' state
+                    password: password, // assuming you have stored the password input in the 'password' state
+                }),
+            });
+
+            if (response.ok) {
+                const { access, refresh, username } = await response.json();
+                window.location.href = '/';
+                window.localStorage.setItem('accessToken', access);
+                window.localStorage.setItem('refreshToken', refresh);
+                window.localStorage.setItem('username', username);
+                console.log('Accesstoken: ' + access)
+                console.log('RefreshToken' + refresh)
+                // Do something with the tokens
+            } else {
+                // Handle error response, e.g., display an error message
+                const { error } = await response.json();
+                alert(error)
+                // Handle the error response
+            }
+        } catch (error) {
+            // Handle fetch error, e.g., display an error message
+        }
+    };
+
     return (
         <MDBContainer fluid>
 
@@ -25,16 +61,18 @@ const Login = () => {
 
                             <div className="d-flex flex-row align-items-center mb-4">
                                 <MDBIcon fas icon="envelope me-3" size='lg' />
-                                <MDBInput label='Your Email' id='form2' type='email' />
+                                <MDBInput label='Your Email' id='form2' type='email' value={email}
+                                    onChange={(e) => setEmail(e.target.value)} />
                             </div>
 
                             <div className="d-flex flex-row align-items-center mb-4">
                                 <MDBIcon fas icon="lock me-3" size='lg' />
-                                <MDBInput label='Password' id='form3' type='password' />
+                                <MDBInput label='Password' id='form3' type='password' value={password}
+                                    onChange={(e) => setPassword(e.target.value)} />
                             </div>
 
                             <div className="my-btn">
-                                <MDBBtn className='mb-5' size='lg'>Log in</MDBBtn>
+                                <MDBBtn className='mb-5' size='lg' onClick={handleSubmit}>Log in</MDBBtn>
                             </div>
 
                             <a className="small text-muted" href="#!">Forgot password?</a>

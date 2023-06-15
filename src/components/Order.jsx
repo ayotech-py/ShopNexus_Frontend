@@ -18,15 +18,36 @@ import {
 import React, { useState, useContext } from 'react';
 import { CartContext } from './Cart';
 
-const OrderPage = () => {
-    const { cart, removeFromCart } = useContext(CartContext);
-
+const OrderPage = ({ user }) => {
+    const { cart, removeFromCart, addToCart, updateCart } = useContext(CartContext);
     const [quantity, setCart] = useState(1);
+    const customer = window.localStorage.getItem('username')
+    const token = window.localStorage.getItem('accessToken')
+    const username = window.localStorage.getItem('username')
+
+
+    const handleAddToCart = (cartname) => {
+        var cart_id = []
+        if (cart.length > 0) {
+            for (let i = 0; i < cart.length; i++) {
+                cart_id.push(cart[i]['id'])
+            }
+        }
+        if (cart_id.includes(cartname['id'])) {
+            console.log('ture')
+        } else {
+            cartname['quantity'] = quantity
+            addToCart(cartname);
+        }
+    }
+
+    if (user) {
+        user.orderitems.map((element) => handleAddToCart(element['product']))
+    }
 
     const handleIncrease = (itemId) => {
         const updatedCart = cart.map((item) => {
             if (item.id === itemId) {
-                console.log(true)
                 item['quantity'] = item['quantity'] + 1
                 console.log(item['quantity'])
             }
@@ -47,16 +68,46 @@ const OrderPage = () => {
     };
 
     const handleDelete = (itemId) => {
-        const updatedCart = cart.map((item) => {
-            if (item.id === itemId) {
-                console.log(item.id)
-                cart.splice(cart.indexOf(item), 1)
-            }
-            return;
-        });
-        setCart(updatedCart);
-        removeFromCart(cart);
+        if (user) {
+            const handleUser = async () => {
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/orderitems/1/', {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': 'Bearer ' + token,
+                            'user': username,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            product: itemId,
+                            customer: customer
+                        }),
+                    });
+
+                    if (response.status == 200) {
+                        alert('Item successfully Deleted');
+                    } else {
+                        alert('An Error Ocurred')
+                    }
+                } catch (error) {
+                    // Handle fetch error, e.g., display an error message
+                }
+            };
+            handleUser();
+        } else {
+            const updatedCart = cart.map((item) => {
+                if (item.id === itemId) {
+                    console.log(item.id)
+                    cart.splice(cart.indexOf(item), 1)
+                }
+                return;
+            });
+            setCart(updatedCart);
+            removeFromCart(cart);
+            console.log(cart)
+        }
     }
+    console.log(cart)
 
     const totalSum = cart.reduce((accumulator, currentItem) => {
         const subtotal = currentItem.price * currentItem.quantity;
@@ -81,7 +132,7 @@ const OrderPage = () => {
                                             <MDBRipple rippleTag="div" rippleColor="light"
                                                 className="bg-image rounded hover-zoom hover-overlay">
                                                 <img
-                                                    src={element['image']}
+                                                    src={user ? ('http://127.0.0.1:8000' + element['image']) : (element['image'])}
                                                     className="w-100" />
                                                 <a href="#!">
                                                     <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.2)", }}>
