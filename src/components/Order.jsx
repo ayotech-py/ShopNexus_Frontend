@@ -18,7 +18,7 @@ import {
 import React, { useState, useContext } from 'react';
 import { CartContext } from './Cart';
 
-const OrderPage = ({ user }) => {
+const OrderPage = ({ user, refreshUser }) => {
     const { cart, removeFromCart, addToCart, updateCart } = useContext(CartContext);
     const [quantity, setCart] = useState(1);
     const customer = window.localStorage.getItem('username')
@@ -29,7 +29,6 @@ const OrderPage = ({ user }) => {
         const updatedCart = cart.map((item) => {
             if (item.id === itemId) {
                 item['quantity'] = item['quantity'] + 1
-                console.log(item['quantity'])
             }
             return item;
         });
@@ -43,11 +42,11 @@ const OrderPage = ({ user }) => {
             }
             return item;
         });
-        console.log(cart)
         setCart(updatedCart);
     };
 
     const handleDelete = (itemId) => {
+        refreshUser()
         if (user) {
             const handleUser = async () => {
                 try {
@@ -65,7 +64,7 @@ const OrderPage = ({ user }) => {
                     });
 
                     if (response.status == 200) {
-                        alert('Item successfully Deleted');
+                        refreshUser();
                     } else {
                         alert('An Error Ocurred')
                     }
@@ -74,17 +73,28 @@ const OrderPage = ({ user }) => {
                 }
             };
             handleUser();
+            refreshUser();
+            cart.map((item) => {
+                if (item.id === itemId) {
+                    cart.splice(cart.indexOf(item), 1)
+                    refreshUser();
+                    console.log("The werey stil dey there o")
+                }
+                return;
+            });
+
+        } else {
+            const updatedCart = cart.map((item) => {
+                if (item.id === itemId) {
+                    cart.splice(cart.indexOf(item), 1)
+                    console.log("The werey stil dey there o")
+                }
+                return;
+            });
+            setCart(updatedCart);
+            removeFromCart(cart);
         }
-        const updatedCart = cart.map((item) => {
-            if (item.id === itemId) {
-                cart.splice(cart.indexOf(item), 1)
-            }
-            return;
-        });
-        setCart(updatedCart);
-        removeFromCart(cart);
     }
-    console.log(cart)
 
     const totalSum = cart.reduce((accumulator, currentItem) => {
         const subtotal = currentItem.price * currentItem.quantity;

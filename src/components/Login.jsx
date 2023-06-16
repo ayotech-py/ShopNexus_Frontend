@@ -35,8 +35,6 @@ const Login = () => {
                 window.localStorage.setItem('accessToken', access);
                 window.localStorage.setItem('refreshToken', refresh);
                 window.localStorage.setItem('username', username);
-                console.log('Accesstoken: ' + access)
-                console.log('RefreshToken' + refresh)
                 // Do something with the tokens
             } else {
                 // Handle error response, e.g., display an error message

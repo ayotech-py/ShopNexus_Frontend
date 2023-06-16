@@ -27,8 +27,6 @@ const Header = ({ user }) => {
     const [quantity, setQuantity] = useState(1);
 
     const handleAddToCart = (cartname) => {
-
-        console.log('ahhh')
         var cart_id = []
         if (cart.length > 0) {
             for (let i = 0; i < cart.length; i++) {
@@ -36,7 +34,7 @@ const Header = ({ user }) => {
             }
         }
         if (cart_id.includes(cartname['id'])) {
-            console.log('ture')
+            console.log('Item already in cart')
         } else {
             cartname['quantity'] = quantity
             addToCart(cartname);
@@ -44,7 +42,6 @@ const Header = ({ user }) => {
     }
     if (user && user['orderitems'].length > 0) {
         user['orderitems'].map((product) => handleAddToCart(product.product))
-        console.log(user['orderitems'][0].product)
     }
 
 
@@ -102,8 +99,8 @@ const Header = ({ user }) => {
                                                 </MDBDropdownToggle>
                                             </div>
                                             <MDBDropdownMenu>
-                                                <MDBDropdownItem link>Login as Buyer</MDBDropdownItem>
-                                                <Link to="/auth/login-in"><MDBDropdownItem link>Login as Seller</MDBDropdownItem></Link>
+                                                <MDBDropdownItem link>Login as Seller</MDBDropdownItem>
+                                                <Link to="/auth/login-in"><MDBDropdownItem link>Login as Buyer</MDBDropdownItem></Link>
                                                 <Link to="/auth/sign-up"><MDBDropdownItem link>Create an Account</MDBDropdownItem></Link>
                                             </MDBDropdownMenu>
                                         </MDBDropdown>
@@ -113,7 +110,7 @@ const Header = ({ user }) => {
 
                                 <MDBNavbarItem>
                                     <div className="contact">
-                                        <MDBIcon fas icon="user-alt" />
+                                        <MDBIcon fas icon="phone" />
                                         <Link to="/contact"><MDBNavbarLink>Contact Us</MDBNavbarLink></Link>
                                     </div>
                                 </MDBNavbarItem>

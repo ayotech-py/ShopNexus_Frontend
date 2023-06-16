@@ -24,7 +24,6 @@ const Home = () => {
         const getUser = async () => {
             const token = window.localStorage.getItem('accessToken')
             const username = window.localStorage.getItem('username')
-            console.log(token)
             const response = await fetch('http://127.0.0.1:8000/get-user-details/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,

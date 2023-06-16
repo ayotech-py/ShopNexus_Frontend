@@ -48,32 +48,32 @@ const Features = ({ shopId }) => {
                     <MDBCarouselItem
                         className="w-100 d-block"
                         itemId={1}
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+                        src="https://i.ytimg.com/vi/f64GdOxJjPE/maxresdefault.jpg"
                         alt="..."
                     >
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h5></h5>
+                        <p></p>
                     </MDBCarouselItem>
 
                     <MDBCarouselItem
                         className="w-100 d-block"
                         itemId={2}
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+                        src="https://img.freepik.com/free-psd/black-friday-super-sale-web-banner-template_106176-1671.jpg"
                         alt="..."
                     >
-                        <h5>Second slide label</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h5></h5>
+                        <p></p>
                     </MDBCarouselItem>
 
                     <MDBCarouselItem
                         className="w-100 d-block"
                         itemId={3}
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                        src="https://marketplace.canva.com/EAFED0hv9G0/1/0/1600w/canva-blue-pink-modern-special-offer-sale-banner-J5VkNReQ8WA.jpg"
                         alt="..."
                     >
-                        <h5>Third slide label</h5>
+                        <h5></h5>
                         <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+
                         </p>
                     </MDBCarouselItem>
                 </MDBCarousel>
