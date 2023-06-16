@@ -25,26 +25,6 @@ const OrderPage = ({ user }) => {
     const token = window.localStorage.getItem('accessToken')
     const username = window.localStorage.getItem('username')
 
-
-    const handleAddToCart = (cartname) => {
-        var cart_id = []
-        if (cart.length > 0) {
-            for (let i = 0; i < cart.length; i++) {
-                cart_id.push(cart[i]['id'])
-            }
-        }
-        if (cart_id.includes(cartname['id'])) {
-            console.log('ture')
-        } else {
-            cartname['quantity'] = quantity
-            addToCart(cartname);
-        }
-    }
-
-    if (user) {
-        user.orderitems.map((element) => handleAddToCart(element['product']))
-    }
-
     const handleIncrease = (itemId) => {
         const updatedCart = cart.map((item) => {
             if (item.id === itemId) {
@@ -94,18 +74,16 @@ const OrderPage = ({ user }) => {
                 }
             };
             handleUser();
-        } else {
-            const updatedCart = cart.map((item) => {
-                if (item.id === itemId) {
-                    console.log(item.id)
-                    cart.splice(cart.indexOf(item), 1)
-                }
-                return;
-            });
-            setCart(updatedCart);
-            removeFromCart(cart);
-            console.log(cart)
         }
+        const updatedCart = cart.map((item) => {
+            if (item.id === itemId) {
+                console.log(item.id)
+                cart.splice(cart.indexOf(item), 1)
+            }
+            return;
+        });
+        setCart(updatedCart);
+        removeFromCart(cart);
     }
     console.log(cart)
 
@@ -132,7 +110,7 @@ const OrderPage = ({ user }) => {
                                             <MDBRipple rippleTag="div" rippleColor="light"
                                                 className="bg-image rounded hover-zoom hover-overlay">
                                                 <img
-                                                    src={user ? ('http://127.0.0.1:8000' + element['image']) : (element['image'])}
+                                                    src={user ? (element['image']) : (element['image'])}
                                                     className="w-100" />
                                                 <a href="#!">
                                                     <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.2)", }}>

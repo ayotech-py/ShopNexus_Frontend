@@ -23,8 +23,30 @@ import {
 
 const Header = ({ user }) => {
     const [showBasic, setShowBasic] = useState(false);
-    const { cart } = useContext(CartContext);
-    console.log(user)
+    const { addToCart, cart, updateCart } = useContext(CartContext);
+    const [quantity, setQuantity] = useState(1);
+
+    const handleAddToCart = (cartname) => {
+
+        console.log('ahhh')
+        var cart_id = []
+        if (cart.length > 0) {
+            for (let i = 0; i < cart.length; i++) {
+                cart_id.push(cart[i]['id'])
+            }
+        }
+        if (cart_id.includes(cartname['id'])) {
+            console.log('ture')
+        } else {
+            cartname['quantity'] = quantity
+            addToCart(cartname);
+        }
+    }
+    if (user && user['orderitems'].length > 0) {
+        user['orderitems'].map((product) => handleAddToCart(product.product))
+        console.log(user['orderitems'][0].product)
+    }
+
 
     return (
         <div className="header-section">
@@ -101,7 +123,7 @@ const Header = ({ user }) => {
                             {user ? (
                                 <button type="button" className="cart">
                                     <AiOutlineShoppingCart />
-                                    <span>{user.orderitems.length}</span>
+                                    <span>{cart.length}</span>
                                 </button>
                             ) : (
                                 <button type="button" className="cart">
