@@ -77,10 +77,6 @@ const ProductPage = ({ data, user }) => {
         }
     }
 
-    // Send product details to the backend API
-    // You can make an API request here using libraries like Axios or Fetch
-    // Example:
-    // axios.post('/api/cart', product);
 
     const [quantity, setQuantity] = useState(1);
 

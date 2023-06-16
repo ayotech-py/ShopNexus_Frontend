@@ -15,7 +15,7 @@ const getUser = async () => {
     } else {
         // Handle error response, e.g., display an error message
         //const { error } = await response.json();
-        alert('incorect')
+
         // Handle the error response
     }
 }

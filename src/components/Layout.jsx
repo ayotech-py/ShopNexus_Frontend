@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
             } else {
                 // Handle error response, e.g., display an error message
                 //const { error } = await response.json();
-                alert('incorect')
+                //alert('Username or Email doesnt exist')
                 // Handle the error response
             }
         };
