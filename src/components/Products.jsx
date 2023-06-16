@@ -39,9 +39,6 @@ const Products = ({ data, user }) => {
                     });
 
                     if (response.status === 200) {
-                        const newCart = [...cart, cartname];
-                        updateCart(newCart);
-                        console.log(newCart)
                         alert('Item successfully added to cart');
                     } else {
                         alert('Item already added to cart')
@@ -51,20 +48,18 @@ const Products = ({ data, user }) => {
                 }
             };
             handleUser();
+        }
+        var cart_id = []
+        if (cart.length > 0) {
+            for (let i = 0; i < cart.length; i++) {
+                cart_id.push(cart[i]['id'])
+            }
+        }
+        if (cart_id.includes(cartname['id'])) {
+            console.log('ture')
         } else {
-            console.log('ahhh')
-            var cart_id = []
-            if (cart.length > 0) {
-                for (let i = 0; i < cart.length; i++) {
-                    cart_id.push(cart[i]['id'])
-                }
-            }
-            if (cart_id.includes(cartname['id'])) {
-                console.log('ture')
-            } else {
-                cartname['quantity'] = quantity
-                addToCart(cartname);
-            }
+            cartname['quantity'] = quantity
+            addToCart(cartname);
         }
     }
 

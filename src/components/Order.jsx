@@ -77,7 +77,6 @@ const OrderPage = ({ user }) => {
         }
         const updatedCart = cart.map((item) => {
             if (item.id === itemId) {
-                console.log(item.id)
                 cart.splice(cart.indexOf(item), 1)
             }
             return;
