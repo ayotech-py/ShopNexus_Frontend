@@ -16,8 +16,11 @@ import ProductPageController from './pages/productpage';
 import Contact from './pages/contact';
 import Signup from './pages/signup';
 import Login from './components/Login';
+import SellerDashboard from './components/Seller';
 import Order from './pages/order';
 import ProfilePage from './pages/profile';
+import SellerSignup from './pages/seller_signup';
+import SellerLogin from './pages/seller_login';
 
 import CartProvider from './components/Cart';
 
@@ -45,8 +48,13 @@ function App() {
       // Handle the error response
     }
   };
+  const token = window.localStorage.getItem('accessToken')
+  console.log(token)
+
   useEffect(() => {
-    getUser();
+    if (token) {
+      getUser();
+    }
   }, []);
 
   useEffect(() => {
@@ -71,6 +79,8 @@ function App() {
           <Route path='/auth/' element={<Layout user={user} />}>
             <Route path="sign-up" element={<Signup />} />
             <Route path="login-in" element={<Login />} />
+            <Route path="seller-sign-up" element={<SellerSignup />} />
+            <Route path="seller-login" element={<SellerLogin />} />
           </Route>
           <Route path='/products/' element={<Layout user={user} />}>
             <Route path=":name" element={<ProductPageController />} />
@@ -80,6 +90,9 @@ function App() {
           </Route>
           <Route path='/customer/' element={<Layout user={user} />}>
             <Route path="profile" element={<ProfilePage />} />
+          </Route>
+          <Route path='/seller-dashboard/'>
+            <Route path="" element={<SellerDashboard />} />
           </Route>
 
         </Routes>
