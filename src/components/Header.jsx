@@ -99,7 +99,7 @@ const Header = ({ user }) => {
                                                 </MDBDropdownToggle>
                                             </div>
                                             <MDBDropdownMenu>
-                                                <MDBDropdownItem link>Login as Seller</MDBDropdownItem>
+                                                <Link to="/auth/seller-login"><MDBDropdownItem link>Login as Seller</MDBDropdownItem></Link>
                                                 <Link to="/auth/login-in"><MDBDropdownItem link>Login as Buyer</MDBDropdownItem></Link>
                                                 <Link to="/auth/sign-up"><MDBDropdownItem link>Create an Account</MDBDropdownItem></Link>
                                             </MDBDropdownMenu>

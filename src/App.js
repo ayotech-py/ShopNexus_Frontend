@@ -16,7 +16,7 @@ import ProductPageController from './pages/productpage';
 import Contact from './pages/contact';
 import Signup from './pages/signup';
 import Login from './components/Login';
-import SellerDashboard from './components/Seller';
+import Seller from './pages/seller';
 import Order from './pages/order';
 import ProfilePage from './pages/profile';
 import SellerSignup from './pages/seller_signup';
@@ -49,7 +49,6 @@ function App() {
     }
   };
   const token = window.localStorage.getItem('accessToken')
-  console.log(token)
 
   useEffect(() => {
     if (token) {
@@ -58,12 +57,16 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getUserRef.current = getUser;
+    if (token) {
+      getUserRef.current = getUser;
+    }
   }, [getUser]);
 
   const refresh = () => {
-    if (getUserRef.current) {
-      getUserRef.current();
+    if (token) {
+      if (getUserRef.current) {
+        getUserRef.current();
+      }
     }
 
   };
@@ -92,7 +95,7 @@ function App() {
             <Route path="profile" element={<ProfilePage />} />
           </Route>
           <Route path='/seller-dashboard/'>
-            <Route path="" element={<SellerDashboard />} />
+            <Route path="" element={<Seller />} />
           </Route>
 
         </Routes>

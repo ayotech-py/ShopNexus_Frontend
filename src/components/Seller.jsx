@@ -2,44 +2,146 @@ import React, { useState, useEffect } from 'react';
 import {
     MDBContainer, MDBRow, MDBCol, MDBListGroup, MDBListGroupItem, MDBCard, MDBCardBody,
     MDBNavbar,
-    MDBNavbarBrand
+    MDBNavbarBrand, MDBCardImage,
+    MDBCardTitle,
+    MDBCardText,
+    MDBBtn,
+    MDBModal,
+    MDBModalBody,
+    MDBModalHeader,
+    MDBModalFooter,
+    MDBInput,
+    MDBModalContent,
+    MDBModalDialog
 } from 'mdb-react-ui-kit';
-import { FaThLarge, FaShoppingCart, FaChartLine, FaBox, FaTruck, FaBell, FaCog } from 'react-icons/fa';
+import { FaThLarge, FaShopping, Cart, FaChartLine, FaBox, FaTruck, FaBell, FaCog, FaShoppingCart } from 'react-icons/fa';
 
-const SellerDashboard = () => {
+const SellerDashboard = ({ user, products }) => {
     const [activePage, setActivePage] = useState('dashboard');
-
     const handlePageChange = (page) => {
         setActivePage(page);
     };
 
-    const [user, setUser] = useState(null);
+    const [selectedImages, setSelectedImages] = useState(['', '', '', '', '']);
+    const [showEditModal, setShowEditModal] = useState(true);
+    const [editProduct, setEditProduct] = useState(null);
+    const [editFields, setEditFields] = useState({
+        name: '',
+        description: '',
+        price: "",
+        category: "",
+        count: ","
+    });
 
-    useEffect(() => {
-        const getUser = async () => {
-            const token = window.localStorage.getItem('accessTokenSeller')
-            const username = window.localStorage.getItem('username')
-            const response = await fetch('http://127.0.0.1:8000/seller/', {
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                    'user': username,
-                    'Content-Type': 'application/json',
-                },
-            });
-            if (response.ok) {
-                const data = await response.json();
-                setUser(data)
+    const handleEditClick = (product) => {
+        setEditProduct(product);
+        setEditFields({
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            category: product.category,
+            count: product.count
 
+        });
+        setShowEditModal(true);
+    };
+
+    const handleFieldChange = (e) => {
+        const { name, value } = e.target;
+        setEditFields((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
+
+    const handleSaveClick = () => {
+        // Save the edited product logic goes here
+        setShowEditModal(false);
+    };
+
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [productFields, setProductFields] = useState({
+        name: '',
+        description: '',
+        images: [],
+        count: '',
+        price: '',
+        category: '',
+    });
+
+    const ProducthandleFieldChange = (e) => {
+        const { name, value } = e.target;
+        setProductFields((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
+
+    const ProducthandleAddClick = () => {
+        setShowAddModal(true);
+    };
+
+    const ProducthandleSaveClick = () => {
+        // Logic to save the product goes here
+        productFields.images = selectedImages
+        const data = {
+            'images': productFields.images,
+            'name': productFields.name,
+            'description': productFields.description,
+            'price': productFields.price,
+            'category': productFields.category,
+            'quantity': productFields.count
+        }
+        console.log(data)
+        const token = window.localStorage.getItem('accessTokenSeller');
+        const username = window.localStorage.getItem('username');
+        const response = fetch('http://127.0.0.1:8000/products/', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'user': username,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+
+        response.then(response => {
+            if (response.status == 200) {
+                alert('Product successfully added')
             } else {
-                // Handle error response, e.g., display an error message
-                //const { error } = await response.json();
-                //alert('Username or Email doesnt exist')
-                // Handle the error response
+                alert('An error occurred, please try again')
             }
+        })
+        setShowAddModal(false);
+    };
+
+    const handleImageChange = (e, index) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setSelectedImages((prevState) => {
+                const updatedImages = [...prevState];
+                updatedImages[index] = reader.result;
+                return updatedImages;
+            });
         };
-        getUser()
-    }, [])
-    console.log(user[0]['business_name'])
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    };
+
+    var totalSum = 0;
+
+    if (products) {
+        var totalSum = products.reduce((accumulator, currentItem) => {
+            const subtotal = currentItem.price * currentItem.count;
+            return accumulator + subtotal;
+        }, 0);
+    }
+
     const renderContent = () => {
         switch (activePage) {
             case 'dashboard':
@@ -50,7 +152,7 @@ const SellerDashboard = () => {
                             <MDBRow>
                                 <MDBCol md="4">
                                     <h6 className="text-uppercase">Total Products</h6>
-                                    <p className="display-4">100</p>
+                                    <p className="display-4">{products ? (products.length) : ('0')}</p>
                                 </MDBCol>
                                 <MDBCol md="4">
                                     <h6 className="text-uppercase">Total Products Sold</h6>
@@ -58,7 +160,7 @@ const SellerDashboard = () => {
                                 </MDBCol>
                                 <MDBCol md="4">
                                     <h6 className="text-uppercase">Total Revenue</h6>
-                                    <p className="display-4">$5000</p>
+                                    <p className="display-4">${products ? (totalSum) : ("00")}.00</p>
                                 </MDBCol>
                             </MDBRow>
                         </MDBCardBody>
@@ -69,7 +171,195 @@ const SellerDashboard = () => {
                     <MDBCard className="mb-3">
                         <MDBCardBody>
                             <h4 className="mb-4"><FaBox className="me-2" /> Product Management</h4>
-                            {/* Product Management content */}
+                            <MDBBtn onClick={ProducthandleAddClick}>Add Product</MDBBtn>
+                            <br />
+                            <MDBModal show={showAddModal} onHide={() => setShowAddModal(false)}>
+                                <MDBModalDialog>
+                                    <MDBModalContent>
+                                        <MDBModalHeader>Add Product</MDBModalHeader>
+                                        <MDBModalBody>
+                                            <form>
+                                                <MDBInput
+                                                    label="Product Name"
+                                                    name="name"
+                                                    value={productFields.name}
+                                                    onChange={ProducthandleFieldChange}
+                                                    required
+                                                />
+                                                <br />
+                                                <MDBInput
+                                                    label="Product Description"
+                                                    name="description"
+                                                    value={productFields.description}
+                                                    onChange={ProducthandleFieldChange}
+                                                    required
+                                                />
+                                                <br />
+                                                <MDBInput
+                                                    id='imageUpload'
+                                                    type='file'
+                                                    accept='image/'
+                                                    name='Product Image'
+                                                    onChange={(e) => handleImageChange(e, 0)}
+                                                    required
+                                                />
+                                                <br />
+                                                <MDBInput
+                                                    id='imageUpload'
+                                                    type='file'
+                                                    accept='image/'
+                                                    name='Image1'
+                                                    onChange={(e) => handleImageChange(e, 1)}
+                                                    required
+                                                />
+                                                <br />
+                                                <MDBInput
+                                                    id='imageUpload'
+                                                    type='file'
+                                                    accept='image/'
+                                                    name='Image2'
+                                                    onChange={(e) => handleImageChange(e, 2)}
+                                                    required
+                                                />
+                                                <br />
+                                                <MDBInput
+                                                    id='imageUpload'
+                                                    type='file'
+                                                    accept='image/'
+                                                    name='Image3'
+                                                    onChange={(e) => handleImageChange(e, 3)}
+                                                    required
+                                                />
+                                                <br />
+                                                <MDBInput
+                                                    id='imageUpload'
+                                                    type='file'
+                                                    accept='image/'
+                                                    name='Image4'
+                                                    onChange={(e) => handleImageChange(e, 4)}
+                                                    required
+                                                />
+                                                <br />
+                                                <MDBInput
+                                                    label="Count"
+                                                    type='number'
+                                                    name="count"
+                                                    value={productFields.count}
+                                                    onChange={ProducthandleFieldChange}
+                                                    required
+                                                />
+                                                <br />
+                                                <MDBInput
+                                                    type='number'
+                                                    label="Price"
+                                                    name="price"
+                                                    value={productFields.price}
+                                                    onChange={ProducthandleFieldChange}
+                                                    required
+                                                />
+                                                <br />
+                                                <MDBInput
+                                                    label="Category"
+                                                    name="category"
+                                                    value={productFields.category}
+                                                    onChange={ProducthandleFieldChange}
+                                                    required
+                                                />
+                                            </form>
+                                        </MDBModalBody>
+                                        <MDBModalFooter>
+                                            <MDBBtn color="primary" onClick={ProducthandleSaveClick}>
+                                                Save
+                                            </MDBBtn>
+                                            <MDBBtn color="secondary" onClick={() => setShowAddModal(false)}>
+                                                Cancel
+                                            </MDBBtn>
+                                        </MDBModalFooter>
+                                    </MDBModalContent>
+                                </MDBModalDialog>
+                            </MDBModal>
+                            <br />
+                            <div className="container">
+                                <div className="row">
+                                    {products.map((product) => (
+                                        <div key={product.id} className="col-lg-4 col-md-6 mb-4">
+                                            <MDBCard style={{ width: '18rem' }}>
+                                                <MDBCardImage top src={product.image} alt={product.name} />
+                                                <MDBCardBody>
+                                                    <MDBCardTitle>{product.name}</MDBCardTitle>
+                                                    <MDBCardText>
+                                                        Quantity: {product.count}
+                                                        <br />
+                                                        Price: {product.price}
+                                                    </MDBCardText>
+                                                    <MDBBtn color="primary" onClick={() => handleEditClick(product)}>
+                                                        Edit
+                                                    </MDBBtn>
+                                                </MDBCardBody>
+                                            </MDBCard>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {editProduct && (
+                                    <MDBModal show={showEditModal} toggle={() => setShowEditModal(false)}>
+                                        <MDBModalDialog>
+                                            <MDBModalContent>
+                                                <MDBModalHeader toggle={() => setShowEditModal(false)}>Edit Product</MDBModalHeader>
+                                                <MDBModalBody>
+                                                    <form>
+                                                        <MDBInput
+                                                            label="Product Name"
+                                                            name="name"
+                                                            value={editFields.name}
+                                                            onChange={handleFieldChange}
+                                                            required
+                                                        />
+                                                        <br />
+                                                        <MDBInput
+                                                            label="Product Description"
+                                                            name="description"
+                                                            value={editFields.description}
+                                                            onChange={handleFieldChange}
+                                                            required
+                                                        />
+                                                        <br />
+                                                        <MDBInput
+                                                            label="Product Price"
+                                                            name="price"
+                                                            type='number'
+                                                            value={editFields.price}
+                                                            onChange={handleFieldChange}
+                                                            required
+                                                        />
+                                                        <br />
+                                                        <MDBInput
+                                                            label="Product Category"
+                                                            name="category"
+                                                            value={editFields.category}
+                                                            onChange={handleFieldChange}
+                                                            required
+                                                        />
+                                                        <br />
+                                                        <MDBInput
+                                                            label="Product Count"
+                                                            name="count"
+                                                            type='number'
+                                                            value={editFields.count}
+                                                            onChange={ProducthandleFieldChange}
+                                                            required
+                                                        />
+                                                    </form>
+                                                </MDBModalBody>
+                                                <MDBModalFooter>
+                                                    <MDBBtn color="primary" onClick={ProducthandleSaveClick}>Save</MDBBtn>
+                                                    <MDBBtn color="secondary" onClick={() => setShowEditModal(false)}>Cancel</MDBBtn>
+                                                </MDBModalFooter>
+                                            </MDBModalContent>
+                                        </MDBModalDialog>
+                                    </MDBModal>
+                                )}
+                            </div>
                         </MDBCardBody>
                     </MDBCard>
                 );
@@ -127,12 +417,24 @@ const SellerDashboard = () => {
                         {/* Sidebar */}
                         <div>
                             <div id="header-content" class="pl-3">
-                                <img src={user[0]['business_logo']} alt="avatar" class="rounded-circle img-fluid mb-3" style={{ width: "100px" }} />
 
-                                <h4>
-                                    <span style={{ whitespace: "nowrap" }}>{user[0]['business_name']}</span>
-                                </h4>
-                                <p>{user[0]['email']}</p>
+                                {user ? (
+                                    <>
+                                        <img src={user[0]['business_logo']} alt="avatar" class="rounded-circle img-fluid mb-3" style={{ width: "100px" }} />
+                                        <h4>
+                                            <span style={{ whitespace: "nowrap" }}>{user[0]['business_name']}</span>
+                                        </h4>
+                                        <p>{user[0]['email']}</p>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCrF38eUbnQeSEjiEJmUNJPvCZ1iHInjDfk10-xtKdAA&s" alt="avatar" class="rounded-circle img-fluid mb-3" style={{ width: "100px" }} />
+                                        <h4>
+                                            <span style={{ whitespace: "nowrap" }}>username</span>
+                                        </h4>
+                                        <p>email@gmail.com</p>
+                                    </>
+                                )}
                             </div>
                         </div>
                         <MDBListGroup className="mb-3">
