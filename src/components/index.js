@@ -1,3 +1,5 @@
+import Category from './category'
+
 export { default as Layout } from './Layout'
 export { default as Featured } from './Featured'
 export { default as Navbar } from './Navbar'
@@ -7,3 +9,5 @@ export { default as Products } from './Products'
 export { default as Signup } from './Signup'
 export { default as ProductPage } from './ProductPage'
 export { default as OrderPage } from './Order'
+export { default as Category } from './category'
+export { default as Search } from './Search'

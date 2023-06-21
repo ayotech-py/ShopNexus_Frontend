@@ -25,6 +25,7 @@ const Header = ({ user }) => {
     const [showBasic, setShowBasic] = useState(false);
     const { addToCart, cart, updateCart } = useContext(CartContext);
     const [quantity, setQuantity] = useState(1);
+    const [search, setSearch] = useState('');
 
     const handleAddToCart = (cartname) => {
         var cart_id = []
@@ -44,6 +45,10 @@ const Header = ({ user }) => {
         user['orderitems'].map((product) => handleAddToCart(product.product))
     }
 
+    const searchPage = () => {
+        window.location.href = `/search/${search}`
+        console.log(search)
+    }
 
     return (
         <div className="header-section">
@@ -64,11 +69,13 @@ const Header = ({ user }) => {
                     </MDBNavbarToggler>
 
                     <div className="search">
-                        <input type="text" placeholder="fashion, electronics, phones, home" />
-                        <div className="search-btn">
+                        <input type="text" placeholder="fashion, electronics, phones, home" value={search}
+                            onChange={(e) => setSearch(e.target.value)} />
+                        <div className="search-btn" onClick={searchPage}>
                             <CiSearch fontSize={25} color="white" />
                         </div>
                     </div>
+
                     <div className='right-nav'>
 
                         <MDBCollapse navbar show={showBasic}>

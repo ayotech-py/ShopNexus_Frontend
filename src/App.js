@@ -21,6 +21,8 @@ import Order from './pages/order';
 import ProfilePage from './pages/profile';
 import SellerSignup from './pages/seller_signup';
 import SellerLogin from './pages/seller_login';
+import CategoryController from './pages/category';
+import SearchController from './pages/search';
 
 import CartProvider from './components/Cart';
 
@@ -87,6 +89,12 @@ function App() {
           </Route>
           <Route path='/products/' element={<Layout user={user} />}>
             <Route path=":name" element={<ProductPageController />} />
+          </Route>
+          <Route path='/categories/' element={<Layout user={user} />}>
+            <Route path=":name" element={<CategoryController />} />
+          </Route>
+          <Route path='/search/' element={<Layout user={user} />}>
+            <Route path=":name" element={<SearchController />} />
           </Route>
           <Route path='/cart/' element={<Layout user={user} />}>
             <Route path="cart" element={<Order refreshUser={refresh} />} />

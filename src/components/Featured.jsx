@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from 'react';
 import { MDBIcon } from "mdb-react-ui-kit";
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
+import { Outlet, Link } from "react-router-dom";
+
 import {
     MDBContainer,
     MDBRow,
@@ -9,27 +11,37 @@ import {
     MDBCardBody,
     MDBCardImage,
     MDBBtn,
+    MDBDropdown,
+    MDBNavbar,
+
+    MDBNavbarBrand,
+    MDBNavbarToggler,
+    MDBNavbarNav,
+    MDBNavbarItem,
+    MDBNavbarLink,
+    MDBDropdownToggle,
+    MDBDropdownMenu,
+    MDBDropdownItem,
+    MDBCollapse,
 } from "mdb-react-ui-kit";
 
 const Categories = [
+    "Health & Beauty",
+    "Home & Office",
+    "Appliances",
+    "Phones & Tablets",
+    "Computing",
     "Electronics",
     "Fashion",
-    "Home & Furniture",
-    "Beauty & Personal Care",
-    "Health & Wellness",
-    "Baby & Kids",
-    "Books & Media",
-    "Sports & Outdoors",
-    "Automotive",
-    "Groceries & Food",
-    "Pet Supplies",
-    "Home Appliances",
-    "Office Supplies",
-    "Arts & Crafts",
-    "Jewelry & Watches"
+    "Baby Products",
+    "Gaming",
+    "Sporting Goods",
+    "Other categories",
 ];
 
 const Features = ({ shopId }) => {
+    const [showBasic, setShowBasic] = useState(false);
+
     return (
         <div className="feature-section">
             <div className="categories">
@@ -78,6 +90,7 @@ const Features = ({ shopId }) => {
                     </MDBCarouselItem>
                 </MDBCarousel>
             </div>
+
         </div >
     )
 }
