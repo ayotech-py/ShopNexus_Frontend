@@ -17,6 +17,7 @@ import {
 } from "mdb-react-ui-kit";
 import React, { useState, useContext } from 'react';
 import { CartContext } from './Cart';
+import { Link } from "react-router-dom";
 
 const OrderPage = ({ user, refreshUser }) => {
     const { cart, removeFromCart, addToCart, updateCart } = useContext(CartContext);
@@ -114,54 +115,74 @@ const OrderPage = ({ user, refreshUser }) => {
                                     </MDBTypography>
                                 </MDBCardHeader>
                                 <MDBCardBody>
-                                    {cart.map((element) => <MDBRow>
-                                        <MDBCol lg="3" md="12" className="mb-4 mb-lg-0">
-                                            <MDBRipple rippleTag="div" rippleColor="light"
-                                                className="bg-image rounded hover-zoom hover-overlay">
-                                                <img
-                                                    src={user ? (element['image']) : (element['image'])}
-                                                    className="w-100" />
-                                                <a href="#!">
-                                                    <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.2)", }}>
-                                                    </div>
-                                                </a>
-                                            </MDBRipple>
-                                        </MDBCol>
+                                    {cart.length > 0 ? (
+                                        cart.map((element) => <MDBRow>
+                                            <MDBCol lg="3" md="12" className="mb-4 mb-lg-0">
+                                                <MDBRipple rippleTag="div" rippleColor="light"
+                                                    className="bg-image rounded hover-zoom hover-overlay">
+                                                    <img
+                                                        src={user ? (element['image']) : (element['image'])}
+                                                        className="w-100" />
+                                                    <a href="#!">
+                                                        <div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.2)", }}>
+                                                        </div>
+                                                    </a>
+                                                </MDBRipple>
+                                            </MDBCol>
 
-                                        <MDBCol lg="5" md="6" className=" mb-4 mb-lg-0">
-                                            <p>
-                                                <strong>{element['name']}</strong>
-                                            </p>
-                                            <p>{element['category']}</p>
-                                            <p>{element['description']}</p>
+                                            <MDBCol lg="5" md="6" className=" mb-4 mb-lg-0">
+                                                <p>
+                                                    <strong>{element['name']}</strong>
+                                                </p>
+                                                <p>{element['category']}</p>
+                                                <p>{element['description']}</p>
 
-                                            <MDBBtn className="delete-btn" onClick={() => handleDelete(element.id)}>
-                                                <MDBIcon fas icon="trash" />
-                                            </MDBBtn>
-
-                                            <MDBBtn>
-                                                <MDBIcon fas icon="heart" />
-                                            </MDBBtn>
-                                        </MDBCol>
-                                        <MDBCol lg="4" md="6" className="mb-4 mb-lg-0">
-                                            <div className="d-flex mb-4" style={{ maxWidth: "300px" }}>
-                                                <MDBBtn className="px-3 me-2" onClick={() => handleDecrease(element.id)}>
-                                                    <MDBIcon fas icon="minus" />
+                                                <MDBBtn className="delete-btn" onClick={() => handleDelete(element.id)}>
+                                                    <MDBIcon fas icon="trash" />
                                                 </MDBBtn>
 
-                                                <MDBInput defaultValue={1} min={0} type="number" label="Quantity" value={element.quantity} />
-
-                                                <MDBBtn className="px-3 ms-2" onClick={() => handleIncrease(element.id)}>
-                                                    <MDBIcon fas icon="plus" />
+                                                <MDBBtn>
+                                                    <MDBIcon fas icon="heart" />
                                                 </MDBBtn>
-                                            </div>
+                                            </MDBCol>
+                                            <MDBCol lg="4" md="6" className="mb-4 mb-lg-0">
+                                                <div className="d-flex mb-4" style={{ maxWidth: "300px" }}>
+                                                    <MDBBtn className="px-3 me-2" onClick={() => handleDecrease(element.id)}>
+                                                        <MDBIcon fas icon="minus" />
+                                                    </MDBBtn>
 
-                                            <p className="text-start text-md-center">
-                                                <strong>${element['price'] * element['quantity']}.00</strong>
-                                            </p>
-                                        </MDBCol>
-                                        <hr className="my-4" />
-                                    </MDBRow>
+                                                    <MDBInput defaultValue={1} min={0} type="number" label="Quantity" value={element.quantity} />
+
+                                                    <MDBBtn className="px-3 ms-2" onClick={() => handleIncrease(element.id)}>
+                                                        <MDBIcon fas icon="plus" />
+                                                    </MDBBtn>
+                                                </div>
+
+                                                <p className="text-start text-md-center">
+                                                    <strong>${element['price'] * element['quantity']}.00</strong>
+                                                </p>
+                                            </MDBCol>
+                                            <hr className="my-4" />
+                                        </MDBRow>
+                                        )
+                                    ) : (
+                                        <MDBContainer className="my-5">
+                                            <MDBRow className="justify-content-center">
+                                                <MDBCol md="6">
+                                                    <MDBCard>
+                                                        <MDBCardBody className="text-center">
+                                                            <h1 className="h4">Empty Cart</h1>
+                                                            <p className="text-muted mb-4">
+                                                                Your Cart is Empty, Check out our products
+                                                            </p>
+                                                            <Link to='/'>
+                                                                <MDBBtn color="primary">Go Back to Products</MDBBtn>
+                                                            </Link>
+                                                        </MDBCardBody>
+                                                    </MDBCard>
+                                                </MDBCol>
+                                            </MDBRow>
+                                        </MDBContainer>
                                     )}
                                 </MDBCardBody>
                             </MDBCard>

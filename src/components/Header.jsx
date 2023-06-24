@@ -46,8 +46,17 @@ const Header = ({ user }) => {
     }
 
     const searchPage = () => {
-        window.location.href = `/search/${search}`
-        console.log(search)
+        if (search) {
+            window.location.href = `/search/${search}`
+            console.log(search)
+        }
+    }
+
+    const logOut = () => {
+        window.localStorage.clear('accessToken')
+        window.localStorage.clear('refressToken');
+        window.location.reload()
+        window.history.href = '/'
     }
 
     return (
@@ -92,7 +101,7 @@ const Header = ({ user }) => {
                                             <MDBDropdownMenu>
                                                 <Link to="/customer/profile"><MDBDropdownItem link>Profile</MDBDropdownItem></Link>
                                                 <Link to="/cart/cart"><MDBDropdownItem link>Orders</MDBDropdownItem></Link>
-                                                <MDBDropdownItem link>Log-out</MDBDropdownItem>
+                                                <MDBDropdownItem onClick={logOut} link>Log-out</MDBDropdownItem>
                                             </MDBDropdownMenu>
                                         </MDBDropdown>
                                     </MDBNavbarItem>
