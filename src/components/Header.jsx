@@ -100,7 +100,8 @@ const Header = ({ user }) => {
                                             </div>
                                             <MDBDropdownMenu>
                                                 <Link to="/customer/profile"><MDBDropdownItem link>Profile</MDBDropdownItem></Link>
-                                                <Link to="/cart/cart"><MDBDropdownItem link>Orders</MDBDropdownItem></Link>
+                                                <Link to="/cart/cart"><MDBDropdownItem link>Cart</MDBDropdownItem></Link>
+                                                <Link to="/customer/orders"><MDBDropdownItem link>Orders</MDBDropdownItem></Link>
                                                 <MDBDropdownItem onClick={logOut} link>Log-out</MDBDropdownItem>
                                             </MDBDropdownMenu>
                                         </MDBDropdown>

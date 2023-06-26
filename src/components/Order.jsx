@@ -17,7 +17,7 @@ import {
 } from "mdb-react-ui-kit";
 import React, { useState, useContext } from 'react';
 import { CartContext } from './Cart';
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 
 const OrderPage = ({ user, refreshUser }) => {
     const { cart, removeFromCart, addToCart, updateCart } = useContext(CartContext);
@@ -101,6 +101,26 @@ const OrderPage = ({ user, refreshUser }) => {
         const subtotal = currentItem.price * currentItem.quantity;
         return accumulator + subtotal;
     }, 0);
+
+    const checkout = async() => {
+        const response = await fetch('http://127.0.0.1:8000/make_payment/', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'user': username,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                customer: customer
+            }),
+        });
+        if (response.status == 200) {
+            const data = await response.json();
+            const redirect = data['redirect_url']
+            console.log(redirect)
+            window.location.href = redirect
+        }
+    }
 
     return (
         <div className="orderpage">
@@ -248,7 +268,7 @@ const OrderPage = ({ user, refreshUser }) => {
                                         </MDBListGroupItem>
                                     </MDBListGroup>
 
-                                    <MDBBtn block size="lg">
+                                    <MDBBtn block size="lg" onClick={checkout}>
                                         Go to checkout
                                     </MDBBtn>
                                 </MDBCardBody>

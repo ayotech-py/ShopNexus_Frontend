@@ -23,6 +23,8 @@ import SellerSignup from './pages/seller_signup';
 import SellerLogin from './pages/seller_login';
 import CategoryController from './pages/category';
 import SearchController from './pages/search';
+import OrderItem from './pages/order_page'
+import Invoice from './pages/invoice';
 
 import CartProvider from './components/Cart';
 
@@ -101,6 +103,10 @@ function App() {
           </Route>
           <Route path='/customer/' element={<Layout user={user} />}>
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="orders" element={<OrderItem />} />
+          </Route>
+          <Route path='/payment-receipt/' element={<Layout user={user} />}>
+            <Route path=":name" element={<Invoice />} />
           </Route>
           <Route path='/seller-dashboard/'>
             <Route path="" element={<Seller />} />
