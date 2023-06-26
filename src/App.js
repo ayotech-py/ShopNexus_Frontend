@@ -106,7 +106,7 @@ function App() {
             <Route path="orders" element={<OrderItem />} />
           </Route>
           <Route path='/payment-receipt/' element={<Layout user={user} />}>
-            <Route path=":name" element={<Invoice />} />
+            <Route path="invoice" element={<Invoice />} />
           </Route>
           <Route path='/seller-dashboard/'>
             <Route path="" element={<Seller />} />
