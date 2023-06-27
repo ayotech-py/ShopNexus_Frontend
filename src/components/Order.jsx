@@ -28,12 +28,40 @@ const OrderPage = ({ user, refreshUser }) => {
   const username = window.localStorage.getItem("username");
 
   const handleIncrease = (itemId) => {
+    var init_quantity = 0;
     const updatedCart = cart.map((item) => {
       if (item.id === itemId) {
         item["quantity"] = item["quantity"] + 1;
+        init_quantity = item["quantity"];
       }
       return item;
     });
+    const handleUser = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/orderitems/1/", {
+          method: "PUT",
+          headers: {
+            Authorization: "Bearer " + token,
+            user: username,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            product: itemId,
+            customer: customer,
+            quantity: init_quantity,
+          }),
+        });
+
+        if (response.status == 200) {
+          refreshUser();
+        } else {
+          alert("An Error Ocurred");
+        }
+      } catch (error) {
+        // Handle fetch error, e.g., display an error message
+      }
+    };
+    handleUser();
     setCart(updatedCart);
   };
 
@@ -80,7 +108,6 @@ const OrderPage = ({ user, refreshUser }) => {
         if (item.id === itemId) {
           cart.splice(cart.indexOf(item), 1);
           refreshUser();
-          console.log("The werey stil dey there o");
         }
         return;
       });
@@ -193,7 +220,7 @@ const OrderPage = ({ user, refreshUser }) => {
                               min={0}
                               type="number"
                               label="Quantity"
-                              value={element.quantity}
+                              value={element["quantity"]}
                             />
 
                             <MDBBtn

@@ -32,10 +32,15 @@ const Order = () => {
     };
     getInvoice();
   }, []);
-  const totalSum = data.orders.reduce((accumulator, currentItem) => {
-    const subtotal = currentItem.product.price * currentItem.quantity;
-    return accumulator + subtotal;
-  }, 0);
+  var totalSum = 0;
+  if (data) {
+    totalSum = data.orders.reduce((accumulator, currentItem) => {
+      const subtotal = currentItem.product.price * currentItem.quantity;
+      return accumulator + subtotal;
+    }, 0);
+  } else {
+    totalSum = 0;
+  }
   return (
     <div>
       <section
