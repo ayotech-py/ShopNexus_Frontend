@@ -123,10 +123,14 @@ const OrderPage = ({ user, refreshUser }) => {
     }
   };
 
-  const totalSum = cart.reduce((accumulator, currentItem) => {
-    const subtotal = currentItem.price * currentItem.quantity;
-    return accumulator + subtotal;
-  }, 0);
+  var totalSum = 0;
+
+  if (cart) {
+    totalSum = cart.reduce((accumulator, currentItem) => {
+      const subtotal = currentItem.price * currentItem.quantity;
+      return accumulator + subtotal;
+    }, 0);
+  }
 
   const checkout = async () => {
     const response = await fetch("http://127.0.0.1:8000/make_payment/", {
@@ -316,11 +320,11 @@ const OrderPage = ({ user, refreshUser }) => {
                   <MDBListGroup flush>
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                       Products
-                      <span>${totalSum}</span>
+                      <span>NGN {totalSum}</span>
                     </MDBListGroupItem>
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center px-0">
                       Shipping
-                      <span>$1000</span>
+                      <span>NGN 1000</span>
                     </MDBListGroupItem>
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                       <div>
@@ -330,7 +334,7 @@ const OrderPage = ({ user, refreshUser }) => {
                         </strong>
                       </div>
                       <span>
-                        <strong>${totalSum + 1000}</strong>
+                        <strong>NGN {totalSum + 1000}</strong>
                       </span>
                     </MDBListGroupItem>
                   </MDBListGroup>

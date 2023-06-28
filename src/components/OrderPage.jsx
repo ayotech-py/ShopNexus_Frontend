@@ -28,7 +28,10 @@ const Order = () => {
       });
       const data = await response.json();
       console.log(data);
-      setData(data);
+      if (data["status"] == 200) {
+        console.log(data);
+        setData(data);
+      }
     };
     getInvoice();
   }, []);
