@@ -89,7 +89,7 @@ const Order = () => {
                               className="text-center d-flex justify-content-center align-items-center"
                             >
                               <p className="text-muted mb-0">
-                                {order["product"]["name"]}
+                                {order["product"]["name"].substring(0, 17)}
                               </p>
                             </MDBCol>
                             <MDBCol
