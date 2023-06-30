@@ -147,7 +147,6 @@ const OrderPage = ({ user, refreshUser }) => {
     if (response.status == 200) {
       const data = await response.json();
       const redirect = data["redirect_url"];
-      console.log(redirect);
       window.location.href = redirect;
     }
   };
@@ -193,8 +192,6 @@ const OrderPage = ({ user, refreshUser }) => {
                           <p>
                             <strong>{element["name"]}</strong>
                           </p>
-                          <p>{element["category"]}</p>
-                          <p>{element["description"]}</p>
 
                           <MDBBtn
                             className="delete-btn"
@@ -338,10 +335,17 @@ const OrderPage = ({ user, refreshUser }) => {
                       </span>
                     </MDBListGroupItem>
                   </MDBListGroup>
-
-                  <MDBBtn block size="lg" onClick={checkout}>
-                    Go to checkout
-                  </MDBBtn>
+                  {user ? (
+                    <MDBBtn block size="lg" onClick={checkout}>
+                      Go to checkout
+                    </MDBBtn>
+                  ) : (
+                    <Link to={"/auth/login-in"}>
+                      <MDBBtn block size="lg">
+                        Please login to proceed
+                      </MDBBtn>
+                    </Link>
+                  )}
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>

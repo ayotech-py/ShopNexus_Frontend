@@ -67,7 +67,7 @@ const Invoice = () => {
                 <p>Products</p>
               </MDBCol>
               <MDBCol xl="2">
-                <p className="float-end">NGN {data.amount - 1000}</p>
+                <p className="float-end">NGN {data.amount}</p>
               </MDBCol>
               <hr />
             </MDBRow>
@@ -82,7 +82,7 @@ const Invoice = () => {
             </MDBRow>
             <MDBRow className="text-black">
               <MDBCol xl="12">
-                <p className="float-end fw-bold">Total: NGN{data.amount}</p>
+                <p className="float-end fw-bold">Total: NGN{data.amount + 1000}</p>
               </MDBCol>
               <hr style={{ border: "2px solid black" }} />
             </MDBRow>

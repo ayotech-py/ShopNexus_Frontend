@@ -10,6 +10,7 @@ import {
     MDBInput,
     MDBIcon,
 } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 
 const SellerLogin = () => {
     const [email, setEmail] = useState('');
@@ -76,7 +77,7 @@ const SellerLogin = () => {
                             </div>
 
                             <a className="small text-muted" href="#!">Forgot password?</a>
-                            <p className="mb-5 pb-lg-2" style={{ color: '#393f81' }}>Don't have an account? <a href="#!" style={{ color: '#393f81' }}>Register here</a></p>
+                            <p className="mb-5 pb-lg-2" style={{ color: '#393f81' }}>Don't have an account? <Link to="/auth/seller-sign-up"> <a href="" style={{ color: '#393f81' }}>Register here</a></Link></p>
 
 
                         </MDBCol>

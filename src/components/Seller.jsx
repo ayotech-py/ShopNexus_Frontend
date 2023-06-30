@@ -122,8 +122,8 @@ const SellerDashboard = ({ user, products }) => {
     console.log(data);
     const token = window.localStorage.getItem("accessTokenSeller");
     const username = window.localStorage.getItem("username");
-    const response = fetch("http://127.0.0.1:8000/products/1/", {
-      method: "PUT",
+    const response = fetch("http://127.0.0.1:8000/products/", {
+      method: "POST",
       headers: {
         Authorization: "Bearer " + token,
         user: username,
@@ -214,11 +214,13 @@ const SellerDashboard = ({ user, products }) => {
                 </MDBCol>
                 <MDBCol md="4">
                   <h6 className="text-uppercase">Total Products Sold</h6>
-                  <p className="display-4">50</p>
+                  <p className="display-4">{orders.length}</p>
                 </MDBCol>
                 <MDBCol md="4">
                   <h6 className="text-uppercase">Total Revenue</h6>
-                  <p className="display-4">${products ? totalSum : "00"}.00</p>
+                  <p className="display-4">
+                    NGN {products ? totalSum : "00"}.00
+                  </p>
                 </MDBCol>
               </MDBRow>
             </MDBCardBody>
@@ -473,8 +475,8 @@ const SellerDashboard = ({ user, products }) => {
                         {order.product.name}
                       </div>
                       <div>
-                        <strong>Details: </strong>
-                        {order.product.description}
+                        <strong>Product ID: </strong>
+                        {order.product.id}
                       </div>
                       <MDBDropdown
                         isOpen={
@@ -549,15 +551,7 @@ const SellerDashboard = ({ user, products }) => {
     <MDBContainer fluid>
       <MDBNavbar light bgColor="light">
         <MDBContainer fluid>
-          <MDBNavbarBrand href="#">
-            <img
-              src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.webp"
-              height="30"
-              alt=""
-              loading="lazy"
-            />
-            ShopNexus
-          </MDBNavbarBrand>
+          <MDBNavbarBrand href="#">ShopNexus Seller Dashboard</MDBNavbarBrand>
         </MDBContainer>
       </MDBNavbar>
       <br />
