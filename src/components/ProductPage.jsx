@@ -215,7 +215,7 @@ const ProductPage = ({ data, user }) => {
 
                   <div className="my-btn" style={{ marginTop: "1rem" }}>
                     <MDBTypography tag="h3">
-                      Price: NGN {product["price"]}
+                      Price: <span>&#8358;</span> {product["price"]}
                     </MDBTypography>
 
                     <MDBBtn

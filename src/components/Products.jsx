@@ -98,7 +98,7 @@ const Products = ({ data, user }) => {
                     </p>
                     <p className="small text-danger">
                       <s>
-                        NGN{" "}
+                        <span>&#8358;</span>{" "}
                         {product["price"] * 0.1 + parseInt(product["price"])}
                       </s>
                     </p>
@@ -108,7 +108,9 @@ const Products = ({ data, user }) => {
                     <h6 className="mb-0">
                       {product["name"].substring(0, 17)} ...
                     </h6>
-                    <h6 className="text-dark mb-0">NGN {product["price"]}</h6>
+                    <h6 className="text-dark mb-0">
+                      <span>&#8358;</span> {product["price"]}
+                    </h6>
                   </div>
 
                   <div class="d-flex justify-content-between mb-2">

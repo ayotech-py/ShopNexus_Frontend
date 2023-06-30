@@ -113,7 +113,7 @@ const Order = () => {
                               className="text-center d-flex justify-content-center align-items-center"
                             >
                               <p className="text-muted mb-0 small">
-                                NGN{" "}
+                                <span>&#8358;</span>{" "}
                                 {order["quantity"] * order["product"]["price"]}
                               </p>
                             </MDBCol>
@@ -162,13 +162,13 @@ const Order = () => {
                   <div className="d-flex row pt-2">
                     <p className="text-muted mb-0">
                       <span className="fw-bold me-4">Total</span>
-                      <br /> NGN {totalSum}
+                      <br /> <span>&#8358;</span> {totalSum}
                       .00
                     </p>
                     <p className="text-muted mb-0">
                       <span className="fw-bold me-4">Delivery Charges</span>{" "}
                       <br />
-                      NGN 1000
+                      <span>&#8358;</span> 1000
                     </p>
                   </div>
                 </MDBCardBody>
@@ -185,7 +185,9 @@ const Order = () => {
                     className="d-flex align-items-center justify-content-end text-white text-uppercase mb-0"
                   >
                     Total paid:{" "}
-                    <span className="h2 mb-0 ms-2">NGN {totalSum + 1000}</span>
+                    <span className="h2 mb-0 ms-2">
+                      <span>&#8358;</span> {totalSum + 1000}
+                    </span>
                   </MDBTypography>
                 </MDBCardFooter>
               </MDBCard>

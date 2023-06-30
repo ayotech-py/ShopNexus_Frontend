@@ -317,11 +317,15 @@ const OrderPage = ({ user, refreshUser }) => {
                   <MDBListGroup flush>
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                       Products
-                      <span>NGN {totalSum}</span>
+                      <span>
+                        <span>&#8358;</span> {totalSum}
+                      </span>
                     </MDBListGroupItem>
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center px-0">
                       Shipping
-                      <span>NGN 1000</span>
+                      <span>
+                        <span>&#8358;</span> 1000
+                      </span>
                     </MDBListGroupItem>
                     <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                       <div>
@@ -331,7 +335,9 @@ const OrderPage = ({ user, refreshUser }) => {
                         </strong>
                       </div>
                       <span>
-                        <strong>NGN {totalSum + 1000}</strong>
+                        <strong>
+                          <span>&#8358;</span> {totalSum + 1000}
+                        </strong>
                       </span>
                     </MDBListGroupItem>
                   </MDBListGroup>

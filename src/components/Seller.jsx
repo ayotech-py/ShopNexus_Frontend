@@ -219,7 +219,7 @@ const SellerDashboard = ({ user, products }) => {
                 <MDBCol md="4">
                   <h6 className="text-uppercase">Total Revenue</h6>
                   <p className="display-4">
-                    NGN {products ? totalSum : "00"}.00
+                    <span>&#8358;</span> {products ? totalSum : "00"}.00
                   </p>
                 </MDBCol>
               </MDBRow>
