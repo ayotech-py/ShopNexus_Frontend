@@ -18,6 +18,7 @@ import {
   MDBDropdownMenu,
   MDBDropdownItem,
   MDBCollapse,
+  MDBCol,
 } from "mdb-react-ui-kit";
 
 const Header = ({ user }) => {
@@ -58,8 +59,13 @@ const Header = ({ user }) => {
     window.location.href = "/";
   };
 
+  const windowWidth = () => {
+    return window.innerWidth;
+  };
+  console.log(windowWidth());
+
   return (
-    <div className="header-section">
+    <header className="header-section">
       <MDBNavbar expand="lg" light bgColor="light">
         <MDBContainer fluid className="nav-container">
           <div className="brand-name">
@@ -73,8 +79,26 @@ const Header = ({ user }) => {
             aria-expanded="false"
             aria-label="Toggle navigation"
             onClick={() => setShowBasic(!showBasic)}
+            className="toggle"
           >
-            <MDBIcon icon="bars" fas />
+            <Link to="/cart/cart">
+              {user ? (
+                <button type="button" className="cart">
+                  <AiOutlineShoppingCart />
+                  <span>{cart.length}</span>
+                </button>
+              ) : (
+                <button type="button" className="cart">
+                  <AiOutlineShoppingCart />
+                  <span>{cart.length}</span>
+                </button>
+              )}
+            </Link>
+            <MDBIcon
+              style={{ color: "rgb(49, 49, 168)", paddingLeft: "20px" }}
+              icon="bars"
+              fas
+            />
           </MDBNavbarToggler>
 
           <div className="search">
@@ -92,6 +116,19 @@ const Header = ({ user }) => {
           <div className="right-nav">
             <MDBCollapse navbar show={showBasic}>
               <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
+                {windowWidth() < 650 ? (
+                  <h5
+                    style={{
+                      paddingTop: "10px",
+                      color: "rgb(49, 49, 168)",
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    MY SHOPNEXUS ACCOUNT
+                  </h5>
+                ) : (
+                  <></>
+                )}
                 {user ? (
                   <MDBNavbarItem>
                     <MDBDropdown>
@@ -101,6 +138,10 @@ const Header = ({ user }) => {
                           tag="a"
                           className="nav-link"
                           role="button"
+                          style={{
+                            color: "black",
+                            fontSize: "1.1rem",
+                          }}
                         >
                           Hi, {user.name}
                         </MDBDropdownToggle>
@@ -124,13 +165,23 @@ const Header = ({ user }) => {
                 ) : (
                   <MDBNavbarItem>
                     <MDBDropdown>
-                      <div className="contact">
+                      <div
+                        className="contact"
+                        style={{
+                          color: "black",
+                        }}
+                      >
                         <MDBIcon fas icon="user-alt" />
                         <MDBDropdownToggle
                           tag="a"
                           className="nav-link"
                           role="button"
+                          style={{
+                            color: "black",
+                            fontSize: "1.1rem",
+                          }}
                         >
+                          {" "}
                           Account
                         </MDBDropdownToggle>
                       </div>
@@ -154,33 +205,128 @@ const Header = ({ user }) => {
                 )}
 
                 <MDBNavbarItem>
-                  <div className="contact">
+                  <div
+                    className="contact"
+                    style={{
+                      color: "black",
+                    }}
+                  >
                     <MDBIcon fas icon="phone" />
                     <Link to="/contact">
-                      <MDBNavbarLink>Contact Us</MDBNavbarLink>
+                      <MDBNavbarLink
+                        style={{
+                          color: "black",
+                          fontSize: "1.1rem",
+                        }}
+                      >
+                        {" "}
+                        Contact Us
+                      </MDBNavbarLink>
                     </Link>
                   </div>
+                  {window.innerWidth < 650 ? (
+                    <MDBCol lg="12" className="mb-4 mb-lg-4">
+                      <div
+                        style={{ paddingLeft: "0px", paddingBottom: "10px" }}
+                        className="category-head"
+                      >
+                        <h5
+                          style={{
+                            color: "rgb(49, 49, 168)",
+                            fontSize: "1.2rem",
+                          }}
+                        >
+                          OUR CATEGORIES
+                        </h5>
+                      </div>
+                      <ul
+                        style={{ listStyle: "none", paddingLeft: "0px" }}
+                        className="category-list"
+                      >
+                        <li>
+                          <a href={`/categories/Health & Beauty`}>
+                            <i class="fas fa-heart"></i> Health & Beauty
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Home & Office`}>
+                            <i class="fas fa-home"></i> Home & Office
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Appliances`}>
+                            <i class="fas fa-blender"></i> Appliances
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Phones & Tablets`}>
+                            <i class="fas fa-mobile-alt"></i> Phones & Tablets
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Computing`}>
+                            <i class="fas fa-laptop"></i> Computing
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Electronics`}>
+                            <i class="fas fa-tv"></i> Electronics
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Fashion`}>
+                            <i class="fas fa-tshirt"></i> Fashion
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Baby Products`}>
+                            <i class="fas fa-baby"></i> Baby Products
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Gaming`}>
+                            <i class="fas fa-gamepad"></i> Gaming
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Sporting Goods`}>
+                            <i class="fas fa-futbol"></i> Sporting Goods
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`/categories/Other categories`}>
+                            <i class="fas fa-tags"></i> Other categories
+                          </a>
+                        </li>
+                      </ul>
+                    </MDBCol>
+                  ) : (
+                    <></>
+                  )}
                 </MDBNavbarItem>
               </MDBNavbarNav>
             </MDBCollapse>
-            <Link to="/cart/cart">
-              {user ? (
-                <button type="button" className="cart">
-                  <AiOutlineShoppingCart />
-                  <span>{cart.length}</span>
-                </button>
-              ) : (
-                <button type="button" className="cart">
-                  <AiOutlineShoppingCart />
-                  <span>{cart.length}</span>
-                </button>
-              )}
-            </Link>
+            {windowWidth() > 650 ? (
+              <Link to="/cart/cart">
+                {user ? (
+                  <button type="button" className="cart">
+                    <AiOutlineShoppingCart />
+                    <span>{cart.length}</span>
+                  </button>
+                ) : (
+                  <button type="button" className="cart">
+                    <AiOutlineShoppingCart />
+                    <span>{cart.length}</span>
+                  </button>
+                )}
+              </Link>
+            ) : (
+              <></>
+            )}
           </div>
         </MDBContainer>
       </MDBNavbar>
-      <Outlet />
-    </div>
+    </header>
   );
 };
 

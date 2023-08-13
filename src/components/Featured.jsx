@@ -46,17 +46,72 @@ const Features = ({ shopId }) => {
       <div className="categories">
         <MDBCol lg="12" className="mb-4 mb-lg-4">
           <div className="category-head">
-            <p>
-              <MDBIcon fas icon="align-justify" />
-            </p>
-            <h5>Categories</h5>
+            <h5
+              style={{
+                color: "rgb(49, 49, 168)",
+                fontSize: "1.3rem",
+                paddingBottom: "10px",
+              }}
+            >
+              OUR CATEGORIES
+            </h5>
           </div>
           <ul className="category-list">
-            {Categories.map((category) => (
-              <a href={`/categories/${category}`}>
-                <li className="cat-list">{category}</li>
+            <li>
+              <a href={`/categories/Health & Beauty`}>
+                <i class="fas fa-heart"></i> Health & Beauty
               </a>
-            ))}
+            </li>
+            <li>
+              <a href={`/categories/Home & Office`}>
+                <i class="fas fa-home"></i> Home & Office
+              </a>
+            </li>
+            <li>
+              <a href={`/categories/Appliances`}>
+                <i class="fas fa-blender"></i> Appliances
+              </a>
+            </li>
+            <li>
+              <a href={`/categories/Phones & Tablets`}>
+                <i class="fas fa-mobile-alt"></i> Phones & Tablets
+              </a>
+            </li>
+            <li>
+              <a href={`/categories/Computing`}>
+                <i class="fas fa-laptop"></i> Computing
+              </a>
+            </li>
+            <li>
+              <a href={`/categories/Electronics`}>
+                <i class="fas fa-tv"></i> Electronics
+              </a>
+            </li>
+            <li>
+              <a href={`/categories/Fashion`}>
+                <i class="fas fa-tshirt"></i> Fashion
+              </a>
+            </li>
+            <li>
+              <a href={`/categories/Baby Products`}>
+                <i class="fas fa-baby"></i> Baby Products
+              </a>
+            </li>
+            <li>
+              <a href={`/categories/Gaming`}>
+                <i class="fas fa-gamepad"></i> Gaming
+              </a>
+            </li>
+            <li>
+              <a href={`/categories/Sporting Goods`}>
+                <i class="fas fa-futbol"></i> Sporting Goods
+              </a>
+            </li>
+            <li>
+              <a href={`/categories/Other categories`}>
+                <i class="fas fa-tags"></i> Other categories
+              </a>
+            </li>
           </ul>
         </MDBCol>
       </div>

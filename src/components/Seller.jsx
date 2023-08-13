@@ -119,7 +119,6 @@ const SellerDashboard = ({ user, products }) => {
       category: productFields.category,
       quantity: productFields.count,
     };
-    console.log(data);
     const token = window.localStorage.getItem("accessTokenSeller");
     const username = window.localStorage.getItem("username");
     const response = fetch("http://127.0.0.1:8000/products/", {
