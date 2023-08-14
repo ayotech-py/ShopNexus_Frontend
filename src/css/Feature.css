@@ -95,6 +95,9 @@ a {
     }
 
     .category-list li a{
-    font-size: .8rem;
+    font-size: .9rem;
 }
+    .category-list li a i {
+        padding-right: 10px;
+    }
 }
