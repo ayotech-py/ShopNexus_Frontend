@@ -121,7 +121,7 @@ const Header = ({ user }) => {
                     style={{
                       paddingTop: "10px",
                       color: "rgb(49, 49, 168)",
-                      fontSize: "1.2rem",
+                      fontSize: "1rem",
                     }}
                   >
                     MY SHOPNEXUS ACCOUNT
@@ -140,7 +140,7 @@ const Header = ({ user }) => {
                           role="button"
                           style={{
                             color: "black",
-                            fontSize: "1.1rem",
+                            fontSize: ".9rem",
                           }}
                         >
                           Hi, {user.name}
@@ -178,7 +178,7 @@ const Header = ({ user }) => {
                           role="button"
                           style={{
                             color: "black",
-                            fontSize: "1.1rem",
+                            fontSize: ".9rem",
                           }}
                         >
                           {" "}
@@ -216,7 +216,7 @@ const Header = ({ user }) => {
                       <MDBNavbarLink
                         style={{
                           color: "black",
-                          fontSize: "1.1rem",
+                          fontSize: ".9rem",
                         }}
                       >
                         {" "}
@@ -233,7 +233,7 @@ const Header = ({ user }) => {
                         <h5
                           style={{
                             color: "rgb(49, 49, 168)",
-                            fontSize: "1.2rem",
+                            fontSize: "1rem",
                           }}
                         >
                           OUR CATEGORIES
