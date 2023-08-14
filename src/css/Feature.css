@@ -93,4 +93,8 @@ a {
         object-fit: cover;
         height: 100%;
     }
+
+    .category-list li a{
+    font-size: .8rem;
+}
 }
