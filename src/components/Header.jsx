@@ -179,6 +179,7 @@ const Header = ({ user }) => {
                           style={{
                             color: "black",
                             fontSize: ".9rem",
+                            paddingLeft: "10px",
                           }}
                         >
                           {" "}
