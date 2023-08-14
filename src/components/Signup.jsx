@@ -61,7 +61,7 @@ const Signup = () => {
   };
 
   return (
-    <MDBContainer fluid>
+    <MDBContainer fluid style={{ marginTop: "70px" }}>
       <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
         <MDBCardBody>
           <MDBRow>

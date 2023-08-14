@@ -48,7 +48,7 @@ const Order = () => {
     totalSum = 0;
   }
   return (
-    <div>
+    <div style={{ marginTop: "70px" }}>
       <section
         className="h-100 gradient-custom"
         style={{ backgroundColor: "#eee" }}

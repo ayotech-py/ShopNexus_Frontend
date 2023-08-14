@@ -76,7 +76,7 @@ const Search = ({ data, user }) => {
   };
 
   return (
-    <div class="product">
+    <div class="product" style={{ marginTop: "70px" }}>
       {filterdata.length > 0 ? (
         <MDBContainer fluid className="my-5">
           <MDBRow>

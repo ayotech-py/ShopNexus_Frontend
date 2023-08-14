@@ -161,7 +161,7 @@ const OrderPage = ({ user, refreshUser }) => {
   };
 
   return (
-    <div className="orderpage">
+    <div className="orderpage" style={{ marginTop: "70px" }}>
       <section className="h-100 gradient-custom">
         <MDBContainer className="py-5 h-100">
           <MDBRow className="justify-content-center my-4">

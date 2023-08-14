@@ -91,7 +91,7 @@ const ProductPage = ({ data, user }) => {
   };
 
   return (
-    <div className="product-page-container">
+    <div className="product-page-container" style={{ marginTop: "70px" }}>
       <br />
       <MDBContainer>
         <MDBRow>

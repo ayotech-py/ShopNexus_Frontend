@@ -72,7 +72,7 @@ const Category = ({ data, user }) => {
   };
 
   return (
-    <div class="product">
+    <div style={{ marginTop: "70px" }} class="product">
       <MDBContainer fluid className="my-5">
         <MDBRow>
           {filterdata.map((product) => (
