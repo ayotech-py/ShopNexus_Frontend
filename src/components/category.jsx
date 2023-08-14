@@ -30,18 +30,21 @@ const Category = ({ data, user }) => {
     if (user) {
       const handleUser = async () => {
         try {
-          const response = await fetch("http://127.0.0.1:8000/orderitems/", {
-            method: "POST",
-            headers: {
-              Authorization: "Bearer " + token,
-              user: username,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              product: cartname["id"],
-              customer: customer,
-            }),
-          });
+          const response = await fetch(
+            "https://shop-nexus-api.vercel.app/orderitems/",
+            {
+              method: "POST",
+              headers: {
+                Authorization: "Bearer " + token,
+                user: username,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                product: cartname["id"],
+                customer: customer,
+              }),
+            }
+          );
 
           if (response.status === 200) {
             alert("Item successfully added to cart");

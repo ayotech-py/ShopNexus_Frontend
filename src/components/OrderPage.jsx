@@ -19,13 +19,16 @@ const Order = () => {
     const token = window.localStorage.getItem("accessToken");
     const username = window.localStorage.getItem("username");
     const getInvoice = async () => {
-      const response = await fetch("http://127.0.0.1:8000/orders/", {
-        headers: {
-          Authorization: "Bearer " + token,
-          user: username,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://shop-nexus-api.vercel.app/orders/",
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            user: username,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       console.log(data);
       if (data["status"] == 200) {
