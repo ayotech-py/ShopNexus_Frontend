@@ -35,7 +35,7 @@ const Header = ({ user }) => {
       }
     }
     if (cart_id.includes(cartname["id"])) {
-      console.log("Item already in cart");
+      //do something
     } else {
       cartname["quantity"] = quantity;
       addToCart(cartname);
@@ -48,7 +48,7 @@ const Header = ({ user }) => {
   const searchPage = () => {
     if (search) {
       window.location.href = `/search/${search}`;
-      console.log(search);
+      //do something(search);
     }
   };
 
@@ -62,7 +62,7 @@ const Header = ({ user }) => {
   const windowWidth = () => {
     return window.innerWidth;
   };
-  console.log(windowWidth());
+  //do something(windowWidth());
 
   return (
     <header className="header-section">
@@ -78,7 +78,6 @@ const Header = ({ user }) => {
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
-            onClick={() => setShowBasic(!showBasic)}
             className="toggle"
           >
             <Link to="/cart/cart">
@@ -96,6 +95,7 @@ const Header = ({ user }) => {
             </Link>
             <MDBIcon
               style={{ color: "rgb(49, 49, 168)", paddingLeft: "20px" }}
+              onClick={() => setShowBasic(!showBasic)}
               icon="bars"
               fas
             />

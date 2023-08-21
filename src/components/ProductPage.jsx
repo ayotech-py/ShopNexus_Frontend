@@ -35,26 +35,24 @@ const ProductPage = ({ data, user }) => {
     if (user) {
       const handleUser = async () => {
         try {
-          const response = await fetch(
-            "https://shop-nexus-api.vercel.app/orderitems/",
-            {
-              method: "POST",
-              headers: {
-                Authorization: "Bearer " + token,
-                user: username,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                product: cartname["id"],
-                customer: customer,
-              }),
-            }
-          );
+          const response = await fetch("http://127.0.0.1:8000/orderitems/", {
+            method: "POST",
+            headers: {
+              Authorization: "Bearer " + token,
+              user: username,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              product: cartname["id"],
+              customer: customer,
+            }),
+          });
 
-          if (response.status == 200) {
-            alert("Item successfully added to cart");
+          let data = await response.json();
+          if (response.status === 200) {
+            alert(data["message"]);
           } else {
-            alert("Item already added to cart");
+            alert(data["message"]);
           }
         } catch (error) {
           // Handle fetch error, e.g., display an error message
@@ -70,7 +68,7 @@ const ProductPage = ({ data, user }) => {
         }
       }
       if (cart_id.includes(cartname["id"])) {
-        console.log("ture");
+        //do something("ture");
       } else {
         cartname["quantity"] = quantity;
         addToCart(cartname);
@@ -101,37 +99,36 @@ const ProductPage = ({ data, user }) => {
                 <div className="product-image">
                   <MDBCarousel>
                     <MDBCarouselItem
-                      style={{ height: "500px" }}
-                      className="w-100 d-block"
+                      className="w-100 d-block carousel-image"
                       itemId={1}
                       src={product["image"]}
                       alt="..."
                     />
                     <MDBCarouselItem
-                      style={{ height: "500px" }}
-                      className="w-100 d-block"
+                      className="w-100 d-block carousel-image"
                       itemId={2}
                       src={product["img_1"]}
                       alt="..."
                     />
                     <MDBCarouselItem
-                      style={{ height: "500px" }}
-                      className="w-100 d-block"
+                      className="w-100 d-block carousel-image"
                       itemId={3}
                       src={product["img_2"]}
                       alt="..."
                     />
                     <MDBCarouselItem
-                      style={{ height: "500px" }}
-                      className="w-100 d-block"
+                      className="w-100 d-block carousel-image"
                       itemId={4}
                       src={product["img_3"]}
                       alt="..."
                     />
                   </MDBCarousel>
                   <br />
-                  <MDBRow className="my-slide">
-                    <MDBCol lg="3" md="12" className="mb-4">
+                  <div
+                    className="my-slide sub-image"
+                    style={{ display: "flex", flexDirection: "row" }}
+                  >
+                    <MDBCol lg="3" md="4" className="mb-4">
                       <img
                         src={product["image"]}
                         className="img-fluid rounded"
@@ -161,7 +158,7 @@ const ProductPage = ({ data, user }) => {
                         alt=""
                       />
                     </MDBCol>
-                  </MDBRow>
+                  </div>
                 </div>
 
                 <div className="product-detail">
@@ -211,7 +208,10 @@ const ProductPage = ({ data, user }) => {
                         <br />
                       </span>
                     </div>
-                    <p className="text mb-4 mb-md-0" style={{ width: "50%" }}>
+                    <p
+                      className="text mb-4 mb-md-0"
+                      style={{ width: "100%", fontSize: "18px" }}
+                    >
                       {product["description"]}
                     </p>
                   </MDBCol>

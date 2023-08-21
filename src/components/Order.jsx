@@ -38,22 +38,19 @@ const OrderPage = ({ user, refreshUser }) => {
     });
     const handleUser = async () => {
       try {
-        const response = await fetch(
-          "https://shop-nexus-api.vercel.app/orderitems/1/",
-          {
-            method: "PUT",
-            headers: {
-              Authorization: "Bearer " + token,
-              user: username,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              product: itemId,
-              customer: customer,
-              quantity: init_quantity,
-            }),
-          }
-        );
+        const response = await fetch("http://127.0.0.1:8000/orderitems/1/", {
+          method: "PUT",
+          headers: {
+            Authorization: "Bearer " + token,
+            user: username,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            product: itemId,
+            customer: customer,
+            quantity: init_quantity,
+          }),
+        });
 
         if (response.status == 200) {
           refreshUser();
@@ -83,24 +80,21 @@ const OrderPage = ({ user, refreshUser }) => {
     if (user) {
       const handleUser = async () => {
         try {
-          const response = await fetch(
-            "https://shop-nexus-api.vercel.app/orderitems/1/",
-            {
-              method: "DELETE",
-              headers: {
-                Authorization: "Bearer " + token,
-                user: username,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                product: itemId,
-                customer: customer,
-              }),
-            }
-          );
+          const response = await fetch("http://127.0.0.1:8000/orderitems/1/", {
+            method: "DELETE",
+            headers: {
+              Authorization: "Bearer " + token,
+              user: username,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              product: itemId,
+              customer: customer,
+            }),
+          });
 
           if (response.status == 200) {
-            refreshUser();
+            //Do nothing
           } else {
             alert("An Error Ocurred");
           }
@@ -110,23 +104,16 @@ const OrderPage = ({ user, refreshUser }) => {
       };
       handleUser();
       refreshUser();
-      cart.map((item) => {
-        if (item.id === itemId) {
-          cart.splice(cart.indexOf(item), 1);
-          refreshUser();
-        }
-        return;
-      });
-    } else {
-      const updatedCart = cart.map((item) => {
-        if (item.id === itemId) {
-          cart.splice(cart.indexOf(item), 1);
-        }
-        return;
-      });
-      setCart(updatedCart);
-      removeFromCart(cart);
     }
+    const updatedCart = cart.map((item) => {
+      if (item.id === itemId) {
+        cart.splice(cart.indexOf(item), 1);
+      }
+      return;
+    });
+    setCart(updatedCart);
+    removeFromCart(cart);
+    window.location.reload();
   };
 
   var totalSum = 0;
@@ -139,20 +126,17 @@ const OrderPage = ({ user, refreshUser }) => {
   }
 
   const checkout = async () => {
-    const response = await fetch(
-      "https://shop-nexus-api.vercel.app/make_payment/",
-      {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + token,
-          user: username,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          customer: customer,
-        }),
-      }
-    );
+    const response = await fetch("http://127.0.0.1:8000/make_payment/", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        user: username,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        customer: customer,
+      }),
+    });
     if (response.status == 200) {
       const data = await response.json();
       const redirect = data["redirect_url"];
@@ -166,7 +150,7 @@ const OrderPage = ({ user, refreshUser }) => {
         <MDBContainer className="py-5 h-100">
           <MDBRow className="justify-content-center my-4">
             <MDBCol md="8">
-              <MDBCard className="mb-4">
+              <MDBCard className="mb-4 cart-container">
                 <MDBCardHeader className="py-3">
                   <MDBTypography tag="h5" className="mb-0">
                     Cart - {cart.length} items
@@ -241,9 +225,13 @@ const OrderPage = ({ user, refreshUser }) => {
                             </MDBBtn>
                           </div>
 
-                          <p className="text-start text-md-center">
+                          <p
+                            className="text-start text-md-center"
+                            style={{ fontSize: "1.3rem" }}
+                          >
                             <strong>
-                              ${element["price"] * element["quantity"]}.00
+                              <span>₦</span>
+                              {element["price"] * element["quantity"]}.00
                             </strong>
                           </p>
                         </MDBCol>

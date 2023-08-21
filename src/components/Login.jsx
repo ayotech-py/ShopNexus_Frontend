@@ -18,19 +18,16 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(
-        "https://shop-nexus-api.vercel.app/customer-login/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email, // assuming you have stored the email input in the 'email' state
-            password: password, // assuming you have stored the password input in the 'password' state
-          }),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:8000/customer-login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email, // assuming you have stored the email input in the 'email' state
+          password: password, // assuming you have stored the password input in the 'password' state
+        }),
+      });
 
       if (response.ok) {
         const { access, refresh, username } = await response.json();
@@ -51,7 +48,11 @@ const Login = () => {
   };
 
   return (
-    <MDBContainer fluid style={{ marginTop: "70px" }}>
+    <MDBContainer
+      fluid
+      style={{ marginTop: "150px" }}
+      className="auth-container"
+    >
       <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
         <MDBCardBody>
           <MDBRow>
@@ -97,7 +98,7 @@ const Login = () => {
               </a>
               <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
                 Don't have an account?{" "}
-                <a href="#!" style={{ color: "#393f81" }}>
+                <a href="/auth/sign-up" style={{ color: "#393f81" }}>
                   Register here
                 </a>
               </p>

@@ -11,11 +11,6 @@
     justify-content: space-between;
 }
 
-.product-image .w-100 {
-    border-radius: 5px;
-    height: 400px;
-}
-
 .product-detail {
     width: 49%;
     display: flex;
@@ -45,5 +40,31 @@
 .product-page-container {
     padding-left: 15%;
     padding-right: 15%;
+}
 
+.carousel-image {
+    height: 500px;
+}
+
+@media screen and (max-width: 600px) {
+    .product-page {
+        flex-direction: column;
+    }
+
+    .product-image, .product-detail {
+        width: 100%;
+    }
+
+    .product-page-container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .sub-image {
+        display: flex;
+    }
+
+    .carousel-image {
+        height: 400px;
+    }
 }

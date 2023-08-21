@@ -17,7 +17,7 @@ const Invoice = () => {
 
     useEffect(() => {
         const getReceipt = async() => {
-          const last_response = await fetch(`https://shop-nexus-api.vercel.app/last_payment`, {
+          const last_response = await fetch(`http://127.0.0.1:8000/last_payment`, {
               headers: {
                   'Authorization': 'Bearer ' + token,
                   'user': username,
@@ -26,10 +26,10 @@ const Invoice = () => {
           });
           if (last_response.status == 200) {
               const data = await last_response.json();
-              console.log(data)
+              //do something(data)
               setReference(data['data'])
-              console.log(`make i check: ${reference_id}`)
-                const response = await fetch(`https://shop-nexus-api.vercel.app/make_payment/?ref_id=${data['data']}`, {
+              //do something(`make i check: ${reference_id}`)
+                const response = await fetch(`http://127.0.0.1:8000/make_payment/?ref_id=${data['data']}`, {
                     headers: {
                         'Authorization': 'Bearer ' + token,
                         'user': username,

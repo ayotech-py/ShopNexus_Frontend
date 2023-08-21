@@ -12,4 +12,9 @@
     .border-sm-start-none {
         border-left: none !important;
     }
+
+    .orderpage {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
 }

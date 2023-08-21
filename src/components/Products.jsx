@@ -23,26 +23,24 @@ const Products = ({ data, user }) => {
     if (user) {
       const handleUser = async () => {
         try {
-          const response = await fetch(
-            "https://shop-nexus-api.vercel.app/orderitems/",
-            {
-              method: "POST",
-              headers: {
-                Authorization: "Bearer " + token,
-                user: username,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                product: cartname["id"],
-                customer: customer,
-              }),
-            }
-          );
+          const response = await fetch("http://127.0.0.1:8000/orderitems/", {
+            method: "POST",
+            headers: {
+              Authorization: "Bearer " + token,
+              user: username,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              product: cartname["id"],
+              customer: customer,
+            }),
+          });
 
+          let data = await response.json();
           if (response.status === 200) {
-            alert("Item successfully added to cart");
+            alert(data["message"]);
           } else {
-            alert("Item already added to cart");
+            alert(data["message"]);
           }
         } catch (error) {
           // Handle fetch error, e.g., display an error message
@@ -57,7 +55,7 @@ const Products = ({ data, user }) => {
       }
     }
     if (cart_id.includes(cartname["id"])) {
-      console.log("ture");
+      //do something("ture");
     } else {
       cartname["quantity"] = quantity;
       addToCart(cartname);
@@ -69,7 +67,12 @@ const Products = ({ data, user }) => {
       <MDBContainer fluid className="my-5">
         <MDBRow>
           {data.map((product) => (
-            <MDBCol md="12" lg="3" className="mb-4 mb-lg-4">
+            <MDBCol
+              md="12"
+              lg="3"
+              className="mb-4 mb-lg-4"
+              style={{ height: "100%" }}
+            >
               <MDBCard>
                 <div className="d-flex justify-content-between p-3">
                   <p className="lead mb-0">
@@ -92,7 +95,11 @@ const Products = ({ data, user }) => {
                     alt="Laptop"
                   />
                 </Link>
-                <MDBCardBody>
+                <MDBCardBody
+                  style={{
+                    height: "220px",
+                  }}
+                >
                   <div className="d-flex justify-content-between">
                     <p className="small">
                       <a href="#!" className="text-muted">
@@ -129,7 +136,7 @@ const Products = ({ data, user }) => {
                     </div>
                   </div>
 
-                  <div className="d-flex justify-content-center align-items-center pb-2 mb-4 my-btn">
+                  <div className="d-flex justify-content-center align-items-center pb-2 mb-4">
                     <MDBBtn
                       className="mb-5"
                       color="primary"

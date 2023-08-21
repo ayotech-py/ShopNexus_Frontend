@@ -7,6 +7,7 @@ import './css/Feature.css'
 import './css/Products.css'
 import './css/productpage.css'
 import './css/orderpage.css'
+import './css/auth.css'
 
 import { Layout } from './components';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -34,7 +35,7 @@ function App() {
   const getUser = async () => {
     const token = window.localStorage.getItem('accessToken')
     const username = window.localStorage.getItem('username')
-    const response = await fetch('https://shop-nexus-api.vercel.app/get-user-details/', {
+    const response = await fetch('http://127.0.0.1:8000/get-user-details/', {
       headers: {
         'Authorization': 'Bearer ' + token,
         'user': username,
@@ -102,7 +103,7 @@ function App() {
             <Route path="cart" element={<Order refreshUser={refresh} />} />
           </Route>
           <Route path='/customer/' element={<Layout user={user} />}>
-            <Route path="profile" element={<ProfilePage />} />
+            <Route path="profile" element={<ProfilePage user={user}/>} />
             <Route path="orders" element={<OrderItem />} />
           </Route>
           <Route path='/payment-receipt/' element={<Layout user={user} />}>

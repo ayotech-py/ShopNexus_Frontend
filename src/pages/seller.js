@@ -7,11 +7,11 @@ const Seller = () => {
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
-        console.log("run nahhh")
+        //do something("run nahhh")
         const getSeller = async () => {
             const token = window.localStorage.getItem('accessTokenSeller');
             const username = window.localStorage.getItem('username');
-            const response = await fetch('https://shop-nexus-api.vercel.app/seller/', {
+            const response = await fetch('http://127.0.0.1:8000/seller/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,
                     'user': username,
@@ -21,7 +21,7 @@ const Seller = () => {
             if (response.ok) {
                 const data = await response.json();
                 setSeller(data);
-                console.log(data)
+                //do something(data)
             } else {
                 // Handle error response, e.g., display an error message
                 // const { error } = await response.json();
@@ -34,11 +34,11 @@ const Seller = () => {
     }, []);
 
     useEffect(() => {
-        console.log("run nahhh")
+        //do something("run nahhh")
         const getSellerProduct = async () => {
             const token = window.localStorage.getItem('accessTokenSeller');
             const username = window.localStorage.getItem('username');
-            const response = await fetch('https://shop-nexus-api.vercel.app/seller-product/', {
+            const response = await fetch('http://127.0.0.1:8000/seller-product/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,
                     'user': username,
@@ -48,7 +48,7 @@ const Seller = () => {
             if (response.ok) {
                 const data = await response.json();
                 setProduct(data);
-                console.log(data)
+                //do something(data)
             } else {
                 // Handle error response, e.g., display an error message
                 // const { error } = await response.json();
@@ -62,7 +62,7 @@ const Seller = () => {
 
 
 
-    console.log(product)
+    //do something(product)
     return (
         <div>
             <SellerDashboard user={seller} products={product} />

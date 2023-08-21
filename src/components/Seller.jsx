@@ -121,7 +121,7 @@ const SellerDashboard = ({ user, products }) => {
     };
     const token = window.localStorage.getItem("accessTokenSeller");
     const username = window.localStorage.getItem("username");
-    const response = fetch("https://shop-nexus-api.vercel.app/products/", {
+    const response = fetch("http://127.0.0.1:8000/products/", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token,
@@ -180,25 +180,22 @@ const SellerDashboard = ({ user, products }) => {
     const fetchOrder = async () => {
       const token = window.localStorage.getItem("accessTokenSeller");
       const username = window.localStorage.getItem("username");
-      const response = fetch(
-        "https://shop-nexus-api.vercel.app/seller-orders/",
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-            user: username,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = fetch("http://127.0.0.1:8000/seller-orders/", {
+        headers: {
+          Authorization: "Bearer " + token,
+          user: username,
+          "Content-Type": "application/json",
+        },
+      });
 
       (await response).json().then((response) => {
-        console.log(response);
+        //do something(response);
         setOrders(response);
       });
     };
     fetchOrder();
   }, []);
-  console.log(orders);
+  //do something(orders);
 
   const renderContent = () => {
     switch (activePage) {

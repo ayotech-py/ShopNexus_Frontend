@@ -23,7 +23,7 @@ const CategoryController = () => {
         const getUser = async () => {
             const token = window.localStorage.getItem('accessToken')
             const username = window.localStorage.getItem('username')
-            const response = await fetch('https://shop-nexus-api.vercel.app/get-user-details/', {
+            const response = await fetch('http://127.0.0.1:8000/get-user-details/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,
                     'user': username,
@@ -54,7 +54,7 @@ const CategoryController = () => {
 }
 
 export const getProduct = async () => {
-    const response = await fetch('https://shop-nexus-api.vercel.app/products/',
+    const response = await fetch('http://127.0.0.1:8000/products/',
         {
             headers: {
                 'Accept': 'application/json',
