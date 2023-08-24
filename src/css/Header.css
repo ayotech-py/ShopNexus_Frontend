@@ -85,6 +85,14 @@
     padding-right: 15%;
 }
 
+.feature-lg {
+    display: none;
+}
+
+.h5-lg {
+    display: none;
+}
+
 @media screen and (max-width: 600px) {
     .brand-name {
         padding-left: 5px;
@@ -92,5 +100,17 @@
 
     .header-section .cart span {
         padding: 4px 6px;
+    }
+
+    .cart-lg {
+        display: none;
+    }
+
+    .feature-lg {
+        display: block;
+    }
+
+    .h5-lg {
+        display: block;
     }
 }

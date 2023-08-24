@@ -65,17 +65,12 @@ const Products = ({ data, user }) => {
   return (
     <div class="product">
       <MDBContainer fluid className="my-5">
-        <MDBRow>
+        <div className="product-grid">
           {data.map((product) => (
-            <MDBCol
-              md="12"
-              lg="3"
-              className="mb-4 mb-lg-4"
-              style={{ height: "100%" }}
-            >
+            <MDBCol className="product-card" style={{ height: "100%" }}>
               <MDBCard>
-                <div className="d-flex justify-content-between p-3">
-                  <p className="lead mb-0">
+                <div className="d-flex justify-content-between align-items-center business-card">
+                  <p className="lead mb-0 business-name">
                     {product["seller"]["business_name"]}
                   </p>
                   <div
@@ -96,8 +91,9 @@ const Products = ({ data, user }) => {
                   />
                 </Link>
                 <MDBCardBody
+                  className="product-card-body"
                   style={{
-                    height: "220px",
+                    height: "210px",
                   }}
                 >
                   <div className="d-flex justify-content-between">
@@ -114,16 +110,19 @@ const Products = ({ data, user }) => {
                     </p>
                   </div>
 
-                  <div className="d-flex justify-content-between mb-3">
+                  <div className="mb-3" style={{ textAlign: "center" }}>
                     <h6 className="mb-0">
-                      {product["name"].substring(0, 17)} ...
+                      {product["name"].substring(0, 22)} ...
                     </h6>
-                    <h6 className="text-dark mb-0">
+                    <h6
+                      className="mb-0 price"
+                      style={{ paddingTop: "10px", color: "red" }}
+                    >
                       <span>&#8358;</span> {product["price"]}
                     </h6>
                   </div>
 
-                  <div class="d-flex justify-content-between mb-2">
+                  <div class="d-flex justify-content-between align-items-center mb-2 footer">
                     <p class="text-muted mb-0">
                       Available: <span class="fw-bold">{product["count"]}</span>
                     </p>
@@ -149,7 +148,7 @@ const Products = ({ data, user }) => {
               </MDBCard>
             </MDBCol>
           ))}
-        </MDBRow>
+        </div>
       </MDBContainer>
     </div>
   );

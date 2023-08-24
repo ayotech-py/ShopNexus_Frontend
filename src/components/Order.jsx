@@ -113,7 +113,9 @@ const OrderPage = ({ user, refreshUser }) => {
     });
     setCart(updatedCart);
     removeFromCart(cart);
-    window.location.reload();
+    {
+      user ? window.location.reload() : console.log();
+    }
   };
 
   var totalSum = 0;
@@ -304,53 +306,57 @@ const OrderPage = ({ user, refreshUser }) => {
               </MDBCard>
             </MDBCol>
             <MDBCol md="4">
-              <MDBCard className="mb-4">
-                <MDBCardHeader>
-                  <MDBTypography tag="h5" className="mb-0">
-                    Summary
-                  </MDBTypography>
-                </MDBCardHeader>
-                <MDBCardBody>
-                  <MDBListGroup flush>
-                    <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                      Products
-                      <span>
-                        <span>&#8358;</span> {totalSum}
-                      </span>
-                    </MDBListGroupItem>
-                    <MDBListGroupItem className="d-flex justify-content-between align-items-center px-0">
-                      Shipping
-                      <span>
-                        <span>&#8358;</span> 1000
-                      </span>
-                    </MDBListGroupItem>
-                    <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                      <div>
-                        <strong>Total amount</strong>
-                        <strong>
-                          <p className="mb-0">(including VAT)</p>
-                        </strong>
-                      </div>
-                      <span>
-                        <strong>
-                          <span>&#8358;</span> {totalSum + 1000}
-                        </strong>
-                      </span>
-                    </MDBListGroupItem>
-                  </MDBListGroup>
-                  {user ? (
-                    <MDBBtn block size="lg" onClick={checkout}>
-                      Go to checkout
-                    </MDBBtn>
-                  ) : (
-                    <Link to={"/auth/login-in"}>
-                      <MDBBtn block size="lg">
-                        Please login to proceed
+              {cart.length > 0 ? (
+                <MDBCard className="mb-4">
+                  <MDBCardHeader>
+                    <MDBTypography tag="h5" className="mb-0">
+                      Summary
+                    </MDBTypography>
+                  </MDBCardHeader>
+                  <MDBCardBody>
+                    <MDBListGroup flush>
+                      <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                        Products
+                        <span>
+                          <span>&#8358;</span> {totalSum}
+                        </span>
+                      </MDBListGroupItem>
+                      <MDBListGroupItem className="d-flex justify-content-between align-items-center px-0">
+                        Shipping
+                        <span>
+                          <span>&#8358;</span> 1000
+                        </span>
+                      </MDBListGroupItem>
+                      <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                        <div>
+                          <strong>Total amount</strong>
+                          <strong>
+                            <p className="mb-0">(including VAT)</p>
+                          </strong>
+                        </div>
+                        <span>
+                          <strong>
+                            <span>&#8358;</span> {totalSum + 1000}
+                          </strong>
+                        </span>
+                      </MDBListGroupItem>
+                    </MDBListGroup>
+                    {user ? (
+                      <MDBBtn block size="lg" onClick={checkout}>
+                        Go to checkout
                       </MDBBtn>
-                    </Link>
-                  )}
-                </MDBCardBody>
-              </MDBCard>
+                    ) : (
+                      <Link to={"/auth/login-in"}>
+                        <MDBBtn block size="lg">
+                          Please login to proceed
+                        </MDBBtn>
+                      </Link>
+                    )}
+                  </MDBCardBody>
+                </MDBCard>
+              ) : (
+                <></>
+              )}
             </MDBCol>
           </MDBRow>
         </MDBContainer>

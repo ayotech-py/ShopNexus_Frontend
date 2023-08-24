@@ -46,6 +46,10 @@
     height: 500px;
 }
 
+.price-section {
+    margin-top: "-20px",
+}
+
 @media screen and (max-width: 600px) {
     .product-page {
         flex-direction: column;
@@ -66,5 +70,9 @@
 
     .carousel-image {
         height: 400px;
+    }
+
+    .price-section {
+        margin-top: -20px;
     }
 }

@@ -116,19 +116,16 @@ const Header = ({ user }) => {
           <div className="right-nav">
             <MDBCollapse navbar show={showBasic}>
               <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
-                {windowWidth() < 650 ? (
-                  <h5
-                    style={{
-                      paddingTop: "10px",
-                      color: "rgb(49, 49, 168)",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    MY SHOPNEXUS ACCOUNT
-                  </h5>
-                ) : (
-                  <></>
-                )}
+                <h5
+                  style={{
+                    paddingTop: "10px",
+                    color: "rgb(49, 49, 168)",
+                    fontSize: "1rem",
+                  }}
+                  className="h5-lg"
+                >
+                  MY SHOPNEXUS ACCOUNT
+                </h5>
                 {user ? (
                   <MDBNavbarItem>
                     <MDBDropdown>
@@ -227,105 +224,97 @@ const Header = ({ user }) => {
                       </MDBNavbarLink>
                     </Link>
                   </div>
-                  {window.innerWidth < 650 ? (
-                    <MDBCol lg="12" className="mb-4 mb-lg-4">
-                      <div
-                        style={{ paddingLeft: "0px", paddingBottom: "10px" }}
-                        className="category-head"
+                  <MDBCol lg="12" className="mb-4 mb-lg-4 feature-lg">
+                    <div
+                      style={{ paddingLeft: "0px", paddingBottom: "10px" }}
+                      className="category-head"
+                    >
+                      <h5
+                        style={{
+                          color: "rgb(49, 49, 168)",
+                          fontSize: "1rem",
+                        }}
                       >
-                        <h5
-                          style={{
-                            color: "rgb(49, 49, 168)",
-                            fontSize: "1rem",
-                          }}
-                        >
-                          OUR CATEGORIES
-                        </h5>
-                      </div>
-                      <ul
-                        style={{ listStyle: "none", paddingLeft: "0px" }}
-                        className="category-list"
-                      >
-                        <li>
-                          <a href={`/categories/Health & Beauty`}>
-                            <i class="fas fa-heart"></i> Health & Beauty
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Home & Office`}>
-                            <i class="fas fa-home"></i> Home & Office
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Appliances`}>
-                            <i class="fas fa-blender"></i> Appliances
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Phones & Tablets`}>
-                            <i class="fas fa-mobile-alt"></i> Phones & Tablets
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Computing`}>
-                            <i class="fas fa-laptop"></i> Computing
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Electronics`}>
-                            <i class="fas fa-tv"></i> Electronics
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Fashion`}>
-                            <i class="fas fa-tshirt"></i> Fashion
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Baby Products`}>
-                            <i class="fas fa-baby"></i> Baby Products
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Gaming`}>
-                            <i class="fas fa-gamepad"></i> Gaming
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Sporting Goods`}>
-                            <i class="fas fa-futbol"></i> Sporting Goods
-                          </a>
-                        </li>
-                        <li>
-                          <a href={`/categories/Other categories`}>
-                            <i class="fas fa-tags"></i> Other categories
-                          </a>
-                        </li>
-                      </ul>
-                    </MDBCol>
-                  ) : (
-                    <></>
-                  )}
+                        OUR CATEGORIES
+                      </h5>
+                    </div>
+                    <ul
+                      style={{ listStyle: "none", paddingLeft: "0px" }}
+                      className="category-list"
+                    >
+                      <li>
+                        <a href={`/categories/Health & Beauty`}>
+                          <i class="fas fa-heart"></i> Health & Beauty
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Home & Office`}>
+                          <i class="fas fa-home"></i> Home & Office
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Appliances`}>
+                          <i class="fas fa-blender"></i> Appliances
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Phones & Tablets`}>
+                          <i class="fas fa-mobile-alt"></i> Phones & Tablets
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Computing`}>
+                          <i class="fas fa-laptop"></i> Computing
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Electronics`}>
+                          <i class="fas fa-tv"></i> Electronics
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Fashion`}>
+                          <i class="fas fa-tshirt"></i> Fashion
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Baby Products`}>
+                          <i class="fas fa-baby"></i> Baby Products
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Gaming`}>
+                          <i class="fas fa-gamepad"></i> Gaming
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Sporting Goods`}>
+                          <i class="fas fa-futbol"></i> Sporting Goods
+                        </a>
+                      </li>
+                      <li>
+                        <a href={`/categories/Other categories`}>
+                          <i class="fas fa-tags"></i> Other categories
+                        </a>
+                      </li>
+                    </ul>
+                  </MDBCol>
                 </MDBNavbarItem>
               </MDBNavbarNav>
             </MDBCollapse>
-            {windowWidth() > 650 ? (
-              <Link to="/cart/cart">
-                {user ? (
-                  <button type="button" className="cart">
-                    <AiOutlineShoppingCart />
-                    <span>{cart.length}</span>
-                  </button>
-                ) : (
-                  <button type="button" className="cart">
-                    <AiOutlineShoppingCart />
-                    <span>{cart.length}</span>
-                  </button>
-                )}
-              </Link>
-            ) : (
-              <></>
-            )}
+            <Link to="/cart/cart" className="cart-lg">
+              {user ? (
+                <button type="button" className="cart">
+                  <AiOutlineShoppingCart />
+                  <span>{cart.length}</span>
+                </button>
+              ) : (
+                <button type="button" className="cart">
+                  <AiOutlineShoppingCart />
+                  <span>{cart.length}</span>
+                </button>
+              )}
+            </Link>
           </div>
         </MDBContainer>
       </MDBNavbar>

@@ -210,15 +210,27 @@ const ProductPage = ({ data, user }) => {
                     </div>
                     <p
                       className="text mb-4 mb-md-0"
-                      style={{ width: "100%", fontSize: "18px" }}
+                      style={{
+                        width: "100%",
+                        fontSize: "18px",
+                      }}
                     >
                       {product["description"]}
                     </p>
                   </MDBCol>
 
-                  <div className="my-btn" style={{ marginTop: "1rem" }}>
-                    <MDBTypography tag="h3">
-                      Price: <span>&#8358;</span> {product["price"]}
+                  <div
+                    className="my-btn price-section"
+                    style={{
+                      color: "red",
+                    }}
+                  >
+                    <MDBTypography
+                      tag="h3"
+                      style={{ fontSize: "30px", fontFamily: "cursive" }}
+                    >
+                      Price: <span>&#8358;</span>
+                      {product["price"]}
                     </MDBTypography>
 
                     <MDBBtn

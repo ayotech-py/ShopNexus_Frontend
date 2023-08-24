@@ -122,7 +122,6 @@ const Features = ({ shopId }) => {
             itemId={1}
             src="https://i.ytimg.com/vi/f64GdOxJjPE/maxresdefault.jpg"
             alt="..."
-            style={{ height: "500px", overflow: "hidden" }}
           >
             <h5></h5>
             <p></p>
@@ -133,7 +132,6 @@ const Features = ({ shopId }) => {
             itemId={2}
             src="https://img.freepik.com/free-psd/black-friday-super-sale-web-banner-template_106176-1671.jpg"
             alt="..."
-            style={{ height: "500px", overflow: "hidden" }}
           >
             <h5></h5>
             <p></p>
@@ -144,7 +142,6 @@ const Features = ({ shopId }) => {
             itemId={3}
             src="https://marketplace.canva.com/EAFED0hv9G0/1/0/1600w/canva-blue-pink-modern-special-offer-sale-banner-J5VkNReQ8WA.jpg"
             alt="..."
-            style={{ height: "500px", overflow: "hidden" }}
           >
             <h5></h5>
             <p></p>
