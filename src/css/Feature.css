@@ -73,7 +73,6 @@ a {
 }
 
 .banner .d-block {
-    border: 1px solid red;
     height: 500px;
 }
 
@@ -106,7 +105,6 @@ a {
     }
 
     .banner .d-block {
-        border: 1px solid red;
         height: 250px;
     }
 
