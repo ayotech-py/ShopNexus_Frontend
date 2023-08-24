@@ -27,19 +27,22 @@ const Signup = () => {
       return;
     }
     try {
-      const response = await fetch("http://127.0.0.1:8000/customer-register/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email, // assuming you have stored the email input in the 'email' state
-          phone: phone,
-          address: address,
-          password: password, // assuming you have stored the password input in the 'password' state
-        }),
-      });
+      const response = await fetch(
+        "https://aaayotech.pythonanywhere.com/customer-register/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email, // assuming you have stored the email input in the 'email' state
+            phone: phone,
+            address: address,
+            password: password, // assuming you have stored the password input in the 'password' state
+          }),
+        }
+      );
 
       if (response.ok) {
         const { success } = await response.json();

@@ -18,16 +18,19 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://127.0.0.1:8000/customer-login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email, // assuming you have stored the email input in the 'email' state
-          password: password, // assuming you have stored the password input in the 'password' state
-        }),
-      });
+      const response = await fetch(
+        "https://aaayotech.pythonanywhere.com/customer-login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email, // assuming you have stored the email input in the 'email' state
+            password: password, // assuming you have stored the password input in the 'password' state
+          }),
+        }
+      );
 
       if (response.ok) {
         const { access, refresh, username } = await response.json();

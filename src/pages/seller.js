@@ -11,7 +11,7 @@ const Seller = () => {
         const getSeller = async () => {
             const token = window.localStorage.getItem('accessTokenSeller');
             const username = window.localStorage.getItem('username');
-            const response = await fetch('http://127.0.0.1:8000/seller/', {
+            const response = await fetch('https://aaayotech.pythonanywhere.com/seller/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,
                     'user': username,
@@ -38,7 +38,7 @@ const Seller = () => {
         const getSellerProduct = async () => {
             const token = window.localStorage.getItem('accessTokenSeller');
             const username = window.localStorage.getItem('username');
-            const response = await fetch('http://127.0.0.1:8000/seller-product/', {
+            const response = await fetch('https://aaayotech.pythonanywhere.com/seller-product/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,
                     'user': username,

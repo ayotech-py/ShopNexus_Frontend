@@ -60,7 +60,7 @@ const SellerSignup = () => {
 
             //do something(data)
 
-            const response = await fetch('http://127.0.0.1:8000/seller-register/', {
+            const response = await fetch('https://aaayotech.pythonanywhere.com/seller-register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

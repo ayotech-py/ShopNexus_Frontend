@@ -22,7 +22,7 @@ const SearchController = () => {
         const getUser = async () => {
             const token = window.localStorage.getItem('accessToken')
             const username = window.localStorage.getItem('username')
-            const response = await fetch('http://127.0.0.1:8000/get-user-details/', {
+            const response = await fetch('https://aaayotech.pythonanywhere.com/get-user-details/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,
                     'user': username,
@@ -53,7 +53,7 @@ const SearchController = () => {
 }
 
 export const getProduct = async () => {
-    const response = await fetch('http://127.0.0.1:8000/products/',
+    const response = await fetch('https://aaayotech.pythonanywhere.com/products/',
         {
             headers: {
                 'Accept': 'application/json',

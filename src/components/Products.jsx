@@ -23,18 +23,21 @@ const Products = ({ data, user }) => {
     if (user) {
       const handleUser = async () => {
         try {
-          const response = await fetch("http://127.0.0.1:8000/orderitems/", {
-            method: "POST",
-            headers: {
-              Authorization: "Bearer " + token,
-              user: username,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              product: cartname["id"],
-              customer: customer,
-            }),
-          });
+          const response = await fetch(
+            "https://aaayotech.pythonanywhere.com/orderitems/",
+            {
+              method: "POST",
+              headers: {
+                Authorization: "Bearer " + token,
+                user: username,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                product: cartname["id"],
+                customer: customer,
+              }),
+            }
+          );
 
           let data = await response.json();
           if (response.status === 200) {

@@ -121,7 +121,7 @@ const SellerDashboard = ({ user, products }) => {
     };
     const token = window.localStorage.getItem("accessTokenSeller");
     const username = window.localStorage.getItem("username");
-    const response = fetch("http://127.0.0.1:8000/products/", {
+    const response = fetch("https://aaayotech.pythonanywhere.com/products/", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token,
@@ -180,13 +180,16 @@ const SellerDashboard = ({ user, products }) => {
     const fetchOrder = async () => {
       const token = window.localStorage.getItem("accessTokenSeller");
       const username = window.localStorage.getItem("username");
-      const response = fetch("http://127.0.0.1:8000/seller-orders/", {
-        headers: {
-          Authorization: "Bearer " + token,
-          user: username,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = fetch(
+        "https://aaayotech.pythonanywhere.com/seller-orders/",
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            user: username,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       (await response).json().then((response) => {
         //do something(response);
