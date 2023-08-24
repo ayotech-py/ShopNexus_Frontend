@@ -72,6 +72,11 @@ a {
     justify-content: space-evenly;
 }
 
+.banner .d-block {
+    border: 1px solid red;
+    height: 500px;
+}
+
 @media screen and (max-width: 600px) {
     .categories {
         display: none;
@@ -94,9 +99,15 @@ a {
     }
 
     .category-list li a{
-    font-size: .9rem;
-}
+        font-size: .9rem;
+    }
     .category-list li a i {
         padding-right: 10px;
     }
+
+    .banner .d-block {
+        border: 1px solid red;
+        height: 250px;
+    }
+
 }
