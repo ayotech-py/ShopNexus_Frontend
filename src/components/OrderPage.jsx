@@ -80,7 +80,7 @@ const Order = () => {
                             <MDBCol md="2">
                               <MDBCardImage
                                 src={
-                                  "http://127.0.0.1:8000" +
+                                  "https://aaayotech.pythonanywhere.com" +
                                   order["product"]["image"]
                                 }
                                 fluid

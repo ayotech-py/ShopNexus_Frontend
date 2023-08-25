@@ -75,4 +75,9 @@
     .price-section {
         margin-top: -20px;
     }
+
+    .product-image .carousel-image {
+        height: 350px;
+        object-fit: cover;
+    }
 }
