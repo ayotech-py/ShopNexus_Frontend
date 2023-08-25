@@ -41,9 +41,9 @@ const Products = ({ data, user }) => {
 
           let data = await response.json();
           if (response.status === 200) {
-            alert(data["message"]);
+            //alert(data["message"]);
           } else {
-            alert(data["message"]);
+            //alert(data["message"]);
           }
         } catch (error) {
           // Handle fetch error, e.g., display an error message

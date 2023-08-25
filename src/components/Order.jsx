@@ -58,7 +58,7 @@ const OrderPage = ({ user, refreshUser }) => {
         if (response.status == 200) {
           refreshUser();
         } else {
-          alert("An Error Ocurred");
+          //alert("An Error Ocurred");
         }
       } catch (error) {
         // Handle fetch error, e.g., display an error message
@@ -102,7 +102,7 @@ const OrderPage = ({ user, refreshUser }) => {
           if (response.status == 200) {
             //Do nothing
           } else {
-            alert("An Error Ocurred");
+            //alert("An Error Ocurred");
           }
         } catch (error) {
           // Handle fetch error, e.g., display an error message
