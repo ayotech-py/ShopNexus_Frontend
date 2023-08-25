@@ -230,7 +230,7 @@ const ProductPage = ({ data, user }) => {
                   >
                     <MDBTypography
                       tag="h3"
-                      style={{ fontSize: "30px", fontFamily: "cursive" }}
+                      style={{ fontSize: "30px", fontFamily: "georgia" }}
                     >
                       Price: <span>&#8358;</span>
                       {product["price"]}
