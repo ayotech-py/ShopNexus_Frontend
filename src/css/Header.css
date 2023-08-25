@@ -93,6 +93,10 @@
     display: none;
 }
 
+.right-nav {
+    height: 0px;
+}
+
 @media screen and (max-width: 600px) {
     .brand-name {
         padding-left: 5px;
@@ -112,5 +116,9 @@
 
     .h5-lg {
         display: block;
+    }
+
+    .right-nav {
+        height: max-content;
     }
 }

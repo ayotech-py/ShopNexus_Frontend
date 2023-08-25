@@ -184,7 +184,7 @@ const Header = ({ user }) => {
                           Account
                         </MDBDropdownToggle>
                       </div>
-                      <MDBDropdownMenu>
+                      <MDBDropdownMenu onClick={() => setShowBasic(!showBasic)}>
                         <Link to="/auth/seller-login">
                           <MDBDropdownItem link>
                             Login as Seller
