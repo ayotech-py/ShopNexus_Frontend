@@ -117,7 +117,9 @@ const Order = () => {
                             >
                               <p className="text-muted mb-0 small">
                                 <span>&#8358;</span>{" "}
-                                {order["quantity"] * order["product"]["price"]}
+                                {(order["quantity"] * order["product"]["price"])
+                                  .toString()
+                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                               </p>
                             </MDBCol>
                           </MDBRow>
@@ -165,13 +167,16 @@ const Order = () => {
                   <div className="d-flex row pt-2">
                     <p className="text-muted mb-0">
                       <span className="fw-bold me-4">Total</span>
-                      <br /> <span>&#8358;</span> {totalSum}
+                      <br /> <span>&#8358;</span>{" "}
+                      {totalSum
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                       .00
                     </p>
                     <p className="text-muted mb-0">
                       <span className="fw-bold me-4">Delivery Charges</span>{" "}
                       <br />
-                      <span>&#8358;</span> 1000
+                      <span>&#8358;</span> 1,000
                     </p>
                   </div>
                 </MDBCardBody>
@@ -189,7 +194,11 @@ const Order = () => {
                   >
                     Total paid:{" "}
                     <span className="h2 mb-0 ms-2">
-                      <span>&#8358;</span> {totalSum + 1000}
+                      <span>&#8358;</span>{" "}
+                      {(totalSum + 1000)
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                      .00
                     </span>
                   </MDBTypography>
                 </MDBCardFooter>

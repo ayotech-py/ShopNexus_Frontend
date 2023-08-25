@@ -233,7 +233,9 @@ const ProductPage = ({ data, user }) => {
                       style={{ fontSize: "30px", fontFamily: "georgia" }}
                     >
                       Price: <span>&#8358;</span>
-                      {product["price"]}
+                      {product["price"]
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </MDBTypography>
 
                     <MDBBtn

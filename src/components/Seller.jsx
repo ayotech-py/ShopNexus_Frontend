@@ -364,7 +364,10 @@ const SellerDashboard = ({ user, products }) => {
                           <MDBCardText>
                             Quantity: {product.count}
                             <br />
-                            Price: {product.price}
+                            Price:{" "}
+                            {product.price
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                           </MDBCardText>
                           <MDBBtn
                             color="primary"

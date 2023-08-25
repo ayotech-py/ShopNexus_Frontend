@@ -242,7 +242,10 @@ const OrderPage = ({ user, refreshUser }) => {
                           >
                             <strong>
                               <span>₦</span>
-                              {element["price"] * element["quantity"]}.00
+                              {parseInt(element["price"] * element["quantity"])
+                                .toString()
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                              .00
                             </strong>
                           </p>
                         </MDBCol>
@@ -327,13 +330,16 @@ const OrderPage = ({ user, refreshUser }) => {
                       <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                         Products
                         <span>
-                          <span>&#8358;</span> {totalSum}
+                          <span>&#8358;</span>{" "}
+                          {totalSum
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                         </span>
                       </MDBListGroupItem>
                       <MDBListGroupItem className="d-flex justify-content-between align-items-center px-0">
                         Shipping
                         <span>
-                          <span>&#8358;</span> 1000
+                          <span>&#8358;</span> 1,000
                         </span>
                       </MDBListGroupItem>
                       <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 mb-3">
@@ -345,7 +351,10 @@ const OrderPage = ({ user, refreshUser }) => {
                         </div>
                         <span>
                           <strong>
-                            <span>&#8358;</span> {totalSum + 1000}
+                            <span>&#8358;</span>{" "}
+                            {(totalSum + 1000)
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                           </strong>
                         </span>
                       </MDBListGroupItem>

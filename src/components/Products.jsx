@@ -74,7 +74,10 @@ const Products = ({ data, user }) => {
               <MDBCard>
                 <div className="d-flex justify-content-between align-items-center business-card">
                   <p className="lead mb-0 business-name">
-                    {product["seller"]["business_name"]}
+                    {product["seller"]["business_name"].length > 15
+                      ? product["seller"]["business_name"].substring(0, 13) +
+                        "..."
+                      : product["seller"]["business_name"]}
                   </p>
                   <div
                     className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
@@ -102,13 +105,21 @@ const Products = ({ data, user }) => {
                   <div className="d-flex justify-content-between">
                     <p className="small">
                       <a href="#!" className="text-muted">
-                        {product["category"]}
+                        {window.innerWidth < 650
+                          ? product["category"].length > 11
+                            ? product["category"].substring(0, 9) + "..."
+                            : product["category"]
+                          : product["category"]}
                       </a>
                     </p>
                     <p className="small text-danger">
                       <s>
                         <span>&#8358;</span>{" "}
-                        {product["price"] * 0.1 + parseInt(product["price"])}
+                        {parseInt(
+                          product["price"] * 0.1 + parseInt(product["price"])
+                        )
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                       </s>
                     </p>
                   </div>
@@ -121,7 +132,10 @@ const Products = ({ data, user }) => {
                       className="mb-0 price"
                       style={{ paddingTop: "10px", color: "red" }}
                     >
-                      <span>&#8358;</span> {product["price"]}
+                      <span>&#8358;</span>{" "}
+                      {product["price"]
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </h6>
                   </div>
 
