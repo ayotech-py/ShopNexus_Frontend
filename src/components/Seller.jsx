@@ -161,10 +161,21 @@ const SellerDashboard = ({ user, products }) => {
 
   var totalSum = 0;
 
+  const countProduct = () => {
+    let total = 0;
+    products.map((product) => (total += product.count));
+    return total;
+  };
+
   if (products) {
     var totalSum = products.reduce((accumulator, currentItem) => {
       const subtotal = currentItem.price * currentItem.count;
       return accumulator + subtotal;
+    }, 0);
+
+    var totalOrderSum = orders.reduce((accumulator, currentItem) => {
+      const subOrdertotal = currentItem.product.price * currentItem.quantity;
+      return accumulator + subOrdertotal;
     }, 0);
   }
 
@@ -209,19 +220,25 @@ const SellerDashboard = ({ user, products }) => {
               <h4 className="mb-4">Dashboard Overview</h4>
               <MDBRow>
                 <MDBCol md="4">
-                  <h6 className="text-uppercase">Total Products</h6>
-                  <p className="display-4">
-                    {products ? products.length : "0"}
-                  </p>
-                </MDBCol>
-                <MDBCol md="4">
-                  <h6 className="text-uppercase">Total Products Sold</h6>
-                  <p className="display-4">{orders.length}</p>
+                  <h6 className="text-uppercase">No. of Products</h6>
+                  <p className="display-4">{products ? countProduct() : "0"}</p>
                 </MDBCol>
                 <MDBCol md="4">
                   <h6 className="text-uppercase">Total Revenue</h6>
                   <p className="display-4">
-                    <span>&#8358;</span> {products ? totalSum : "00"}.00
+                    <span>&#8358;</span>{" "}
+                    {products ? totalSum.toLocaleString() : "00"}.00
+                  </p>
+                </MDBCol>
+                <MDBCol md="4">
+                  <h6 className="text-uppercase">No. of Products Sold</h6>
+                  <p className="display-4">{orders.length}</p>
+                </MDBCol>
+                <MDBCol md="4">
+                  <h6 className="text-uppercase">Total Products Sold</h6>
+                  <p className="display-4">
+                    <span>&#8358;</span>{" "}
+                    {products ? totalOrderSum.toLocaleString() : "00"}.00
                   </p>
                 </MDBCol>
               </MDBRow>
@@ -559,7 +576,7 @@ const SellerDashboard = ({ user, products }) => {
     <MDBContainer fluid>
       <MDBNavbar light bgColor="light">
         <MDBContainer fluid>
-          <MDBNavbarBrand href="#">ShopNexus Seller Dashboard</MDBNavbarBrand>
+          <MDBNavbarBrand href="#">MiChoice Seller Dashboard</MDBNavbarBrand>
         </MDBContainer>
       </MDBNavbar>
       <br />

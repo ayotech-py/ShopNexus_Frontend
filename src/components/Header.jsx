@@ -70,7 +70,7 @@ const Header = ({ user }) => {
         <MDBContainer fluid className="nav-container">
           <div className="brand-name">
             <Link to="/">
-              <MDBNavbarBrand>ShopNexus</MDBNavbarBrand>
+              <MDBNavbarBrand>MiChoice</MDBNavbarBrand>
             </Link>
           </div>
 
@@ -124,7 +124,7 @@ const Header = ({ user }) => {
                   }}
                   className="h5-lg"
                 >
-                  MY SHOPNEXUS ACCOUNT
+                  MY MICHOICE ACCOUNT
                 </h5>
                 {user ? (
                   <MDBNavbarItem>
