@@ -35,7 +35,7 @@ const Search = ({ data, user }) => {
       const handleUser = async () => {
         try {
           const response = await fetch(
-            "https://aaayotech.pythonanywhere.com/orderitems/",
+            "https://shop-nexus-api.vercel.app/orderitems/",
             {
               method: "POST",
               headers: {

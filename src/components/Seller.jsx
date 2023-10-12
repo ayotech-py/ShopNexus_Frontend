@@ -121,7 +121,7 @@ const SellerDashboard = ({ user, products }) => {
     };
     const token = window.localStorage.getItem("accessTokenSeller");
     const username = window.localStorage.getItem("username");
-    const response = fetch("https://aaayotech.pythonanywhere.com/products/", {
+    const response = fetch("https://shop-nexus-api.vercel.app/products/", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token,
@@ -192,7 +192,7 @@ const SellerDashboard = ({ user, products }) => {
       const token = window.localStorage.getItem("accessTokenSeller");
       const username = window.localStorage.getItem("username");
       const response = fetch(
-        "https://aaayotech.pythonanywhere.com/seller-orders/",
+        "https://shop-nexus-api.vercel.app/seller-orders/",
         {
           headers: {
             Authorization: "Bearer " + token,

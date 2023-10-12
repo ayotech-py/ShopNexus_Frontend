@@ -19,7 +19,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const response = await fetch(
-        "https://aaayotech.pythonanywhere.com/customer-login/",
+        "https://shop-nexus-api.vercel.app/customer-login/",
         {
           method: "POST",
           headers: {

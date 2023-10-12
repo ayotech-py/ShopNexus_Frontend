@@ -20,7 +20,7 @@ const Order = () => {
     const username = window.localStorage.getItem("username");
     const getInvoice = async () => {
       const response = await fetch(
-        "https://aaayotech.pythonanywhere.com/orders/",
+        "https://shop-nexus-api.vercel.app/orders/",
         {
           headers: {
             Authorization: "Bearer " + token,
