@@ -19,7 +19,7 @@ const SellerLogin = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://shop-nexus-api.vercel.app/seller-login/', {
+            const response = await fetch('https://shop-nexus-fpb869sps-ayotech-py.vercel.app/seller-login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

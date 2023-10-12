@@ -23,7 +23,7 @@ const CategoryController = () => {
         const getUser = async () => {
             const token = window.localStorage.getItem('accessToken')
             const username = window.localStorage.getItem('username')
-            const response = await fetch('https://shop-nexus-api.vercel.app/get-user-details/', {
+            const response = await fetch('https://shop-nexus-fpb869sps-ayotech-py.vercel.app/get-user-details/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,
                     'user': username,
@@ -54,7 +54,7 @@ const CategoryController = () => {
 }
 
 export const getProduct = async () => {
-    const response = await fetch('https://shop-nexus-api.vercel.app/products/',
+    const response = await fetch('https://shop-nexus-fpb869sps-ayotech-py.vercel.app/products/',
         {
             headers: {
                 'Accept': 'application/json',

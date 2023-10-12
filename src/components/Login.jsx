@@ -19,7 +19,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const response = await fetch(
-        "https://shop-nexus-api.vercel.app/customer-login/",
+        "https://shop-nexus-fpb869sps-ayotech-py.vercel.app/customer-login/",
         {
           method: "POST",
           headers: {

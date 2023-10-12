@@ -20,7 +20,7 @@ const Order = () => {
     const username = window.localStorage.getItem("username");
     const getInvoice = async () => {
       const response = await fetch(
-        "https://shop-nexus-api.vercel.app/orders/",
+        "https://shop-nexus-fpb869sps-ayotech-py.vercel.app/orders/",
         {
           headers: {
             Authorization: "Bearer " + token,

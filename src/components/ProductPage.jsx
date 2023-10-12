@@ -36,7 +36,7 @@ const ProductPage = ({ data, user }) => {
       const handleUser = async () => {
         try {
           const response = await fetch(
-            "https://shop-nexus-api.vercel.app/orderitems/",
+            "https://shop-nexus-fpb869sps-ayotech-py.vercel.app/orderitems/",
             {
               method: "POST",
               headers: {
