@@ -79,10 +79,7 @@ const Order = () => {
                           <MDBRow>
                             <MDBCol md="2">
                               <MDBCardImage
-                                src={
-                                  "https://aaayotech.pythonanywhere.com" +
-                                  order["product"]["image"]
-                                }
+                                src={order["product"]["image"]}
                                 fluid
                                 alt="Phone"
                               />

@@ -491,10 +491,7 @@ const SellerDashboard = ({ user, products }) => {
                     <div key={order.product.id} className="mb-3">
                       <img
                         style={{ width: "200px", height: "200px" }}
-                        src={
-                          "https://aaayotech.pythonanywhere.com" +
-                          order.product.image
-                        }
+                        src={order.product.image}
                         alt={order.product.name}
                         className="product-image mt-3"
                       />
