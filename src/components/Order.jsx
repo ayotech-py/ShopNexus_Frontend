@@ -158,9 +158,12 @@ const OrderPage = ({ user, refreshUser }) => {
       }
       return;
     });
-    fetchCart();
-    /*     setCart(updatedCart);
-    removeFromCart(cart); */
+    if (user) {
+      fetchCart();
+    } else {
+      setCart(updatedCart);
+      removeFromCart(cart);
+    }
   };
 
   var totalSum = 0;
