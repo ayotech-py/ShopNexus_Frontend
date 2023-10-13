@@ -85,73 +85,73 @@ const SellerSignup = () => {
     };
 
     return (
-        <MDBContainer fluid>
+        <MDBContainer fluid style={{ marginTop: "120px" }}>
 
-            <MDBCard className='text-black m-5' style={{ borderRadius: '25px' }}>
+            <div className='text-black' style={{ borderRadius: '25px' }}>
                 <MDBCardBody>
                     <MDBRow>
-                        <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-center my-input'>
+                        <MDBCol className='order-2 order-lg-1 d-flex flex-column align-items-center'>
 
                             <h3 className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Become a Seller</h3>
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} style={{width: '350px', marginBottom: '70px'}}>
 
-                                <div className="d-flex flex-row align-items-center mb-4 ">
+                                <div className="d-flex flex-row align-items-center mb-4">
                                     <MDBIcon fas icon="user me-3" size='lg' />
                                     <MDBInput label='Your Name' id='name' type='text' value={name}
-                                        onChange={(e) => setName(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setName(e.target.value)} style={{ height: '50px' }}/>
                                 </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
+                                <div className="d-flex flex-row align-items-center mb-4" >
                                     <MDBIcon fas icon="envelope me-3" size='lg' />
                                     <MDBInput label='Your Email' id='form2' type='email' value={email}
-                                        onChange={(e) => setEmail(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setEmail(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
+                                <div className="d-flex flex-row align-items-center mb-4" >
                                     <MDBIcon fas icon="phone me-3" size='lg' />
                                     <MDBInput label='Your Phone' id='form3' type='number' value={phone}
-                                        onChange={(e) => setPhone(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setPhone(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
+                                <div className="d-flex flex-row align-items-center mb-4" >
                                     <MDBIcon fas icon="house me-3" size='lg' />
                                     <MDBInput label='Your Address' id='form4' type='text' value={address}
-                                        onChange={(e) => setAddress(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setAddress(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
+                                <div className="d-flex flex-row align-items-center mb-4" >
                                     <MDBIcon fas icon="user me-3" size='lg' />
                                     <MDBInput label='Bio' id='form5' type='text' value={bio}
-                                        onChange={(e) => setBio(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setBio(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
+                                <div className="d-flex flex-row align-items-center mb-4" >
                                     <MDBIcon fas icon="user me-3" size='lg' />
                                     <MDBInput label='About' id='form6' type='text' value={about}
-                                        onChange={(e) => setAbout(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setAbout(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
+                                <div className="d-flex flex-row align-items-center mb-4" >
                                     <MDBIcon fas icon="user me-3" size='lg' />
                                     <MDBInput label='Business Name' id='form7' type='text' value={businessname}
-                                        onChange={(e) => setBusinessName(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setBusinessName(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
+                                <div className="d-flex flex-row align-items-center mb-4" >
                                     <MDBIcon fas icon="user me-3" size='lg' />
                                     <MDBInput label='Business Reg No' id='form8' type='text' value={businessreg}
-                                        onChange={(e) => setBusinessReg(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setBusinessReg(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
+                                <div className="d-flex flex-row align-items-center mb-4" >
                                     <MDBIcon fas icon="user me-3" size='lg' />
                                     <MDBInput label='Business Category' id='form9' type='text' value={businesscategory}
-                                        onChange={(e) => setBusinessCategory(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setBusinessCategory(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
+                                <div className="d-flex flex-row align-items-center mb-4" >
                                     <MDBIcon fas icon="image me-3" size='lg' />
-                                    <div className="mb-3" style={{ width: "400px" }}>
+                                    <div className="mb-3" style={{ height: '50px' }}>
                                         <label htmlFor="imageUpload" className="form-label">Business Logo</label>
                                         <br />
                                         <input
@@ -166,33 +166,29 @@ const SellerSignup = () => {
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <MDBIcon fas icon="lock me-3" size='lg' />
                                     <MDBInput label='Password' id='form10' type='password' value={password}
-                                        onChange={(e) => setPassword(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setPassword(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <MDBIcon fas icon="key me-3" size='lg' />
                                     <MDBInput label='Repeat your password' id='form11' type='password' value={repeatPassword}
-                                        onChange={(e) => setRepeatPassword(e.target.value)} style={{ width: "400px" }} />
+                                        onChange={(e) => setRepeatPassword(e.target.value)} style={{ height: '50px' }} />
                                 </div>
 
                                 <div className='mb-4'>
                                     <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='I agree all statements in Terms of service' />
                                 </div>
 
-                                <div className="my-btn">
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                <div className="my-btn" style={{ textAlign: 'center'}}>
+                                    <button type="submit" className="btn btn-primary" style={{fontSize: '1rem'}}>Submit</button>
 
                                 </div>
                             </form>
                         </MDBCol>
 
-                        <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
-                            <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' fluid />
-                        </MDBCol>
-
                     </MDBRow>
                 </MDBCardBody>
-            </MDBCard>
+            </div>
 
         </MDBContainer>
     );

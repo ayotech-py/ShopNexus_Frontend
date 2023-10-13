@@ -53,22 +53,21 @@ const Login = () => {
   return (
     <MDBContainer
       fluid
-      style={{ marginTop: "150px" }}
+      style={{ marginTop: "120px" }}
       className="auth-container"
     >
-      <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
+      <div style={{ borderRadius: "25px", color: "black" }}>
         <MDBCardBody>
           <MDBRow>
-            <MDBCol
-              md="10"
-              lg="6"
-              className="order-2 order-lg-1 d-flex flex-column align-items-center my-input"
-            >
+            <MDBCol className="order-2 order-lg-1 d-flex flex-column align-items-center my-input">
               <h3 className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
                 Log in
               </h3>
 
-              <div className="d-flex flex-row align-items-center mb-4">
+              <div
+                className="d-flex flex-row align-items-center mb-4"
+                style={{ width: "350px" }}
+              >
                 <MDBIcon fas icon="envelope me-3" size="lg" />
                 <MDBInput
                   label="Your Email"
@@ -76,10 +75,14 @@ const Login = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  style={{ height: "50px" }}
                 />
               </div>
 
-              <div className="d-flex flex-row align-items-center mb-4">
+              <div
+                className="d-flex flex-row align-items-center mb-4"
+                style={{ width: "350px" }}
+              >
                 <MDBIcon fas icon="lock me-3" size="lg" />
                 <MDBInput
                   label="Password"
@@ -87,6 +90,7 @@ const Login = () => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  style={{ height: "50px" }}
                 />
               </div>
 
@@ -106,20 +110,9 @@ const Login = () => {
                 </a>
               </p>
             </MDBCol>
-
-            <MDBCol
-              md="10"
-              lg="6"
-              className="order-1 order-lg-2 d-flex align-items-center"
-            >
-              <MDBCardImage
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                fluid
-              />
-            </MDBCol>
           </MDBRow>
         </MDBCardBody>
-      </MDBCard>
+      </div>
     </MDBContainer>
   );
 };
