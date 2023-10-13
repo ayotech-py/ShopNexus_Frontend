@@ -31,6 +31,7 @@ const ProductPage = ({ data, user }) => {
   const { addToCart, cart, updateCart } = useContext(CartContext);
   const token = window.localStorage.getItem("accessToken");
   const username = window.localStorage.getItem("username");
+
   const handleAddToCart = (cartname) => {
     if (user) {
       const handleUser = async () => {
@@ -62,20 +63,18 @@ const ProductPage = ({ data, user }) => {
         }
       };
       handleUser();
-      updateCart(cart);
+    }
+    var cart_id = [];
+    if (cart.length > 0) {
+      for (let i = 0; i < cart.length; i++) {
+        cart_id.push(cart[i]["id"]);
+      }
+    }
+    if (cart_id.includes(cartname["id"])) {
+      //do something("ture");
     } else {
-      var cart_id = [];
-      if (cart.length > 0) {
-        for (let i = 0; i < cart.length; i++) {
-          cart_id.push(cart[i]["id"]);
-        }
-      }
-      if (cart_id.includes(cartname["id"])) {
-        //do something("ture");
-      } else {
-        cartname["quantity"] = quantity;
-        addToCart(cartname);
-      }
+      cartname["quantity"] = quantity;
+      addToCart(cartname);
     }
   };
 
