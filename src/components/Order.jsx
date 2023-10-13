@@ -22,10 +22,50 @@ import { Link, redirect } from "react-router-dom";
 const OrderPage = ({ user, refreshUser }) => {
   const { cart, removeFromCart, addToCart, updateCart } =
     useContext(CartContext);
+  //const [userOrder, setUserOrder] = useState(1);
   const [quantity, setCart] = useState(1);
   const customer = window.localStorage.getItem("username");
   const token = window.localStorage.getItem("accessToken");
   const username = window.localStorage.getItem("username");
+
+  const handleAddToCart = (cartname) => {
+    var cart_id = [];
+    if (cart.length > 0) {
+      for (let i = 0; i < cart.length; i++) {
+        cart_id.push(cart[i]["id"]);
+      }
+    }
+    if (cart_id.includes(cartname["id"])) {
+      //do something
+    } else {
+      cartname["quantity"] = quantity;
+      addToCart(cartname);
+    }
+  };
+
+  const fetchCart = async () => {
+    const token = window.localStorage.getItem("accessToken");
+    const username = window.localStorage.getItem("username");
+    const response = await fetch(
+      "https://shop-nexus-api.vercel.app/get-user-details/",
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+          user: username,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (response.ok) {
+      const userOrder = await response.json();
+      console.log(userOrder["data"]);
+      if (userOrder && userOrder["data"]["orderitems"].length > 0) {
+        userOrder["data"]["orderitems"].map((product) =>
+          handleAddToCart(product.product)
+        );
+      }
+    }
+  };
 
   const handleIncrease = (itemId) => {
     var init_quantity = 0;
@@ -118,8 +158,9 @@ const OrderPage = ({ user, refreshUser }) => {
       }
       return;
     });
-    setCart(updatedCart);
-    removeFromCart(cart);
+    fetchCart();
+    /*     setCart(updatedCart);
+    removeFromCart(cart); */
   };
 
   var totalSum = 0;

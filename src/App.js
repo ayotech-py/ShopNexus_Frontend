@@ -53,6 +53,7 @@ function App() {
       // Handle the error response
     }
   };
+  
   const token = window.localStorage.getItem('accessToken')
 
   useEffect(() => {

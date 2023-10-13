@@ -41,14 +41,37 @@ const Header = ({ user }) => {
       addToCart(cartname);
     }
   };
-  if (user && user["orderitems"].length > 0) {
-    user["orderitems"].map((product) => handleAddToCart(product.product));
-  }
+
+  const fetchCart = async () => {
+    const token = window.localStorage.getItem("accessToken");
+    const username = window.localStorage.getItem("username");
+    const response = await fetch(
+      "https://shop-nexus-api.vercel.app/get-user-details/",
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+          user: username,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (response.ok) {
+      const userOrder = await response.json();
+      console.log(userOrder["data"]);
+      if (userOrder && userOrder["data"]["orderitems"].length > 0) {
+        userOrder["data"]["orderitems"].map((product) =>
+          handleAddToCart(product.product)
+        );
+      }
+    } else {
+    }
+  };
+
+  fetchCart();
 
   const searchPage = () => {
     if (search) {
       window.location.href = `/search/${search}`;
-      //do something(search);
     }
   };
 
@@ -58,11 +81,6 @@ const Header = ({ user }) => {
     window.location.reload();
     window.location.href = "/";
   };
-
-  const windowWidth = () => {
-    return window.innerWidth;
-  };
-  //do something(windowWidth());
 
   return (
     <header className="header-section">
