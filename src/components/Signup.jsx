@@ -28,7 +28,7 @@ const Signup = () => {
     }
     try {
       const response = await fetch(
-        "https://shop-nexus-fpb869sps-ayotech-py.vercel.app/customer-register/",
+        "https://shop-nexus-api.vercel.app/customer-register/",
         {
           method: "POST",
           headers: {

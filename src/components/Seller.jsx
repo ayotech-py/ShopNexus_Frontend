@@ -121,18 +121,15 @@ const SellerDashboard = ({ user, products }) => {
     };
     const token = window.localStorage.getItem("accessTokenSeller");
     const username = window.localStorage.getItem("username");
-    const response = fetch(
-      "https://shop-nexus-fpb869sps-ayotech-py.vercel.app/products/",
-      {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + token,
-          user: username,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const response = fetch("https://shop-nexus-api.vercel.app/products/", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        user: username,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
     response.then((response) => {
       if (response.status == 200) {
@@ -195,7 +192,7 @@ const SellerDashboard = ({ user, products }) => {
       const token = window.localStorage.getItem("accessTokenSeller");
       const username = window.localStorage.getItem("username");
       const response = fetch(
-        "https://shop-nexus-fpb869sps-ayotech-py.vercel.app/seller-orders/",
+        "https://shop-nexus-api.vercel.app/seller-orders/",
         {
           headers: {
             Authorization: "Bearer " + token,

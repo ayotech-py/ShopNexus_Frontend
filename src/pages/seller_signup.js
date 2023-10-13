@@ -60,7 +60,7 @@ const SellerSignup = () => {
 
             //do something(data)
 
-            const response = await fetch('https://shop-nexus-fpb869sps-ayotech-py.vercel.app/seller-register/', {
+            const response = await fetch('https://shop-nexus-api.vercel.app/seller-register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

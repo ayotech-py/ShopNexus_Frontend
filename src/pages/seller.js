@@ -11,7 +11,7 @@ const Seller = () => {
         const getSeller = async () => {
             const token = window.localStorage.getItem('accessTokenSeller');
             const username = window.localStorage.getItem('username');
-            const response = await fetch('https://shop-nexus-fpb869sps-ayotech-py.vercel.app/seller/', {
+            const response = await fetch('https://shop-nexus-api.vercel.app/seller/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,
                     'user': username,
@@ -38,7 +38,7 @@ const Seller = () => {
         const getSellerProduct = async () => {
             const token = window.localStorage.getItem('accessTokenSeller');
             const username = window.localStorage.getItem('username');
-            const response = await fetch('https://shop-nexus-fpb869sps-ayotech-py.vercel.app/seller-product/', {
+            const response = await fetch('https://shop-nexus-api.vercel.app/seller-product/', {
                 headers: {
                     'Authorization': 'Bearer ' + token,
                     'user': username,

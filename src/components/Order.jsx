@@ -39,7 +39,7 @@ const OrderPage = ({ user, refreshUser }) => {
     const handleUser = async () => {
       try {
         const response = await fetch(
-          "https://shop-nexus-fpb869sps-ayotech-py.vercel.app/orderitems/1/",
+          "https://shop-nexus-api.vercel.app/orderitems/1/",
           {
             method: "PUT",
             headers: {
@@ -84,7 +84,7 @@ const OrderPage = ({ user, refreshUser }) => {
       const handleUser = async () => {
         try {
           const response = await fetch(
-            "https://shop-nexus-fpb869sps-ayotech-py.vercel.app/orderitems/1/",
+            "https://shop-nexus-api.vercel.app/orderitems/1/",
             {
               method: "DELETE",
               headers: {
@@ -135,7 +135,7 @@ const OrderPage = ({ user, refreshUser }) => {
 
   const checkout = async () => {
     const response = await fetch(
-      "https://shop-nexus-fpb869sps-ayotech-py.vercel.app/make_payment/",
+      "https://shop-nexus-api.vercel.app/make_payment/",
       {
         method: "POST",
         headers: {

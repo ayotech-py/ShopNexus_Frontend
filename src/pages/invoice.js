@@ -17,7 +17,7 @@ const Invoice = () => {
 
     useEffect(() => {
         const getReceipt = async() => {
-          const last_response = await fetch(`https://shop-nexus-fpb869sps-ayotech-py.vercel.app/last_payment`, {
+          const last_response = await fetch(`https://shop-nexus-api.vercel.app/last_payment`, {
               headers: {
                   'Authorization': 'Bearer ' + token,
                   'user': username,
@@ -29,7 +29,7 @@ const Invoice = () => {
               //do something(data)
               setReference(data['data'])
               //do something(`make i check: ${reference_id}`)
-                const response = await fetch(`https://shop-nexus-fpb869sps-ayotech-py.vercel.app/make_payment/?ref_id=${data['data']}`, {
+                const response = await fetch(`https://shop-nexus-api.vercel.app/make_payment/?ref_id=${data['data']}`, {
                     headers: {
                         'Authorization': 'Bearer ' + token,
                         'user': username,
