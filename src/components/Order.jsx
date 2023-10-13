@@ -110,6 +110,7 @@ const OrderPage = ({ user, refreshUser }) => {
       };
       handleUser();
       refreshUser();
+      //window.location.reload();
     }
     const updatedCart = cart.map((item) => {
       if (item.id === itemId) {
@@ -119,9 +120,6 @@ const OrderPage = ({ user, refreshUser }) => {
     });
     setCart(updatedCart);
     removeFromCart(cart);
-    {
-      user ? window.location.reload() : console.log();
-    }
   };
 
   var totalSum = 0;

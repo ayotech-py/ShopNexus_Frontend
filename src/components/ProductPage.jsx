@@ -190,7 +190,7 @@ const ProductPage = ({ data, user }) => {
                       </div>
                       <span>310</span>
                     </div>
-                    <div className="mt-1 mb-0 text-muted small">
+                    {/* <div className="mt-1 mb-0 text-muted small">
                       <span>100% cotton</span>
                       <span className="text-primary"> • </span>
                       <span>Light weight</span>
@@ -209,7 +209,7 @@ const ProductPage = ({ data, user }) => {
                         Casual
                         <br />
                       </span>
-                    </div>
+                    </div> */}
                     <p
                       className="text mb-4 mb-md-0"
                       style={{
