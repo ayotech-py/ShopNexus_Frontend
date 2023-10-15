@@ -11,7 +11,9 @@ import {
   MDBProgressBar,
   MDBRow,
   MDBTypography,
+  MDBBtn,
 } from "mdb-react-ui-kit";
+import { Link, redirect } from "react-router-dom";
 
 const Order = () => {
   const [data, setData] = useState(null);
@@ -54,26 +56,25 @@ const Order = () => {
         style={{ backgroundColor: "#eee" }}
       >
         <MDBContainer className="py-5 h-100">
-          <MDBRow className="justify-content-center align-items-center h-100">
-            <MDBCol lg="10" xl="8">
-              <MDBCard style={{ borderRadius: "10px" }}>
-                <MDBCardHeader className="px-4 py-5">
-                  <MDBTypography tag="h5" className="text-muted mb-0">
-                    Thanks for your Order
-                  </MDBTypography>
-                </MDBCardHeader>
-                <MDBCardBody className="p-4">
-                  <div className="d-flex justify-content-between align-items-center mb-4">
-                    <p
-                      className="lead fw-normal mb-0"
-                      style={{ color: "#a8729a" }}
-                    >
-                      Order Details
-                    </p>
-                  </div>
-
-                  {data ? (
-                    data.orders.map((order) => (
+          {data && data > 0 ? (
+            data.orders.map((order) => (
+              <MDBRow className="justify-content-center align-items-center h-100">
+                <MDBCol lg="10" xl="8">
+                  <MDBCard style={{ borderRadius: "10px" }}>
+                    <MDBCardHeader className="px-4 py-5">
+                      <MDBTypography tag="h5" className="text-muted mb-0">
+                        Thanks for your Order
+                      </MDBTypography>
+                    </MDBCardHeader>
+                    <MDBCardBody className="p-4">
+                      <div className="d-flex justify-content-between align-items-center mb-4">
+                        <p
+                          className="lead fw-normal mb-0"
+                          style={{ color: "#a8729a" }}
+                        >
+                          Order Details
+                        </p>
+                      </div>
                       <MDBCard className="shadow-0 border mb-4">
                         <MDBCardBody>
                           <MDBRow>
@@ -156,52 +157,68 @@ const Order = () => {
                           </MDBRow>
                         </MDBCardBody>
                       </MDBCard>
-                    ))
-                  ) : (
-                    <></>
-                  )}
-
-                  <div className="d-flex row pt-2">
-                    <p className="text-muted mb-0">
-                      <span className="fw-bold me-4">Total</span>
-                      <br /> <span>&#8358;</span>{" "}
-                      {totalSum
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                      .00
-                    </p>
-                    <p className="text-muted mb-0">
-                      <span className="fw-bold me-4">Delivery Charges</span>{" "}
-                      <br />
-                      <span>&#8358;</span> 1,000
-                    </p>
-                  </div>
-                </MDBCardBody>
-                <MDBCardFooter
-                  className="border-0 px-4 py-5"
-                  style={{
-                    backgroundColor: "#a8729a",
-                    borderBottomLeftRadius: "10px",
-                    borderBottomRightRadius: "10px",
-                  }}
-                >
-                  <MDBTypography
-                    tag="h5"
-                    className="d-flex align-items-center justify-content-end text-white text-uppercase mb-0"
-                  >
-                    Total paid:{" "}
-                    <span className="h2 mb-0 ms-2">
-                      <span>&#8358;</span>{" "}
-                      {(totalSum + 1000)
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                      .00
-                    </span>
-                  </MDBTypography>
-                </MDBCardFooter>
-              </MDBCard>
-            </MDBCol>
-          </MDBRow>
+                      <div className="d-flex row pt-2">
+                        <p className="text-muted mb-0">
+                          <span className="fw-bold me-4">Total</span>
+                          <br /> <span>&#8358;</span>{" "}
+                          {totalSum
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          .00
+                        </p>
+                        <p className="text-muted mb-0">
+                          <span className="fw-bold me-4">Delivery Charges</span>{" "}
+                          <br />
+                          <span>&#8358;</span> 1,000
+                        </p>
+                      </div>
+                    </MDBCardBody>
+                    <MDBCardFooter
+                      className="border-0 px-4 py-5"
+                      style={{
+                        backgroundColor: "#a8729a",
+                        borderBottomLeftRadius: "10px",
+                        borderBottomRightRadius: "10px",
+                      }}
+                    >
+                      <MDBTypography
+                        tag="h5"
+                        className="d-flex align-items-center justify-content-end text-white text-uppercase mb-0"
+                      >
+                        Total paid:{" "}
+                        <span className="h2 mb-0 ms-2">
+                          <span>&#8358;</span>{" "}
+                          {(totalSum + 1000)
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          .00
+                        </span>
+                      </MDBTypography>
+                    </MDBCardFooter>
+                  </MDBCard>
+                </MDBCol>
+              </MDBRow>
+            ))
+          ) : (
+            <MDBContainer className="my-5">
+              <MDBRow className="justify-content-center">
+                <MDBCol md="6">
+                  <MDBCard>
+                    <MDBCardBody className="text-center">
+                      <h1 className="h4">Empty Order</h1>
+                      <p className="text-muted mb-4">
+                        You have not placed any order yet. Go back to cart and
+                        place order
+                      </p>
+                      <Link to="/cart/cart">
+                        <MDBBtn color="primary">Go Back to Cart</MDBBtn>
+                      </Link>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+              </MDBRow>
+            </MDBContainer>
+          )}
         </MDBContainer>
       </section>
     </div>
