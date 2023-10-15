@@ -8,6 +8,7 @@ import './css/Products.css'
 import './css/productpage.css'
 import './css/orderpage.css'
 import './css/auth.css'
+import './css/sellerpage.css'
 
 import { Layout } from './components';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -26,6 +27,7 @@ import CategoryController from './pages/category';
 import SearchController from './pages/search';
 import OrderItem from './pages/order_page'
 import Invoice from './pages/invoice';
+import { SellerPageController } from './pages/sellerpage';
 
 import CartProvider from './components/Cart';
 
@@ -99,6 +101,9 @@ function App() {
           </Route>
           <Route path='/search/' element={<Layout user={user} />}>
             <Route path=":name" element={<SearchController />} />
+          </Route>
+          <Route path='/seller/' element={<Layout user={user} />}>
+            <Route path=":name" element={<SellerPageController />} />
           </Route>
           <Route path='/cart/' element={<Layout user={user} />}>
             <Route path="cart" element={<Order refreshUser={refresh} />} />

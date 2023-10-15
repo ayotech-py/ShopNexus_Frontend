@@ -15,6 +15,7 @@ import {
   MDBInput,
   MDBTypography,
 } from "mdb-react-ui-kit";
+import { Link } from "react-router-dom";
 
 const ProductPage = ({ data, user }) => {
   const { name } = useParams();
@@ -164,20 +165,22 @@ const ProductPage = ({ data, user }) => {
                 </div>
 
                 <div className="product-detail">
-                  <div className=" seller-badge d-flex align-items-center p-3">
-                    <div
-                      className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                      style={{ width: "35px", height: "35px" }}
-                    >
-                      <img
-                        src={product["seller"]["business_logo"]}
-                        alt="product"
-                      />
+                  <Link to={`/seller/${product["seller"]["business_name"]}`}>
+                    <div className=" seller-badge d-flex align-items-center p-3">
+                      <div
+                        className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                        style={{ width: "35px", height: "35px" }}
+                      >
+                        <img
+                          src={product["seller"]["business_logo"]}
+                          alt="product"
+                        />
+                      </div>
+                      <p className="lead mb-0" style={{ color: "black" }}>
+                        {product["seller"]["business_name"]}
+                      </p>
                     </div>
-                    <p className="lead mb-0">
-                      {product["seller"]["business_name"]}
-                    </p>
-                  </div>
+                  </Link>
                   <br />
                   <MDBCol md="12">
                     <h3>{product["name"]}</h3>

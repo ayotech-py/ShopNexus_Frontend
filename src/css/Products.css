@@ -11,7 +11,6 @@
 .product {
     padding-right: 15%;
     padding-left: 15%;
-    background-color: white;
     padding-top: 5px;
 }
 
@@ -20,6 +19,13 @@
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-gap: 20px;
     justify-content: center;
+}
+
+.product-seller-grid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 20px;
+    justify-content: center;   
 }
 
 
@@ -34,7 +40,7 @@
 
 
 @media screen and (max-width: 600px) {
-    .product-grid {
+    .product-grid, .product-seller-grid {
         grid-template-columns: 50% 50%;
         grid-gap: 10px;
     }
