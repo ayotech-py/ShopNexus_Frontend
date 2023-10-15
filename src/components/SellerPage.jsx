@@ -182,6 +182,7 @@ const SellerPage = (user) => {
                     className="p-4"
                     style={{
                       marginLeft: "-25px",
+                      marginRight: "-25px",
                       marginTop: "-20px",
                       marginBottom: "-30px",
                     }}
