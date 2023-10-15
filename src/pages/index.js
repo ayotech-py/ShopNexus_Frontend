@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Featured from '../components/Featured';
 import Products from '../components/Products';
+import Loading from '../components/Loading';
 
 const Home = () => {
     const [product, setProduct] = useState(null);
@@ -50,7 +51,7 @@ const Home = () => {
             <Featured />
             {product ? (
                 <Products data={product} user={user} />
-            ) : (<p>Loading...</p>)}
+            ) : (<Loading />)}
         </div>
     )
 }

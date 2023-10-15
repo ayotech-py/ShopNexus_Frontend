@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "./Cart";
+import Loading from "./Loading";
 
 const SellerPage = (user) => {
   const { name } = useParams();
@@ -316,7 +317,7 @@ const SellerPage = (user) => {
           </div>
         </MDBContainer>
       ) : (
-        <></>
+        <Loading />
       )}
     </div>
   );

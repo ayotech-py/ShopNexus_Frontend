@@ -9,6 +9,7 @@ import './css/productpage.css'
 import './css/orderpage.css'
 import './css/auth.css'
 import './css/sellerpage.css'
+import './css/loading.css'
 
 import { Layout } from './components';
 import { BrowserRouter, Routes, Route } from "react-router-dom";

@@ -1,6 +1,7 @@
 import ProductPage from '../components/ProductPage';
 import React, { useState, useEffect } from 'react';
 import { getProduct } from '.';
+import Loading from '../components/Loading';
 
 export const ProductPageController = () => {
     const [product, setProduct] = useState(null);
@@ -49,7 +50,7 @@ export const ProductPageController = () => {
         <div>
             {product ? (
                 <ProductPage data={product} user={user} />
-            ) : (<p>Loading...</p>)}
+            ) : (<Loading />)}
         </div>
     )
 }

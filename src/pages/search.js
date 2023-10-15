@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Search } from '../components';
+import { Loading, Search } from '../components';
 const SearchController = () => {
     const [product, setProduct] = useState(null);
     const [user, setUser] = useState(null);
@@ -47,7 +47,7 @@ const SearchController = () => {
         <div>
             {product ? (
                 <Search data={product} user={user} />
-            ) : (<p>Loading...</p>)}
+            ) : (<Loading />)}
         </div>
     )
 }
