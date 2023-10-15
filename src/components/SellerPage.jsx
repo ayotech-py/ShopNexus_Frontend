@@ -75,7 +75,7 @@ const SellerPage = (user) => {
       const token = process.env.REACT_APP_AUTH_KEY;
       console.log(token);
       const response = await fetch(
-        `http://127.0.0.1:8000/seller-product-fetch/?name=${name}`,
+        `https://shop-nexus-api.vercel.app/seller-product-fetch/?name=${name}`,
         {
           headers: {
             Authorization: token,
