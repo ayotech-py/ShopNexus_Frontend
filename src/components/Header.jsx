@@ -112,7 +112,7 @@ const Header = ({ user }) => {
               )}
             </Link>
             <MDBIcon
-              style={{ color: "rgb(49, 49, 168)", paddingLeft: "20px" }}
+              style={{ color: "black", paddingLeft: "20px" }}
               onClick={() => setShowBasic(!showBasic)}
               icon="bars"
               fas
@@ -137,7 +137,7 @@ const Header = ({ user }) => {
                 <h5
                   style={{
                     paddingTop: "10px",
-                    color: "rgb(49, 49, 168)",
+                    color: "black",
                     fontSize: "1rem",
                   }}
                   className="h5-lg"
@@ -249,7 +249,7 @@ const Header = ({ user }) => {
                     >
                       <h5
                         style={{
-                          color: "rgb(49, 49, 168)",
+                          color: "black",
                           fontSize: "1rem",
                         }}
                       >

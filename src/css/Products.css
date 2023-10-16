@@ -12,11 +12,22 @@
     padding-right: 15%;
     padding-left: 15%;
     padding-top: 5px;
+    font-family: 'Marcellus', sans-serif;
+}
+
+.product .my-price {
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+
+.product .my-product-name {
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns: 25% 25% 25% 25%;
     grid-gap: 20px;
     justify-content: center;
 }
@@ -32,17 +43,25 @@
 .product-card-body {
     margin-left: -15px;
     margin-right: -15px;
+    height: 230px;
 }
 
 .business-card {
     padding: 10px 10px 10px 10px;
 }
 
-
 @media screen and (max-width: 600px) {
     .product-grid, .product-seller-grid {
         grid-template-columns: 50% 50%;
         grid-gap: 10px;
+    }
+
+    .product .my-price {
+        font-size: 1rem;
+    }
+
+    .product .my-product-name {
+        font-size: 1rem;
     }
 
     .product {
@@ -76,6 +95,10 @@
     .product-card-body .small {
         margin-bottom: 5px;
         margin-top: -15px;
+    }
+
+    .product-card-body {
+        height: 180px;
     }
 
 }
