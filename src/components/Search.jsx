@@ -108,12 +108,7 @@ const Search = ({ data, user }) => {
                       alt="Laptop"
                     />
                   </Link>
-                  <MDBCardBody
-                    className="product-card-body"
-                    style={{
-                      height: "210px",
-                    }}
-                  >
+                  <MDBCardBody className="product-card-body">
                     <div className="d-flex justify-content-between">
                       <p className="small">
                         <a href="#!" className="text-muted">
@@ -124,8 +119,8 @@ const Search = ({ data, user }) => {
                             : product["category"]}
                         </a>
                       </p>
-                      <p className="small text-danger">
-                        <s>
+                      <p className="small text-danger my-price">
+                        <s style={{ color: "black" }}>
                           <span>&#8358;</span>{" "}
                           {parseInt(
                             product["price"] * 0.1 + parseInt(product["price"])
@@ -137,12 +132,16 @@ const Search = ({ data, user }) => {
                     </div>
 
                     <div className="mb-3" style={{ textAlign: "center" }}>
-                      <h6 className="mb-0">
-                        {product["name"].substring(0, 22)} ...
+                      <h6 className="mb-0 my-product-name">
+                        {product["name"].substring(0, 16)} ...
                       </h6>
                       <h6
-                        className="mb-0 price"
-                        style={{ paddingTop: "10px", color: "red" }}
+                        className="mb-0 my-price"
+                        style={{
+                          paddingTop: "10px",
+                          color: "black",
+                          fontWeight: "bolder",
+                        }}
                       >
                         <span>&#8358;</span>{" "}
                         {product["price"]
@@ -168,7 +167,7 @@ const Search = ({ data, user }) => {
                     <div className="d-flex justify-content-center align-items-center pb-2 mb-4">
                       <MDBBtn
                         className="mb-5"
-                        color="primary"
+                        color="black"
                         onClick={() => handleAddToCart(product)}
                       >
                         Add to Cart
