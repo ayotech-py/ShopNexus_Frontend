@@ -66,7 +66,7 @@ const Products = ({ data, user }) => {
   };
 
   return (
-    <div class="product" style={{ fontFamily: "Mrcellus" }}>
+    <div class="product">
       <MDBContainer fluid className="my-5">
         <div className="product-grid">
           {data.map((product) => (
@@ -107,7 +107,7 @@ const Products = ({ data, user }) => {
                           : product["category"]}
                       </a>
                     </p>
-                    <p className="small text-danger">
+                    <p className="small text-danger my-price">
                       <s style={{ color: "black" }}>
                         <span>&#8358;</span>{" "}
                         {parseInt(
