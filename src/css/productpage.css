@@ -100,7 +100,7 @@
     }
 
     .summary h4, .summary p {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .summary .woocommerce-product-details__short-description p {
@@ -116,8 +116,8 @@
     }
 
     .ds-section h2 {
-        font-size: 1rem;
-        font-weight: bolder;
+        font-size: 1.5rem;
+        font-weight: 400;
     }
 
     .ds-section p {
@@ -125,8 +125,8 @@
     }
 
     .related-products .related h2 {
-        font-size: 1rem;
-        font-weight: bolder;
+        font-size: 1.5rem;
+        font-weight: 400;
     }  
 
     .product-image-2 {
