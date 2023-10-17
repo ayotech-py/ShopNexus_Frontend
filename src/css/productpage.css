@@ -67,16 +67,63 @@
     float: left;
 }
 
+.summary h4, .summary p {
+    font-size: 2rem;
+}
+
+.summary .woocommerce-product-details__short-description p {
+    font-size: 1.2rem;
+}
+
+.ds-section p {
+    font-size: 1.3rem;
+}
+
+.related-products .related h2 {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
 
 @media screen and (max-width: 600px) {
 
-    .woocommerce-breadcrumb {
-        font-size: 1rem;
+    .woocommerce-breadcrumb a {
+        font-size: .8rem;
     }
 
     .product-image-description {
         flex-direction: column;
     }
+
+    .summary h4, .summary p {
+        font-size: 1.2rem;
+    }
+
+    .summary .woocommerce-product-details__short-description p {
+        font-size: .9rem;
+    }
+
+    .summary .product_meta span {
+        font-size: .8rem;
+    }
+
+    .description-section li a {
+        font-size: 1rem;
+    }
+
+    .ds-section h2 {
+        font-size: 1rem;
+        font-weight: bolder;
+    }
+
+    .ds-section p {
+        font-size: .9rem;
+    }
+
+    .related-products .related h2 {
+        font-size: 1rem;
+        font-weight: bolder;
+    }  
 
     .product-image-2 {
         float: none;

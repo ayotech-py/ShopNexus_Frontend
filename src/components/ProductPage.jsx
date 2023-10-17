@@ -479,7 +479,7 @@ const ProductPage = ({ data, user }) => {
               </a>
                / 
               <a
-                href="https://websitedemos.net/be-bold-beauty-store-04/product-category/skin-care/"
+                href="#"
                 style={{
                   boxSizing: "inherit",
                   backgroundColor: "transparent",
@@ -490,10 +490,10 @@ const ProductPage = ({ data, user }) => {
               >
                 {product["category"]}
               </a>
-               / {product["name"]}
+               / <a>{product["name"]}</a>
             </nav>
-            <h1
-              className="product_title entry-title"
+            <h4
+              className="product_title"
               style={{
                 boxSizing: "inherit",
                 border: "0px",
@@ -504,7 +504,6 @@ const ProductPage = ({ data, user }) => {
                 textTransform: "capitalize",
                 color: "#000000",
                 fontWeight: 400,
-                fontSize: "2rem",
                 display: "block",
                 lineHeight: 1.2,
                 padding: "0px",
@@ -515,7 +514,7 @@ const ProductPage = ({ data, user }) => {
               }}
             >
               {product["name"]}
-            </h1>
+            </h4>
             <p
               className="price"
               style={{
@@ -527,7 +526,6 @@ const ProductPage = ({ data, user }) => {
                 verticalAlign: "baseline",
                 display: "inline-block",
                 margin: "0px 0px 0.2em",
-                fontSize: "2rem",
                 fontWeight: 700,
                 marginBottom: "0.2em",
                 color: "black",
@@ -591,7 +589,6 @@ const ProductPage = ({ data, user }) => {
                   margin: "0px",
                   outline: "0px",
                   padding: "0px",
-                  fontSize: "1.2rem",
                   fontStyle: "inherit",
                   fontWeight: "inherit",
                   verticalAlign: "baseline",
@@ -1104,7 +1101,6 @@ const ProductPage = ({ data, user }) => {
                 margin: "0px",
                 outline: "0px",
                 padding: "0px",
-                fontSize: "1.3rem",
                 fontStyle: "inherit",
                 fontWeight: "inherit",
                 verticalAlign: "baseline",
@@ -1130,8 +1126,6 @@ const ProductPage = ({ data, user }) => {
                   fontStyle: "inherit",
                   verticalAlign: "baseline",
                   clear: "both",
-                  fontSize: "2.6875rem",
-                  fontWeight: "normal",
                   fontFamily: "Marcellus, serif",
                   lineHeight: "1em",
                   color: "#000000",
