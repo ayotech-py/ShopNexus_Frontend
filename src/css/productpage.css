@@ -64,6 +64,7 @@
 
 .product-image-2 .woocommerce-product-gallery {
     float: left;
+    margin: 0px;
 }
 
 .summary h4, .summary p {
@@ -72,7 +73,6 @@
 
 .summary .woocommerce-product-details__short-description p {
     font-size: 1.2rem;
-    padding-right: 10px;
 }
 
 .ds-section p {
@@ -87,11 +87,6 @@
 .my-amount {
     font-family: 'Times New Roman', Times, serif;
 }
-
-.summary {
-    margin-right: 5px;
-}
-
 
 @media screen and (max-width: 600px) {
 
@@ -140,10 +135,6 @@
 
     .product-image-2 .woocommerce-product-gallery {
         float: none;
-    }
-
-    .description-section {
-
     }
 
     .product-page {
