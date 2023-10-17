@@ -541,10 +541,14 @@ const ProductPage = ({ data, user }) => {
                 }}
               >
                 <span
-                  className="woocommerce-Price-amount amount"
+                  className="woocommerce-Price-amount my-amount"
                   style={{ boxSizing: "inherit" }}
                 >
-                  <bdi style={{ boxSizing: "inherit" }}>
+                  <bdi
+                    style={{
+                      boxSizing: "inherit",
+                    }}
+                  >
                     <span>&#8358;</span>
                     {""}
                     {parseInt(
@@ -566,7 +570,7 @@ const ProductPage = ({ data, user }) => {
                 }}
               >
                 <span
-                  className="woocommerce-Price-amount amount"
+                  className="woocommerce-Price-amount my-amount"
                   style={{ boxSizing: "inherit" }}
                 >
                   <bdi style={{ boxSizing: "inherit" }}>
@@ -1177,7 +1181,7 @@ const ProductPage = ({ data, user }) => {
                                   : product["category"]}
                               </a>
                             </p>
-                            <p className="small text-danger">
+                            <p className="small text-danger my-price">
                               <s style={{ color: "black" }}>
                                 <span>&#8358;</span>{" "}
                                 {parseInt(
@@ -1192,11 +1196,15 @@ const ProductPage = ({ data, user }) => {
 
                           <div className="mb-3" style={{ textAlign: "center" }}>
                             <h6 className="mb-0 my-product-name">
-                              {product["name"].substring(0, 17)} ...
+                              {product["name"].substring(0, 16)} ...
                             </h6>
                             <h6
                               className="mb-0 my-price"
-                              style={{ paddingTop: "10px", color: "black" }}
+                              style={{
+                                paddingTop: "10px",
+                                color: "black",
+                                fontWeight: "bolder",
+                              }}
                             >
                               <span>&#8358;</span>{" "}
                               {product["price"]

@@ -121,7 +121,7 @@ const Products = ({ data, user }) => {
 
                   <div className="mb-3" style={{ textAlign: "center" }}>
                     <h6 className="mb-0 my-product-name">
-                      {product["name"].substring(0, 17)} ...
+                      {product["name"].substring(0, 16)} ...
                     </h6>
                     <h6
                       className="mb-0 my-price"
