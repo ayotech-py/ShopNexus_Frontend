@@ -1133,115 +1133,113 @@ const ProductPage = ({ data, user }) => {
                   fontFamily: "Marcellus, serif",
                   lineHeight: "1em",
                   color: "#000000",
-                  marginBottom: "0.7em",
+                  marginBottom: "1em",
                 }}
               >
                 Related products
               </h2>
-              <MDBContainer fluid className="my-5">
-                <div className="product-grid">
-                  {data.map((product) => (
-                    <MDBCol className="product-card" style={{ height: "100%" }}>
-                      <MDBCard>
-                        <div className="d-flex justify-content-between align-items-center business-card">
-                          <p className="lead mb-0 business-name">
-                            {product["seller"]["business_name"].length > 15
-                              ? product["seller"]["business_name"].substring(
-                                  0,
-                                  13
-                                ) + "..."
-                              : product["seller"]["business_name"]}
-                          </p>
-                          <div
-                            className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                            style={{ width: "35px", height: "35px" }}
-                          >
-                            <img
-                              src={product["seller"]["business_logo"]}
-                              alt="product"
-                            />
-                          </div>
-                        </div>
-                        <Link to={`/products/${product["id"]}`}>
-                          <MDBCardImage
-                            src={product["image"]}
-                            position="top"
-                            alt="Laptop"
-                          />
-                        </Link>
-                        <MDBCardBody className="product-card-body">
-                          <div className="d-flex justify-content-between">
-                            <p className="small">
-                              <a href="#!" className="text-muted">
-                                {window.innerWidth < 650
-                                  ? product["category"].length > 11
-                                    ? product["category"].substring(0, 9) +
-                                      "..."
-                                    : product["category"]
-                                  : product["category"]}
-                              </a>
-                            </p>
-                            <p className="small text-danger my-price">
-                              <s style={{ color: "black" }}>
-                                <span>&#8358;</span>{" "}
-                                {parseInt(
-                                  product["price"] * 0.1 +
-                                    parseInt(product["price"])
-                                )
-                                  .toString()
-                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                              </s>
-                            </p>
-                          </div>
 
-                          <div className="mb-3" style={{ textAlign: "center" }}>
-                            <h6 className="mb-0 my-product-name">
-                              {product["name"].substring(0, 16)} ...
-                            </h6>
-                            <h6
-                              className="mb-0 my-price"
-                              style={{
-                                paddingTop: "10px",
-                                color: "black",
-                                fontWeight: "bolder",
-                              }}
-                            >
+              <div className="product-grid">
+                {data.map((product) => (
+                  <MDBCol className="product-card" style={{ height: "100%" }}>
+                    <MDBCard>
+                      <div className="d-flex justify-content-between align-items-center business-card">
+                        <p className="lead mb-0 business-name">
+                          {product["seller"]["business_name"].length > 15
+                            ? product["seller"]["business_name"].substring(
+                                0,
+                                13
+                              ) + "..."
+                            : product["seller"]["business_name"]}
+                        </p>
+                        <div
+                          className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                          style={{ width: "35px", height: "35px" }}
+                        >
+                          <img
+                            src={product["seller"]["business_logo"]}
+                            alt="product"
+                          />
+                        </div>
+                      </div>
+                      <Link to={`/products/${product["id"]}`}>
+                        <MDBCardImage
+                          src={product["image"]}
+                          position="top"
+                          alt="Laptop"
+                        />
+                      </Link>
+                      <MDBCardBody className="product-card-body">
+                        <div className="d-flex justify-content-between">
+                          <p className="small">
+                            <a href="#!" className="text-muted">
+                              {window.innerWidth < 650
+                                ? product["category"].length > 11
+                                  ? product["category"].substring(0, 9) + "..."
+                                  : product["category"]
+                                : product["category"]}
+                            </a>
+                          </p>
+                          <p className="small text-danger my-price">
+                            <s style={{ color: "black" }}>
                               <span>&#8358;</span>{" "}
-                              {product["price"]
+                              {parseInt(
+                                product["price"] * 0.1 +
+                                  parseInt(product["price"])
+                              )
                                 .toString()
                                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                            </h6>
-                          </div>
+                            </s>
+                          </p>
+                        </div>
 
-                          <div class="d-flex justify-content-between align-items-center mb-2 footer">
-                            <p class="text-muted mb-0">
-                              Available:{" "}
-                              <span class="fw-bold">{product["count"]}</span>
-                            </p>
-                            <div class="ms-auto text-warning">
-                              <MDBIcon fas icon="star" />
-                              <MDBIcon fas icon="star" />
-                              <MDBIcon fas icon="star" />
-                              <MDBIcon fas icon="star" />
-                              <MDBIcon fas icon="star" />
-                            </div>
-                          </div>
+                        <div className="mb-3" style={{ textAlign: "center" }}>
+                          <h6 className="mb-0 my-product-name">
+                            {product["name"].substring(0, 16)} ...
+                          </h6>
+                          <h6
+                            className="mb-0 my-price"
+                            style={{
+                              paddingTop: "10px",
+                              color: "black",
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            <span>&#8358;</span>{" "}
+                            {product["price"]
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          </h6>
+                        </div>
 
-                          <div className="d-flex justify-content-center align-items-center pb-2 mb-4">
-                            <MDBBtn
-                              className="mb-5"
-                              color="black"
-                              onClick={() => handleAddToCart(product)}
-                            >
-                              Add to Cart
-                            </MDBBtn>
+                        <div class="d-flex justify-content-between align-items-center mb-2 footer">
+                          <p class="text-muted mb-0">
+                            Available:{" "}
+                            <span class="fw-bold">{product["count"]}</span>
+                          </p>
+                          <div class="ms-auto text-warning">
+                            <MDBIcon fas icon="star" />
+                            <MDBIcon fas icon="star" />
+                            <MDBIcon fas icon="star" />
+                            <MDBIcon fas icon="star" />
+                            <MDBIcon fas icon="star" />
                           </div>
-                        </MDBCardBody>
-                      </MDBCard>
-                    </MDBCol>
-                  ))}
-                </div>
-              </MDBContainer>
+                        </div>
+
+                        <div className="d-flex justify-content-center align-items-center pb-2 mb-4">
+                          <MDBBtn
+                            className="mb-5"
+                            color="black"
+                            onClick={() => handleAddToCart(product)}
+                          >
+                            Add to Cart
+                          </MDBBtn>
+                        </div>
+                      </MDBCardBody>
+                    </MDBCard>
+                  </MDBCol>
+                ))}
+              </div>
             </section>
           </div>
         </div>
