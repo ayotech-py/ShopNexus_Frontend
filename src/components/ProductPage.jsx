@@ -466,7 +466,7 @@ const ProductPage = ({ data, user }) => {
               }}
             >
               <a
-                href="https://websitedemos.net/be-bold-beauty-store-04"
+                href="#"
                 style={{
                   boxSizing: "inherit",
                   backgroundColor: "transparent",

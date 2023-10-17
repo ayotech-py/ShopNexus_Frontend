@@ -66,7 +66,7 @@ const Products = ({ data, user }) => {
   };
 
   return (
-    <div class="product" style={{ fontFamily: "Mercellus" }}>
+    <div class="product" style={{ fontFamily: "Mrcellus" }}>
       <MDBContainer fluid className="my-5">
         <div className="product-grid">
           {data.map((product) => (
