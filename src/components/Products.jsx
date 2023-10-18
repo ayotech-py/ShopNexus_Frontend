@@ -81,7 +81,10 @@ const Products = ({ data, user }) => {
                   </p>
                   <div
                     className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                    style={{ width: "35px", height: "35px" }}
+                    style={{
+                      width: "35px",
+                      objectFit: "cover",
+                    }}
                   >
                     <img
                       src={product["seller"]["business_logo"]}
@@ -89,8 +92,10 @@ const Products = ({ data, user }) => {
                     />
                   </div>
                 </div>
+
                 <Link to={`/products/${product["id"]}`}>
                   <MDBCardImage
+                    className="product-image"
                     src={product["image"]}
                     position="top"
                     alt="Laptop"

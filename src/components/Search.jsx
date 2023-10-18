@@ -103,6 +103,7 @@ const Search = ({ data, user }) => {
                   </div>
                   <Link to={`/products/${product["id"]}`}>
                     <MDBCardImage
+                      className="product-iamge"
                       src={product["image"]}
                       position="top"
                       alt="Laptop"
