@@ -226,7 +226,7 @@ const SellerDashboard = ({ user, products }) => {
                 <MDBCol md="4">
                   <h6 className="text-uppercase">Total Revenue</h6>
                   <p className="display-4">
-                    <span>&#8358;</span>{" "}
+                    <span>&#8358;</span>
                     {products ? totalSum.toLocaleString() : "00"}.00
                   </p>
                 </MDBCol>
@@ -237,7 +237,7 @@ const SellerDashboard = ({ user, products }) => {
                 <MDBCol md="4">
                   <h6 className="text-uppercase">Total Products Sold</h6>
                   <p className="display-4">
-                    <span>&#8358;</span>{" "}
+                    <span>&#8358;</span>
                     {products ? totalOrderSum.toLocaleString() : "00"}.00
                   </p>
                 </MDBCol>

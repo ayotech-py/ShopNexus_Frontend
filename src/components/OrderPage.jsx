@@ -187,7 +187,7 @@ const Order = () => {
                       >
                         Total paid:{" "}
                         <span className="h2 mb-0 ms-2">
-                          <span>&#8358;</span>{" "}
+                          <span>&#8358;</span>
                           {(totalSum + 1000)
                             .toString()
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

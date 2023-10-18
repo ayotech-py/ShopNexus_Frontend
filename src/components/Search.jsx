@@ -122,7 +122,7 @@ const Search = ({ data, user }) => {
                       </p>
                       <p className="small text-danger my-price">
                         <s style={{ color: "black" }}>
-                          <span>&#8358;</span>{" "}
+                          <span>&#8358;</span>
                           {parseInt(
                             product["price"] * 0.1 + parseInt(product["price"])
                           )
@@ -144,7 +144,7 @@ const Search = ({ data, user }) => {
                           fontWeight: "bolder",
                         }}
                       >
-                        <span>&#8358;</span>{" "}
+                        <span>&#8358;</span>
                         {product["price"]
                           .toString()
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

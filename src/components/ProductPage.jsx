@@ -137,7 +137,7 @@ const ProductPage = ({ data, user }) => {
                   style={{
                     boxSizing: "inherit",
                     overflow: "hidden",
-                    width: "650px",
+                    width: "100%",
                     marginRight: "0px",
                     cssFloat: "left",
                     display: "block",
@@ -146,9 +146,6 @@ const ProductPage = ({ data, user }) => {
                 >
                   <img
                     className="wp-post-image"
-                    height={758}
-                    width={622}
-                    sizes="(max-width: 600px) 100vw, 600px"
                     src={product["image"]}
                     title="product-14-a"
                     style={{
@@ -158,96 +155,12 @@ const ProductPage = ({ data, user }) => {
                       maxWidth: "100%",
                       display: "block",
                       width: "100%",
-                      height: "auto",
+                      height: "500px",
+                      objectFit: "cover",
                       boxShadow: "none",
                     }}
                   />
                 </div>
-                {/* <div
-                  className="woocommerce-product-gallery__image"
-                  style={{
-                    boxSizing: "inherit",
-                    width: "622px",
-                    marginRight: "0px",
-                    cssFloat: "left",
-                    display: "block",
-                  }}
-                >
-                  <img
-                    height={758}
-                    width={622}
-                    sizes="(max-width: 600px) 100vw, 600px"
-                    src={product["image"]}
-                    title="product-14-b"
-                    style={{
-                      boxSizing: "inherit",
-                      border: "0px",
-                      verticalAlign: "middle",
-                      maxWidth: "100%",
-                      display: "block",
-                      width: "100%",
-                      height: "auto",
-                      boxShadow: "none",
-                    }}
-                  />
-                </div>
-                <div
-                  className="woocommerce-product-gallery__image"
-                  style={{
-                    boxSizing: "inherit",
-                    width: "622px",
-                    marginRight: "0px",
-                    cssFloat: "left",
-                    display: "block",
-                    border: "1px solid red",
-                  }}
-                >
-                  <img
-                    height={758}
-                    width={622}
-                    sizes="(max-width: 600px) 100vw, 600px"
-                    src={product["image"]}
-                    title="product-14-c"
-                    style={{
-                      boxSizing: "inherit",
-                      border: "0px",
-                      verticalAlign: "middle",
-                      maxWidth: "100%",
-                      display: "block",
-                      width: "100%",
-                      height: "auto",
-                      boxShadow: "none",
-                    }}
-                  />
-                </div>
-                <div
-                  className="woocommerce-product-gallery__image"
-                  style={{
-                    boxSizing: "inherit",
-                    width: "622px",
-                    marginRight: "0px",
-                    cssFloat: "left",
-                    display: "block",
-                  }}
-                >
-                  <img
-                    height={758}
-                    width={622}
-                    sizes="(max-width: 600px) 100vw, 600px"
-                    src={product["img_4"]}
-                    title="product-bg-02"
-                    style={{
-                      boxSizing: "inherit",
-                      border: "0px",
-                      verticalAlign: "middle",
-                      maxWidth: "100%",
-                      display: "block",
-                      width: "100%",
-                      height: "auto",
-                      boxShadow: "none",
-                    }}
-                  />
-                </div>{" "} */}
               </div>
             </div>
             <ol
@@ -500,7 +413,7 @@ const ProductPage = ({ data, user }) => {
                 outline: "0px",
                 fontStyle: "inherit",
                 verticalAlign: "baseline",
-                fontFamily: "Marcellus, serif",
+                fontFamily: "Manrope, serif",
                 textTransform: "capitalize",
                 color: "#000000",
                 fontWeight: 400,
@@ -692,7 +605,7 @@ const ProductPage = ({ data, user }) => {
                     font: "inherit",
                     margin: "0px",
                     verticalAlign: "baseline",
-                    fontFamily: '"Open Sans", sans-serif',
+                    fontFamily: '"Open Sans", Manrope',
                     fontWeight: "inherit",
                     fontSize: "1rem",
                     lineHeight: "1.7em",
@@ -1130,115 +1043,133 @@ const ProductPage = ({ data, user }) => {
                   fontStyle: "inherit",
                   verticalAlign: "baseline",
                   clear: "both",
-                  fontFamily: "Marcellus, serif",
+                  fontFamily: "Manrope, serif",
                   lineHeight: "1em",
                   color: "#000000",
                   marginBottom: "1em",
                 }}
               >
-                Related products
+                Related Products
               </h2>
 
-              <div className="product-grid">
-                {data.map((product) => (
-                  <MDBCol className="product-card" style={{ height: "100%" }}>
-                    <MDBCard>
-                      <div className="d-flex justify-content-between align-items-center business-card">
-                        <p className="lead mb-0 business-name">
-                          {product["seller"]["business_name"].length > 15
-                            ? product["seller"]["business_name"].substring(
-                                0,
-                                13
-                              ) + "..."
-                            : product["seller"]["business_name"]}
-                        </p>
-                        <div
-                          className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                          style={{ width: "35px", height: "35px" }}
-                        >
-                          <img
-                            src={product["seller"]["business_logo"]}
-                            alt="product"
-                          />
-                        </div>
-                      </div>
-                      <Link to={`/products/${product["id"]}`}>
-                        <MDBCardImage
-                          src={product["image"]}
-                          position="top"
-                          alt="Laptop"
-                        />
-                      </Link>
-                      <MDBCardBody className="product-card-body">
-                        <div className="d-flex justify-content-between">
-                          <p className="small">
-                            <a href="#!" className="text-muted">
-                              {window.innerWidth < 650
-                                ? product["category"].length > 11
-                                  ? product["category"].substring(0, 9) + "..."
-                                  : product["category"]
-                                : product["category"]}
-                            </a>
-                          </p>
-                          <p className="small text-danger my-price">
-                            <s style={{ color: "black" }}>
-                              <span>&#8358;</span>{" "}
-                              {parseInt(
-                                product["price"] * 0.1 +
-                                  parseInt(product["price"])
-                              )
-                                .toString()
-                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                            </s>
-                          </p>
-                        </div>
-
-                        <div className="mb-3" style={{ textAlign: "center" }}>
-                          <h6 className="mb-0 my-product-name">
-                            {product["name"].substring(0, 16)} ...
-                          </h6>
-                          <h6
-                            className="mb-0 my-price"
-                            style={{
-                              paddingTop: "10px",
-                              color: "black",
-                              fontWeight: "bolder",
-                            }}
-                          >
-                            <span>&#8358;</span>{" "}
-                            {product["price"]
-                              .toString()
-                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                          </h6>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mb-2 footer">
-                          <p class="text-muted mb-0">
-                            Available:{" "}
-                            <span class="fw-bold">{product["count"]}</span>
-                          </p>
-                          <div class="ms-auto text-warning">
-                            <MDBIcon fas icon="star" />
-                            <MDBIcon fas icon="star" />
-                            <MDBIcon fas icon="star" />
-                            <MDBIcon fas icon="star" />
-                            <MDBIcon fas icon="star" />
+              <div
+                class="product"
+                style={{ paddingLeft: "0px", paddingRight: "0px" }}
+              >
+                <MDBContainer fluid className="my-5">
+                  <div className="product-grid">
+                    {data.map((product) => (
+                      <MDBCol
+                        className="product-card"
+                        style={{ height: "100%" }}
+                      >
+                        <MDBCard>
+                          <div className="d-flex justify-content-between align-items-center business-card">
+                            <p className="lead mb-0 business-name">
+                              {product["seller"]["business_name"].length > 15
+                                ? product["seller"]["business_name"].substring(
+                                    0,
+                                    13
+                                  ) + "..."
+                                : product["seller"]["business_name"]}
+                            </p>
+                            <div
+                              className="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                              style={{
+                                width: "35px",
+                                objectFit: "cover",
+                              }}
+                            >
+                              <img
+                                src={product["seller"]["business_logo"]}
+                                alt="product"
+                              />
+                            </div>
                           </div>
-                        </div>
 
-                        <div className="d-flex justify-content-center align-items-center pb-2 mb-4">
-                          <MDBBtn
-                            className="mb-5"
-                            color="black"
-                            onClick={() => handleAddToCart(product)}
-                          >
-                            Add to Cart
-                          </MDBBtn>
-                        </div>
-                      </MDBCardBody>
-                    </MDBCard>
-                  </MDBCol>
-                ))}
+                          <Link to={`/products/${product["id"]}`}>
+                            <MDBCardImage
+                              className="product-image"
+                              src={product["image"]}
+                              position="top"
+                              alt="Laptop"
+                            />
+                          </Link>
+                          <MDBCardBody className="product-card-body">
+                            <div className="d-flex justify-content-between">
+                              <p className="small">
+                                <a href="#!" className="text-muted">
+                                  {window.innerWidth < 650
+                                    ? product["category"].length > 11
+                                      ? product["category"].substring(0, 9) +
+                                        "..."
+                                      : product["category"]
+                                    : product["category"]}
+                                </a>
+                              </p>
+                              <p className="small text-danger">
+                                <s style={{ color: "black" }}>
+                                  <span>&#8358;</span>
+                                  {parseInt(
+                                    product["price"] * 0.1 +
+                                      parseInt(product["price"])
+                                  )
+                                    .toString()
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                </s>
+                              </p>
+                            </div>
+
+                            <div
+                              className="mb-3"
+                              style={{
+                                textAlign: "center",
+                                fontFamily: "Manrope",
+                              }}
+                            >
+                              <h6 className="mb-0 my-product-name">
+                                {product["name"].substring(0, 16)} ...
+                              </h6>
+                              <h6
+                                className="mb-0 my-price"
+                                style={{ paddingTop: "10px", color: "black" }}
+                              >
+                                <span>&#8358;</span>
+                                {product["price"]
+                                  .toString()
+                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                              </h6>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mb-2 footer">
+                              <p class="text-muted mb-0">
+                                Available:{" "}
+                                <span class="fw-bold">{product["count"]}</span>
+                              </p>
+                              <div class="ms-auto text-warning">
+                                <MDBIcon fas icon="star" />
+                                <MDBIcon fas icon="star" />
+                                <MDBIcon fas icon="star" />
+                                <MDBIcon fas icon="star" />
+                                <MDBIcon fas icon="star" />
+                              </div>
+                            </div>
+
+                            <div className="d-flex justify-content-center align-items-center pb-2 mb-4">
+                              <MDBBtn
+                                className="mb-5"
+                                color="black"
+                                onClick={() => handleAddToCart(product)}
+                              >
+                                Add to Cart
+                              </MDBBtn>
+                            </div>
+                          </MDBCardBody>
+                        </MDBCard>
+                      </MDBCol>
+                    ))}
+                  </div>
+                </MDBContainer>
               </div>
             </section>
           </div>

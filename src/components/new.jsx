@@ -444,7 +444,7 @@ body {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", Manrope;
   font-weight: inherit;
   font-size: 1rem;
   line-height: 1.7em;
@@ -554,7 +554,7 @@ body {
                 outline: "0px",
                 fontStyle: "inherit",
                 verticalAlign: "baseline",
-                fontFamily: "Marcellus, serif",
+                fontFamily: "Manrope, serif",
                 textTransform: "capitalize",
                 color: "#000000",
                 fontWeight: 400,
@@ -784,7 +784,7 @@ body {
                     font: "inherit",
                     margin: "0px",
                     verticalAlign: "baseline",
-                    fontFamily: '"Open Sans", sans-serif',
+                    fontFamily: '"Open Sans", Manrope',
                     fontWeight: "inherit",
                     fontSize: "1rem",
                     lineHeight: "1.7em",
@@ -977,7 +977,7 @@ body {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", Manrope;
   font-weight: inherit;
   font-size: 1rem;
   line-height: 1.7em;

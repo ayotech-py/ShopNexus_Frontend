@@ -372,7 +372,7 @@ const OrderPage = ({ user, refreshUser }) => {
                       <MDBListGroupItem className="d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                         Products
                         <span>
-                          <span>&#8358;</span>{" "}
+                          <span>&#8358;</span>
                           {totalSum
                             .toString()
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -393,7 +393,7 @@ const OrderPage = ({ user, refreshUser }) => {
                         </div>
                         <span>
                           <strong>
-                            <span>&#8358;</span>{" "}
+                            <span>&#8358;</span>
                             {(totalSum + 1000)
                               .toString()
                               .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

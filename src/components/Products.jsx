@@ -112,9 +112,9 @@ const Products = ({ data, user }) => {
                           : product["category"]}
                       </a>
                     </p>
-                    <p className="small text-danger my-price">
+                    <p className="small text-danger">
                       <s style={{ color: "black" }}>
-                        <span>&#8358;</span>{" "}
+                        <span>&#8358;</span>
                         {parseInt(
                           product["price"] * 0.1 + parseInt(product["price"])
                         )
@@ -124,7 +124,13 @@ const Products = ({ data, user }) => {
                     </p>
                   </div>
 
-                  <div className="mb-3" style={{ textAlign: "center" }}>
+                  <div
+                    className="mb-3"
+                    style={{
+                      textAlign: "center",
+                      fontFamily: "Manrope",
+                    }}
+                  >
                     <h6 className="mb-0 my-product-name">
                       {product["name"].substring(0, 16)} ...
                     </h6>
@@ -132,7 +138,7 @@ const Products = ({ data, user }) => {
                       className="mb-0 my-price"
                       style={{ paddingTop: "10px", color: "black" }}
                     >
-                      <span>&#8358;</span>{" "}
+                      <span>&#8358;</span>
                       {product["price"]
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

@@ -16,6 +16,10 @@
     width: 50%;
 }
 
+.product-description {
+    width: 50%;
+}
+
 .product-image {
     width: 100%;
     display: flex;
@@ -89,6 +93,9 @@
 }
 
 @media screen and (max-width: 600px) {
+    .product-description {
+            width: 100%;
+    }
 
     .woocommerce-breadcrumb a {
         font-size: .8rem;

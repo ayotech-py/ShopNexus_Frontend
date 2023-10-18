@@ -279,7 +279,7 @@ const SellerPage = (user) => {
                           className="mb-0 price"
                           style={{ paddingTop: "10px", color: "red" }}
                         >
-                          <span>&#8358;</span>{" "}
+                          <span>&#8358;</span>
                           {product["price"]
                             .toString()
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
