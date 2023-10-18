@@ -92,9 +92,14 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+.ds-header {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 @media screen and (max-width: 600px) {
     .product-description {
-            width: 100%;
+        width: 100%;
     }
 
     .woocommerce-breadcrumb a {

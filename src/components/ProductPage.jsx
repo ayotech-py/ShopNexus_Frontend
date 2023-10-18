@@ -1054,7 +1054,12 @@ const ProductPage = ({ data, user }) => {
 
               <div
                 class="product"
-                style={{ paddingLeft: "0px", paddingRight: "0px" }}
+                style={{
+                  paddingLeft: "0px",
+                  paddingRight: "0px",
+                  marginLeft: "-10px",
+                  marginRight: "-10px",
+                }}
               >
                 <MDBContainer fluid className="my-5">
                   <div className="product-grid">
