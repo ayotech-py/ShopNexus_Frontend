@@ -201,8 +201,6 @@ const ProductPage = ({ data, user }) => {
               >
                 <img
                   className="flex-active"
-                  height={144}
-                  width={144}
                   src={product["img_1"]}
                   style={{
                     boxSizing: "inherit",
@@ -211,7 +209,8 @@ const ProductPage = ({ data, user }) => {
                     maxWidth: "100%",
                     display: "block",
                     width: "100%",
-                    height: "auto",
+                    height: "150px",
+                    objectFit: "cover",
                     boxShadow: "none",
                     margin: "0px",
                     cursor: "pointer",
@@ -248,7 +247,8 @@ const ProductPage = ({ data, user }) => {
                     maxWidth: "100%",
                     display: "block",
                     width: "100%",
-                    height: "auto",
+                    height: "150px",
+                    objectFit: "cover",
                     boxShadow: "none",
                     margin: "0px",
                     cursor: "pointer",
@@ -285,7 +285,8 @@ const ProductPage = ({ data, user }) => {
                     maxWidth: "100%",
                     display: "block",
                     width: "100%",
-                    height: "auto",
+                    height: "150px",
+                    objectFit: "cover",
                     boxShadow: "none",
                     margin: "0px",
                     cursor: "pointer",
@@ -322,7 +323,8 @@ const ProductPage = ({ data, user }) => {
                     maxWidth: "100%",
                     display: "block",
                     width: "100%",
-                    height: "auto",
+                    height: "150px",
+                    objectFit: "cover",
                     boxShadow: "none",
                     margin: "0px",
                     cursor: "pointer",
