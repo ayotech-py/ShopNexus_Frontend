@@ -88,7 +88,9 @@ const Header = ({ user }) => {
         <MDBContainer fluid className="nav-container">
           <div className="brand-name">
             <Link to="/">
-              <MDBNavbarBrand>MiChoice</MDBNavbarBrand>
+              <MDBNavbarBrand>
+                <span style={{ color: "red" }}>Mi</span>Choice
+              </MDBNavbarBrand>
             </Link>
           </div>
 
