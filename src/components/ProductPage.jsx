@@ -1059,6 +1059,7 @@ const ProductPage = ({ data, user }) => {
                   paddingRight: "0px",
                   marginLeft: "-10px",
                   marginRight: "-10px",
+                  marginTop: "-50px",
                 }}
               >
                 <MDBContainer fluid className="my-5">
