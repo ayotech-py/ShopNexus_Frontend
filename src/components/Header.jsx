@@ -183,12 +183,7 @@ const Header = ({ user }) => {
                 ) : (
                   <MDBNavbarItem>
                     <MDBDropdown>
-                      <div
-                        className="contact"
-                        style={{
-                          color: "black",
-                        }}
-                      >
+                      <div className="contact">
                         <MDBIcon fas icon="user-alt" />
                         <MDBDropdownToggle
                           tag="a"

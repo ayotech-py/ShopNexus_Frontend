@@ -48,7 +48,6 @@ const Features = ({ shopId }) => {
           <div className="category-head">
             <h5
               style={{
-                color: "rgb(49, 49, 168)",
                 fontSize: "1.3rem",
                 paddingBottom: "10px",
               }}

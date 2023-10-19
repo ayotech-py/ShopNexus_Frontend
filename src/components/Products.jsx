@@ -68,6 +68,34 @@ const Products = ({ data, user }) => {
   return (
     <div class="product">
       <MDBContainer fluid className="my-5">
+        <div
+          className="product-title"
+          style={{
+            textAlign: "center",
+            marginTop: "-20px",
+            marginBottom: "20px",
+          }}
+        >
+          <p
+            style={{
+              color: "red",
+              marginBottom: "0px",
+              fontWeight: "100",
+              fontSize: ".9rem",
+            }}
+          >
+            POPULAR PRODUCTS
+          </p>
+          <h1
+            style={{
+              color: "black",
+              fontWeight: "400",
+              fontSize: "2.3rem",
+            }}
+          >
+            Trending Now
+          </h1>
+        </div>
         <div className="product-grid">
           {data.map((product) => (
             <MDBCol className="product-card" style={{ height: "100%" }}>
@@ -160,7 +188,7 @@ const Products = ({ data, user }) => {
 
                   <div className="d-flex justify-content-center align-items-center pb-2 mb-4">
                     <MDBBtn
-                      className="mb-5"
+                      className="mb-5 adddtocart"
                       color="black"
                       onClick={() => handleAddToCart(product)}
                     >

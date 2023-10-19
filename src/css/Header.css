@@ -98,6 +98,54 @@
     height: 0px;
 }
 
+.contact {
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: red;
+    transform-origin: center;
+    opacity: 0;
+}
+
+@keyframes expand {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    50% {
+        width: 100%;
+        opacity: 1;
+    }
+
+    100% {
+        width: 100%;
+        /* Change this line to make it stay expanded */
+        opacity: 1;
+        /* Change this line to make it stay expanded */
+    }
+}
+
+.contact:hover::before {
+    animation: expand 1s forwards;
+}
+
+.dropdown-nav:hover {
+    background-color: red;
+    color: white;
+}
+
+
 @media screen and (max-width: 600px) {
     .brand-name {
         padding-left: 5px;

@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import "../css/Login.css";
 import {
   MDBBtn,
   MDBContainer,
@@ -51,69 +52,85 @@ const Login = () => {
   };
 
   return (
-    <MDBContainer
-      fluid
-      style={{ marginTop: "120px" }}
-      className="auth-container"
-    >
-      <div style={{ borderRadius: "25px", color: "black" }}>
-        <MDBCardBody>
-          <MDBRow>
-            <MDBCol className="order-2 order-lg-1 d-flex flex-column align-items-center my-input">
-              <h3 className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                Log in
-              </h3>
-
-              <div
-                className="d-flex flex-row align-items-center mb-4"
-                style={{ width: "350px" }}
-              >
-                <MDBIcon fas icon="envelope me-3" size="lg" />
-                <MDBInput
-                  label="Your Email"
-                  id="form2"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  style={{ height: "50px" }}
-                />
-              </div>
-
-              <div
-                className="d-flex flex-row align-items-center mb-4"
-                style={{ width: "350px" }}
-              >
-                <MDBIcon fas icon="lock me-3" size="lg" />
-                <MDBInput
-                  label="Password"
-                  id="form3"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  style={{ height: "50px" }}
-                />
-              </div>
-
-              <div className="my-btn">
-                <MDBBtn className="mb-5" size="lg" onClick={handleSubmit}>
-                  Log in
-                </MDBBtn>
-              </div>
-
-              <a className="small text-muted" href="#!">
-                Forgot password?
-              </a>
-              <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
-                Don't have an account?{" "}
-                <a href="/auth/sign-up" style={{ color: "#393f81" }}>
-                  Register here
+    <section className="login_part section_padding">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-lg-6 col-md-6">
+            <div className="login_part_text text-center">
+              <div className="login_part_text_iner">
+                <h2>New to our Shop?</h2>
+                <p>{`There are advances being made in science and technology
+everyday, and a good example of this is the`}</p>
+                <a className="btn_3" href="/auth/sign-up">
+                  Create an Account
                 </a>
-              </p>
-            </MDBCol>
-          </MDBRow>
-        </MDBCardBody>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-6">
+            <div className="login_part_form">
+              <div className="login_part_form_iner">
+                <h3>
+                  Welcome Back ! <br style={{ boxSizing: "border-box" }} />
+                  {"Please Sign in now"}
+                </h3>
+                <form
+                  className="row contact_form"
+                  action="#"
+                  method="post"
+                  noValidate="novalidate"
+                >
+                  <div className="col-md-12 form-group p_star">
+                    <input
+                      label="Your Email"
+                      id="form2"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="form-control"
+                      name="name"
+                      placeholder="email"
+                    />
+                  </div>
+                  <div className="col-md-12 form-group p_star">
+                    <input
+                      label="Password"
+                      id="form3"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="form-control"
+                      name="password"
+                      placeholder="Password"
+                    />
+                  </div>
+                  <div className="col-md-12 form-group">
+                    <div className="creat_account d-flex align-items-center">
+                      <input id="f-option" name="selector" type="checkbox" />
+                      <label htmlFor="f-option">Remember me</label>
+                    </div>
+                    <button
+                      className="btn_3"
+                      type="submit"
+                      value="submit"
+                      onClick={handleSubmit}
+                    >
+                      {"log in"}
+                    </button>
+                    <a
+                      className="lost_pass"
+                      href="https://preview.colorlib.com/theme/timezone/login.html#"
+                    >
+                      forget password?
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </MDBContainer>
+    </section>
   );
 };
 
