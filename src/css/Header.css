@@ -50,7 +50,7 @@
 }
 
 .header-section .cart span {
-    background-color: black;
+    background-color: red;
     color: white;
     border-radius: 50px;
     position: absolute;
