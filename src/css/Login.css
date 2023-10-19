@@ -93,6 +93,8 @@
     padding: 80px 70px;
     height: 600px;
     display: table;
+    border: 1px solid red;
+    border-radius: 10px;
 }
 
 .login_part_form_iner {
@@ -188,17 +190,23 @@
     overflow: visible;
     outline: none medium;
     appearance: button;
-    padding: 18px 36px;
+    padding: 10px 20px;
     border-radius: 5px;
-    border: 1px solid rgb(37, 119, 253);
+    border: 1px solid black;
     transition: all 0.5s ease 0s;
-    background-color: transparent;
-    font-size: 15px;
-    color: rgb(37, 119, 253);
+    background-color: black;
+    font-size: 20px;
+    color: white;
     text-transform: uppercase;
     margin: 30px 0px 17px;
     display: block;
     width: 100%;
+}
+
+.form-group button:hover {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
 }
 
 .form-group a {
@@ -225,6 +233,15 @@ box-sizing: border-box;
     .login_part_form {
         padding: 0px;
         width: 100%;
+    }
+    
+    .login_part_form_iner {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .login_part_form {
+        margin-top: 20px;
     }
 }
 

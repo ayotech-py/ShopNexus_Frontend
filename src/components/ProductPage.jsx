@@ -209,7 +209,7 @@ const ProductPage = ({ data, user }) => {
                     maxWidth: "100%",
                     display: "block",
                     width: "100%",
-                    height: "150px",
+                    height: "140px",
                     objectFit: "cover",
                     boxShadow: "none",
                     margin: "0px",
@@ -247,12 +247,11 @@ const ProductPage = ({ data, user }) => {
                     maxWidth: "100%",
                     display: "block",
                     width: "100%",
-                    height: "150px",
+                    height: "140px",
                     objectFit: "cover",
                     boxShadow: "none",
                     margin: "0px",
                     cursor: "pointer",
-                    opacity: 0.5,
                   }}
                 />
               </li>
@@ -285,12 +284,11 @@ const ProductPage = ({ data, user }) => {
                     maxWidth: "100%",
                     display: "block",
                     width: "100%",
-                    height: "150px",
+                    height: "140px",
                     objectFit: "cover",
                     boxShadow: "none",
                     margin: "0px",
                     cursor: "pointer",
-                    opacity: 0.5,
                   }}
                 />
               </li>
@@ -323,12 +321,11 @@ const ProductPage = ({ data, user }) => {
                     maxWidth: "100%",
                     display: "block",
                     width: "100%",
-                    height: "150px",
+                    height: "140px",
                     objectFit: "cover",
                     boxShadow: "none",
                     margin: "0px",
                     cursor: "pointer",
-                    opacity: 0.5,
                   }}
                 />
               </li>
