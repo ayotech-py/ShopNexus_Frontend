@@ -56,7 +56,7 @@ const Order = () => {
         style={{ backgroundColor: "#eee" }}
       >
         <MDBContainer className="py-5 h-100">
-          {data && data > 0 ? (
+          {data && data.length > 0 ? (
             data.orders.map((order) => (
               <MDBRow className="justify-content-center align-items-center h-100">
                 <MDBCol lg="10" xl="8">
