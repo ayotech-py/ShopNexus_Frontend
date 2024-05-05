@@ -16,7 +16,7 @@ import {
 import { Link, redirect } from "react-router-dom";
 
 const Order = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   useEffect(() => {
     const token = window.localStorage.getItem("accessToken");
     const username = window.localStorage.getItem("username");
@@ -31,18 +31,16 @@ const Order = () => {
           },
         }
       );
-      const data = await response.json();
-      //do something(data);
-      if (data["status"] == 200) {
-        //do something(data);
-        setData(data);
+      const order_data = await response.json();
+      if (order_data["status"] == 200) {
+        setData(order_data.orders);
       }
     };
     getInvoice();
   }, []);
   var totalSum = 0;
-  if (data) {
-    totalSum = data.orders.reduce((accumulator, currentItem) => {
+  if (data.length > 0) {
+    totalSum = data.reduce((accumulator, currentItem) => {
       const subtotal = currentItem.product.price * currentItem.quantity;
       return accumulator + subtotal;
     }, 0);
@@ -56,8 +54,8 @@ const Order = () => {
         style={{ backgroundColor: "#eee" }}
       >
         <MDBContainer className="py-5 h-100">
-          {data && data.length > 0 ? (
-            data.orders.map((order) => (
+          {data.length > 0 ? (
+            data.map((order) => (
               <MDBRow className="justify-content-center align-items-center h-100">
                 <MDBCol lg="10" xl="8">
                   <MDBCard style={{ borderRadius: "10px" }}>
